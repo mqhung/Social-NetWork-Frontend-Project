@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Social-NetWork-Frontend-Project": {
+    "social-network-front-end": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Social-NetWork-Frontend-Project",
+            "outputPath": "dist/social-network-front-end",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -65,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Social-NetWork-Frontend-Project:build"
+            "browserTarget": "social-network-front-end:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Social-NetWork-Frontend-Project:build:production"
+              "browserTarget": "social-network-front-end:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Social-NetWork-Frontend-Project:build"
+            "browserTarget": "social-network-front-end:build"
           }
         },
         "test": {
@@ -91,7 +87,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -113,16 +109,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Social-NetWork-Frontend-Project:serve"
+            "devServerTarget": "social-network-front-end:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Social-NetWork-Frontend-Project:serve:production"
+              "devServerTarget": "social-network-front-end:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Social-NetWork-Frontend-Project"
+  "defaultProject": "social-network-front-end"
 }
