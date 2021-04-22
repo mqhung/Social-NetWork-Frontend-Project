@@ -5,7 +5,10 @@ import {FriendComponent} from './friend/friend.component';
 const routes: Routes = [
   {
     path: 'listFriend/:id',
-    component: FriendComponent
+    component: FriendComponent,
+    data: {
+      title: 'userLogin'
+    }
   }
 ];
 
