@@ -4,7 +4,7 @@ import {FriendComponent} from './friend/friend.component';
 
 const routes: Routes = [
   {
-    path: 'listFriend',
+    path: 'listFriend/:id',
     component: FriendComponent
   }
 ];

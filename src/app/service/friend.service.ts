@@ -10,10 +10,10 @@ import {of} from 'rxjs';
   providedIn: 'root'
 })
 export class FriendService {
-  private friendUrl = environment.URL + 'relationship';
-
   constructor(private http: HttpClient, private router: Router) {
   }
+
+  private friendUrl = environment.URL + 'relationship';
 
   // tslint:disable-next-line:typedef
   getFriendList(userId: number) {
