@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  URL: 'http://localhost:8080/',
   firebaseConfig: {
     apiKey: 'AIzaSyDKHjyUssOjMudEdVl09oPjlW_kT21aK7A',
     authDomain: 'we-connect-network.firebaseapp.com',
