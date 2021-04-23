@@ -1,4 +1,6 @@
-export interface IUser {
+import {IAppRole} from './i-app-role';
+
+export interface IAppUser {
   id: number;
   username: string;
   password: string;
@@ -12,5 +14,6 @@ export interface IUser {
   avatar: string;
   createdDate: Date;
   blocked: boolean;
-  appRole: AppRole;
+  appRole: IAppRole;
+
 }

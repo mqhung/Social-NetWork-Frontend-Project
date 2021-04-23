@@ -9,7 +9,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { FriendComponent } from './friend/friend.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
@@ -26,7 +26,8 @@ import {CommonModule} from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
