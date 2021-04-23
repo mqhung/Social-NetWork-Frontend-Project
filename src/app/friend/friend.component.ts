@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IUser} from '../model/iuser';
+import {IAppUser} from '../model/IAppUser';
 import {FriendService} from '../service/friend.service';
 
 @Component({
@@ -8,8 +8,8 @@ import {FriendService} from '../service/friend.service';
   styleUrls: ['./friend.component.css']
 })
 export class FriendComponent implements OnInit {
-  friendList: IUser[] = [];
-  userFriend: IUser;
+  friendList: IAppUser[] = [];
+  userFriend: IAppUser;
 
   constructor(private friendService: FriendService) {
     this.getFriendList();
