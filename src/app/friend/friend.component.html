@@ -26,7 +26,7 @@
                aria-expanded="false">Newsfeed <span><img src="assets/images/down-arrow.png" alt=""/></span></a>
             <ul class="dropdown-menu newsfeed-home">
               <li><a href="newsfeed.html">Newsfeed</a></li>
-              <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
+              <li><a href="newsfeed-people-nearby.html">People Nearly</a></li>
               <li><a href="newsfeed-friends.html">My friends</a></li>
               <li><a href="newsfeed-messages.html">Chatroom</a></li>
               <li><a href="newsfeed-images.html">Images</a></li>
@@ -83,13 +83,13 @@
     <div class="timeline-cover">
 
       <!--Timeline Menu for Large Screens-->
-      <div class="timeline-nav-bar hidden-sm hidden-xs">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="profile-info">
-              <img src="assets/images/users/user-1.jpg" alt="" class="img-responsive profile-photo"/>
-              <h3>trung</h3>
-              <p class="text-muted">Creative Director</p>
+      <div class="timeline-nav-bar hidden-sm hidden-xs" >
+        <div class="row" >
+          <div class="col-md-3" >
+            <div class="profile-info" *ngFor="let friend of friendList">
+              <img src="{{friend.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <a>{{friend.firstName}}</a>
+              <p class="text-muted">{{friend.address}}</p>
             </div>
           </div>
           <div class="col-md-9">
@@ -100,7 +100,7 @@
               <li><a href="timeline-friends.html" class="active">Friends</a></li>
             </ul>
             <ul class="follow-me list-inline">
-              <li>1,299 people following her</li>
+              <li>1,299,000 people following her</li>
               <li>
                 <button class="btn-primary">Add Friend</button>
               </li>
@@ -111,10 +111,10 @@
 
       <!--Timeline Menu for Small Screens-->
       <div class="navbar-mobile hidden-lg hidden-md">
-        <div class="profile-info">
-          <img src="assets/images/users/user-1.jpg" alt="" class="img-responsive profile-photo"/>
-          <h4>Sarah Cruiz</h4>
-          <p class="text-muted">Creative Director</p>
+        <div class="profile-info" *ngFor="let friend of friendList">
+          <img src="{{friend.avatar}}" alt="" class="img-responsive profile-photo"/>
+          <a>{{friend.firstName}}</a>
+          <p class="text-muted">{{friend.address}}</p>
         </div>
         <div class="mobile-menu">
           <ul class="list-inline">
@@ -125,7 +125,8 @@
           </ul>
           <button class="btn-primary">Add Friend</button>
         </div>
-      </div><!--Timeline Menu for Small Screens End-->
+      </div><
+<!--      Timeline Menu for Small Screens End-->
 
     </div>
     <div id="page-contents">
@@ -150,110 +151,6 @@
                   </div>
                 </div>
               </div>
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/3.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-4.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">John Doe</a></h5>-->
-              <!--                      <p>Traveler</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/4.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-10.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="timeline.html" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="#" class="profile-link">Julia Cox</a></h5>-->
-              <!--                      <p>Art Designer</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/5.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-7.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timelime.html" class="profile-link">Robert Cook</a></h5>-->
-              <!--                      <p>Photographer at Photography</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/6.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-8.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">Richard Bell</a></h5>-->
-              <!--                      <p>Graphic Designer at Envato</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/7.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-2.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">Linda Lohan</a></h5>-->
-              <!--                      <p>Software Engineer</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/8.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-9.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">Anna Young</a></h5>-->
-              <!--                      <p>Musician</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/9.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-6.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">James Carter</a></h5>-->
-              <!--                      <p>CEO at IT Farm</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
-              <!--              <div class="col-md-6 col-sm-6">-->
-              <!--                <div class="friend-card">-->
-              <!--                  <img src="assets/images/covers/10.jpg" alt="profile-cover" class="img-responsive cover" />-->
-              <!--                  <div class="card-info">-->
-              <!--                    <img src="assets/images/users/user-5.jpg" alt="user" class="profile-photo-lg" />-->
-              <!--                    <div class="friend-info">-->
-              <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-              <!--                      <h5><a href="timeline.html" class="profile-link">Alexis Clark</a></h5>-->
-              <!--                      <p>Traveler</p>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
             </div>
           </div>
         </div>
