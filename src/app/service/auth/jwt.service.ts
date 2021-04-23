@@ -34,6 +34,9 @@ export class JwtService {
 
   logout(){
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('USERNAME');
+    localStorage.removeItem('ROLE');
+    localStorage.removeItem('ACCESS_TOKEN');
     this.currentUserSubject.next(null);
   }
 }
