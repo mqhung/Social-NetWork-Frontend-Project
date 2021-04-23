@@ -1,0 +1,59 @@
+import {Component, Input, OnInit} from '@angular/core';
+
+import { Router} from '@angular/router';
+import {CommentService} from '../comment.service';
+import {Comment} from '../comment';
+
+@Component({
+  selector: 'app-create-comment',
+  templateUrl: './create-comment.component.html',
+  styleUrls: ['./create-comment.component.css']
+})
+export class CreateCommentComponent implements OnInit {
+
+  comments: Comment = {
+    id: 0,
+    appUser: {
+      id: 0,
+      username: '',
+      password: '',
+      birthday: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
+      phone: '',
+      email: '',
+      address: '',
+      avatar: '',
+      createdDate: '',
+      blocked: false,
+      roles: {
+        id: 0,
+        name: ''
+      }
+    },
+    postId: 0,
+    content: '',
+    createdTime: ''
+
+  };
+
+  constructor(private router: Router,
+              private commentService: CommentService,
+  ) {
+    //goi onload
+  }
+
+  ngOnInit(): void {
+  }
+
+  @Input()
+  postId: number;
+
+  createComment() {
+    // @ts-ignore
+    this.commentService.createComment(this.comments).subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+}

@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ListCommentComponent} from './comment/list-comment/list-comment.component';
-import {CreateCommentComponent} from './comment/create-comment/create-comment.component';
+import {FriendComponent} from './friend/friend.component';
+import {ListCommentComponent} from './post/list-comment/list-comment.component';
+import {CreateCommentComponent} from './post/create-comment/create-comment.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ListCommentComponent
+    path: 'post',
+    loadChildren: () => import('./post/post.module').then(module => module.PostModule)
   },
   {
-    path: 'create',
-    component: CreateCommentComponent
-  }
+    path: 'listFriend/:id',
+    component: FriendComponent
+  },
+
 ];
 
 @NgModule({
