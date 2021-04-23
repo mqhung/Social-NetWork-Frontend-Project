@@ -1,11 +1,10 @@
-
+import {IAppUser} from '../model/IAppUser';
 import {Timestamp} from 'rxjs';
-import {IUser} from '../model/iuser';
 
 export interface Comment {
   id: number;
-  appUser: IUser;
+  appUser: IAppUser;
   postId: number;
   content: string;
-  createdTime: string;
+  createdTime: Timestamp<any>;
 }

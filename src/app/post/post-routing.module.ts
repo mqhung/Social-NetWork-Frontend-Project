@@ -14,10 +14,10 @@ const routes: Routes = [
     path: 'new-feed',
     component: NewFeedComponent
   },
-  {
-    path: 'show',
-    component: ListCommentComponent
-  },
+  // {
+  //   path: 'show',
+  //   component: ListCommentComponent
+  // },
   {
     path: 'create',
     component: CreateCommentComponent

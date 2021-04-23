@@ -17,24 +17,24 @@ export class CreateCommentComponent implements OnInit {
       id: 0,
       username: '',
       password: '',
-      birthday: '',
+      birthday: null,
       firstName: '',
       lastName: '',
       gender: '',
-      phone: '',
+      phone: 0,
       email: '',
       address: '',
       avatar: '',
-      createdDate: '',
+      createdDate: null,
       blocked: false,
-      roles: {
+      appRole: {
         id: 0,
         name: ''
       }
     },
     postId: 0,
     content: '',
-    createdTime: ''
+    createdTime: null
 
   };
 

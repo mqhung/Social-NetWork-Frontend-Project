@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Comment} from './comment';
 
 const API_URL = `${environment.URL}`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,22 +15,22 @@ export class CommentService {
   }
 
   getAllComment(postId: number): Observable<Comment[]> {
-    return this.httpClient.get<Comment[]>(URL + `/comments/show/${postId}`);
+    return this.httpClient.get<Comment[]>(API_URL + `comments/show/` +postId);
   }
 
   createComment(comment: Comment, postId: number): Observable<Comment> {
-    return this.httpClient.post<Comment>(URL + `/comments/create/${postId}`, comment);
+    return this.httpClient.post<Comment>(API_URL + `comments/create/${postId}`, comment);
   }
 
   getById(id: number): Observable<Comment> {
-    return this.httpClient.get<Comment>(URL + `/comments/${id}`);
+    return this.httpClient.get<Comment>(API_URL + `comments/${id}`);
   }
 
   updateComment(id: number, comment: Comment): Observable<Comment> {
-    return this.httpClient.put<Comment>(URL + `/comments/edit/${id}`, comment);
+    return this.httpClient.put<Comment>(API_URL + `comments/edit/${id}`, comment);
   }
 
   deleteComment(id: number): Observable<Comment> {
-    return this.httpClient.delete<Comment>(URL + `/comments/delete/${id}`);
+    return this.httpClient.delete<Comment>(API_URL + `comments/delete/${id}`);
   }
 }
