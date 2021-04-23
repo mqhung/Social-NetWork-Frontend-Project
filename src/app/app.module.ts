@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
