@@ -11,11 +11,13 @@ import { FriendComponent } from './friend/friend.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FriendComponent
+    FriendComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
