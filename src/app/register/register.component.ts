@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IUser} from '../model/iuser';
+import {IAppUser} from '../model/iappuser';
 import {Router} from '@angular/router';
 import {IUserRegister} from '../model/IUserRegister';
 
