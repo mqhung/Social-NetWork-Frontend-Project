@@ -1,23 +1,23 @@
 import {Injectable} from '@angular/core';
-import {TokenStorageService} from "./token-storage.service";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {catchError, tap} from "rxjs/operators";
 import {of} from "rxjs";
+import {JwtService} from "./auth/jwt.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  constructor(private http: HttpClient, private jwtService: JwtService) {
 
   }
 
   private userUrl = environment.URL + 'users';
 
-  getUser() {
-    return this.findUserById(this.tokenStorage.getUser().id);
+  getCurrentUser() {
+    return this.findUserById(this.jwtService.currentUserValue.id);
   }
 
   findUserById(id: number) {
