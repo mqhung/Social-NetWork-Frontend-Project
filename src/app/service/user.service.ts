@@ -13,11 +13,13 @@ export class UserService {
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
 
   }
-  private userUrl = environment.URL + 'login';
+
+  private userUrl = environment.URL + 'users';
 
   getUser() {
     return this.findUserById(this.tokenStorage.getUser().id);
   }
+
   findUserById(id: number) {
     return this.http.get(this.userUrl + '/findUserById/' + id).pipe(
       tap(

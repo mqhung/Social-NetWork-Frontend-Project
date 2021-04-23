@@ -2,7 +2,7 @@ export interface IUser {
   id: number;
   username: string;
   password: string;
-  birthday: string;
+  birthday: Date;
   firstName: string;
   lastName: string;
   gender: string;
@@ -10,7 +10,7 @@ export interface IUser {
   email: string;
   address: string;
   avatar: string;
-  createDate: string;
+  createdDate: Date;
   blocked: boolean;
-  roles: string[];
+  appRole: AppRole;
 }
