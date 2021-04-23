@@ -5,15 +5,15 @@ export interface User {
   id: number;
   username: string;
   password: string;
-  birthday: Date;
-  firstname: string;
-  lastname: string;
+  birthday: string;
+  firstName: string;
+  lastName: string;
   gender: string;
   phone: string;
   email: string;
   address: string;
   avatar: string;
-  createDate: Timestamp<any>;
-  block: boolean;
+  createdDate: string;
+  blocked: boolean;
   roles: Role;
 }

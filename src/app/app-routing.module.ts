@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CommentComponent} from './comment/comment.component';
+import {ListCommentComponent} from './comment/list-comment/list-comment.component';
+import {CreateCommentComponent} from './comment/create-comment/create-comment.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CommentComponent
+    component: ListCommentComponent
   },
   {
     path: 'create',
-    component: CommentComponent
+    component: CreateCommentComponent
   }
 ];
 

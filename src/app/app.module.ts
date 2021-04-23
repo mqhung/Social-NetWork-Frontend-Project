@@ -3,16 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommentComponent } from './comment/comment.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ListCommentComponent } from './comment/list-comment/list-comment.component';
+import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommentComponent
+    ListCommentComponent,
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

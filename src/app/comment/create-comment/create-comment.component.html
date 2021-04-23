@@ -1,0 +1,25 @@
+<div class="post-content" xmlns="http://www.w3.org/1999/html">
+<!--  <img src="images/post-images/1.jpg" alt="post-image" class="img-responsive post-image" />-->
+  <div class="post-container">
+<!--    <img src="images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />-->
+    <div class="post-detail">
+      <div class="user-info">
+        <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following"></span></h5>
+        <p class="text-muted">Published a photo about 3 mins ago</p>
+      </div>
+      <div class="line-divider"></div>
+      <div class="post-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+      </div>
+      <div class="line-divider"></div>
+      <div class="post-comment">
+        <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+      </div>
+      <form (ngSubmit)="createComment()">
+        <input class="form-control" name="content" type="text" placeholder="Post comment" [(ngModel)]="comments.content">
+        <br>
+        <button type="submit">Ok</button>
+      </form>
+    </div>
+  </div>
+</div>

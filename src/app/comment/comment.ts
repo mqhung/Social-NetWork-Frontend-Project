@@ -1,4 +1,4 @@
-import {User} from './user';
+import {User} from '../user';
 import {Timestamp} from 'rxjs';
 
 export interface Comment {
@@ -6,5 +6,5 @@ export interface Comment {
   appUser: User;
   postId: number;
   content: string;
-  createdTime: Timestamp<any>;
+  createdTime: string;
 }
