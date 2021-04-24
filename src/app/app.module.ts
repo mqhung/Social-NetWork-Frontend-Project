@@ -14,6 +14,7 @@ import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
     FriendComponent,
     RegisterComponent,
     LoginComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

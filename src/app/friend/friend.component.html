@@ -94,13 +94,13 @@
           </div>
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
-              <li><a href="timeline.html">Timeline</a></li>
+              <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a href="timeline-friends.html" class="active">Friends</a></li>
+              <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
             </ul>
             <ul class="follow-me list-inline">
-              <li>1,299,000 people following her</li>
+              <li>{{friendList.length}} people following her</li>
               <li>
                 <button class="btn-primary">Add Friend</button>
               </li>
@@ -118,10 +118,10 @@
         </div>
         <div class="mobile-menu">
           <ul class="list-inline">
-            <li><a href="timline.html">Timeline</a></li>
+            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
             <li><a href="timeline-about.html">About</a></li>
             <li><a href="timeline-album.html">Album</a></li>
-            <li><a href="timeline-friends.html" class="active">Friends</a></li>
+            <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
           </ul>
           <button class="btn-primary">Add Friend</button>
         </div>
@@ -156,7 +156,7 @@
           <!--          </div>-->
           <div class="friend-list">
             <div class="row">
-              <ul class="col-md-6 col-sm-6">
+              <ul class="col-md-5 col-sm-5">
                 <div class="friend-card">
                   <li *ngFor="let friend of friendList">
                     <img src="{{friend.avatar}}" alt="profile-cover" class="img-responsive cover"/>
@@ -164,8 +164,11 @@
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                        <h5><a href="timeline.html" class="profile-link">"{{friend.firstName}}"</a></h5>
-                        <p>"{{friend.birthday}}"</p>
+                        <h5><a [routerLink]="'/post/timeline'" class="profile-link">{{friend.firstName}}</a></h5>
+                        <p>B.O.D: {{friend.birthday}}</p>
+                        <p>Quê quán: {{friend.address}}</p>
+                        <p>Giới tính: {{friend.gender}}</p>
+                        <p>Bạn chung: {{mutualFriendList.length}}</p>
                       </div>
                     </div>
                   </li>
