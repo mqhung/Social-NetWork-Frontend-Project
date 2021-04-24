@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {IAppUser} from '../model/IAppUser';
 import {FriendService} from '../service/friend.service';
-import {UserService} from "../service/user.service";
-import {Subscription} from "rxjs";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {UserService} from '../service/user.service';
+import {Subscription} from 'rxjs';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-friend',
@@ -15,7 +15,6 @@ export class FriendComponent implements OnInit {
   sumListFriend: number;
   user: IAppUser;
   userFriend: IAppUser;
-
   // sub: Subscription;
   // id: number;
 
@@ -33,15 +32,15 @@ export class FriendComponent implements OnInit {
   getFriendList() {
     this.userService.getUser().subscribe(
       response => {
-        this.userFriend = <IAppUser>response;
+        this.userFriend = <IAppUser> response;
         console.log(this.userFriend.id);
         this.friendService.getFriendList(this.userFriend.id).subscribe(
           response => {
-            this.friendList = <IAppUser[]>response,
+            this.friendList = <IAppUser[]> response,
               this.sumListFriend = this.friendList.length;
           },
           error => console.error(error)
-        )
+        );
       },
       error => console.error(error)
     );
@@ -51,11 +50,11 @@ export class FriendComponent implements OnInit {
   getUser() {
     this.userService.getUser().subscribe(
       response => {
-        this.user = <IAppUser>response;
+        this.user = <IAppUser> response;
         console.log(this.user);
       },
       error => console.error(error)
-    )
+    );
   }
 
   ngOnInit(): void {

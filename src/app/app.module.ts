@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { HandlefriendComponent } from './handlefriend/handlefriend.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     FriendComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HandlefriendComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +34,11 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
