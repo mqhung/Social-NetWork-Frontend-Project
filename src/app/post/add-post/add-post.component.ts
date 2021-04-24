@@ -16,7 +16,7 @@ import {ListPostComponent} from '../list-post/list-post.component';
 export class AddPostComponent implements OnInit {
 
   @Input()
-  userId: number;
+  currentUserId: number;
   post: IPost = {
     id: null,
     appUser: null,

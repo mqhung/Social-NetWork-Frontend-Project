@@ -44,4 +44,8 @@ export class PostService {
   getCurrentUser(): Observable<IAppUser> {
     return this.http.get<IAppUser>(this.postURL + 'get-current-user').pipe();
   }
+
+  getUserById(id: number): Observable<IAppUser>{
+    return this.http.get<IAppUser>(this.postURL+'get-user-by-id/'+id).pipe();
+  }
 }
