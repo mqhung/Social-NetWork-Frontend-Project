@@ -11,7 +11,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
   styleUrls: ['./friend.component.css']
 })
 export class FriendComponent implements OnInit {
-  friendList: IAppUser[];
+  friendList: IAppUser[] = [];
   sumListFriend: number;
   user: IAppUser;
   userFriend: IAppUser;
