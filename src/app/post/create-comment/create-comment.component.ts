@@ -52,7 +52,7 @@ export class CreateCommentComponent implements OnInit {
 
   createComment() {
     // @ts-ignore
-    this.commentService.createComment(this.comments).subscribe(() => {
+    this.commentService.createComment(this.comments.postId, this.comments).subscribe(() => {
       this.router.navigate(['/']);
     });
   }

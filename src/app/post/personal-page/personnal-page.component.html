@@ -106,7 +106,6 @@
                   <img [src]="currentUser.avatar" alt="" class="profile-photo-md">
                   <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control">
 <!--                            placeholder="Write what you wish" [(ngModel)]="post.content">-->
-
                   </textarea>
                 </div>
               </div>
@@ -149,16 +148,25 @@
                     class="following">following</span></h5>
                   <p class="text-muted">Published a photo at {{post.createdTime| date : 'dd MM, yyyy, hh: mm'}}</p>
                 </div>
+
                 <div class="reaction">
                   <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
                   <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
                 </div>
+
                 <div class="line-divider"></div>
+                <div>
+                  <app-list-comment [postId]="post.id"></app-list-comment>
+                </div>
                 <div class="post-text">
                   <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
                   <p>{{post.content}}</p>
                 </div>
-                <div class="line-divider"></div>
+
+                <div class="line-divider">
+                  <app-create-comment [postId]="post.id"></app-create-comment>
+                </div>
+
                 <!--                ///comment-->
                 <div class="post-comment">
                   <img src="./assets/images/users/user-11.jpg" alt="" class="profile-photo-sm">
@@ -167,7 +175,6 @@
                     magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
                 </div>
                 <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-
               </div>
             </div>
           </div>
