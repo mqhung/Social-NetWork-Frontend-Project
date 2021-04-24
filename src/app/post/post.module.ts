@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { NewFeedComponent } from './new-feed/new-feed.component';
 import { PersonnalPageComponent } from './personal-page/personnal-page.component';
-import {ListCommentComponent} from './list-comment/list-comment.component';
-import {CreateCommentComponent} from './create-comment/create-comment.component';
+import {CoverComponent} from './cover/cover.component';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
 
@@ -13,12 +13,12 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     NewFeedComponent,
     PersonnalPageComponent,
-    ListCommentComponent,
-    CreateCommentComponent
+    CoverComponent
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
+    HttpClientModule,
     FormsModule
   ]
 })

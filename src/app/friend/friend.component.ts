@@ -31,7 +31,7 @@ export class FriendComponent implements OnInit {
   }
 
   getFriendList() {
-    this.userService.getUser().subscribe(
+    this.userService.getCurrentUser().subscribe(
       response => {
         this.userFriend = <IAppUser>response;
         console.log(this.userFriend.id);
@@ -49,7 +49,7 @@ export class FriendComponent implements OnInit {
   }
 
   getUser() {
-    this.userService.getUser().subscribe(
+    this.userService.getCurrentUser().subscribe(
       response => {
         this.user = <IAppUser>response;
         console.log(this.user);
