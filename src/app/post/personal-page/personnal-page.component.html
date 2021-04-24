@@ -22,48 +22,9 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right main-menu">
-          <li class="nav-item dropdown"><a href="index.html">Home</a></li>
-          <li class="nav-item dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">Newsfeed <span><img src="./assets/images/down-arrow.png" alt=""></span></a>
-            <ul class="dropdown-menu newsfeed-home">
-              <li><a href="newsfeed.html">Newsfeed</a></li>
-              <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-              <li><a href="newsfeed-friends.html">My friends</a></li>
-              <li><a href="newsfeed-messages.html">Chatroom</a></li>
-              <li><a href="newsfeed-images.html">Images</a></li>
-              <li><a href="newsfeed-videos.html">Videos</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">Timeline <span><img src="./assets/images/down-arrow.png" alt=""></span></a>
-            <ul class="dropdown-menu login">
-              <li><a href="timeline.html">Timeline</a></li>
-              <li><a href="timeline-about.html">Timeline About</a></li>
-              <li><a href="timeline-album.html">Timeline Album</a></li>
-              <li><a href="timeline-friends.html">Timeline Friends</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">All Pages <span><img src="./assets/images/down-arrow.png" alt=""></span></a>
-            <ul class="dropdown-menu page-list">
-              <li><a href="index.html">Landing Page</a></li>
-              <li><a href="newsfeed.html">Newsfeed</a></li>
-              <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-              <li><a href="newsfeed-friends.html">My friends</a></li>
-              <li><a href="newsfeed-messages.html">Chatroom</a></li>
-              <li><a href="newsfeed-images.html">Images</a></li>
-              <li><a href="newsfeed-videos.html">Videos</a></li>
-              <li><a href="timeline.html">Timeline</a></li>
-              <li><a href="timeline-about.html">Timeline About</a></li>
-              <li><a href="timeline-album.html">Timeline Album</a></li>
-              <li><a href="timeline-friends.html">Timeline Friends</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown"><a href="contact.html">Contact</a></li>
+          <li class="nav-item dropdown"><a [routerLink]="'/post/new-feed'">Trang chủ</a></li>
+          <li class="nav-item dropdown"><a [routerLink]="'/post/timeline'">Timeline</a></li>
+          <li class="nav-item dropdown"><a href="contact.html">Setting</a></li>
         </ul>
         <form class="navbar-form navbar-right hidden-sm">
           <div class="form-group">
@@ -97,9 +58,9 @@
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
               <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
-              <li><a [routerLink]="'/post/about'">About</a></li>
-              <li><a [routerLink]="'/post/album'">Album</a></li>
-              <li><a [routerLink]="'/post/friend'">Friends</a></li>
+              <li><a>About</a></li>
+              <li><a >Album</a></li>
+              <li><a >Friends</a></li>
             </ul>
             <ul class="follow-me list-inline">
               <li>1,299 people following her</li>
@@ -118,9 +79,9 @@
         <div class="mobile-menu">
           <ul class="list-inline">
             <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
-            <li><a href="timeline-about.html">About</a></li>
-            <li><a href="timeline-album.html">Album</a></li>
-            <li><a href="timeline-friends.html">Friends</a></li>
+<!--            <li><a [routerLink]="'/post/about'">About</a></li>-->
+<!--            <li><a [routerLink]="'/post/album'">Album</a></li>-->
+<!--            <li><a [routerLink]="'/post/friend'">Friends</a></li>-->
           </ul>
         </div>
       </div><!--Timeline Menu for Small Screens End-->
@@ -164,7 +125,7 @@
             <!--Post Date-->
             <div class="post-date hidden-xs hidden-sm">
               <h5>{{post.appUser.firstName}}</h5>
-              <p class="text-grey">{{(post.createdTime)}} </p>
+              <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
             </div><!--Post Date End-->
 
             <img [src]="post.image" alt="post-image" class="img-responsive post-image">
@@ -174,7 +135,7 @@
                 <div class="user-info">
                   <h5><a href="timeline.html" class="profile-link">{{post.appUser.firstName}}</a> <span
                     class="following">following</span></h5>
-                  <p class="text-muted">Published a photo at {{post.createdTime}}</p>
+                  <p class="text-muted">Published a photo at {{post.createdTime| date : 'dd MM, yyyy, hh: mm'}}</p>
                 </div>
                 <div class="reaction">
                   <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
@@ -201,6 +162,7 @@
 
 
         </div>
+<!--        thong báo-->
         <div class="col-md-2 static">
           <div id="sticky-sidebar" class="" style="">
             <h4 class="grey">Sarah's activity</h4>

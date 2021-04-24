@@ -5,7 +5,6 @@ import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {PostService} from '../../service/post/post.service';
 import {IPost} from '../../model/IPost';
-import {error} from '@angular/compiler/src/util';
 import {IAppUser} from '../../model/IAppUser';
 
 @Component({
@@ -17,7 +16,7 @@ export class PersonnalPageComponent implements OnInit {
 
   postList: IPost[] = [];
 
-  currentUser: IAppUser;
+  currentUser: any;
 
 
 
@@ -26,12 +25,6 @@ export class PersonnalPageComponent implements OnInit {
               private postService: PostService) {
     this.postService.getAllPost().subscribe(next => {
         this.postList = next;
-      // }, () => {
-      //   console.log(error);
-      // },
-      // () => {
-      //   console.log('success');
-      //
       });
   }
 
