@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {PostService} from '../../service/post/post.service';
+import {IPost} from '../../model/IPost';
+import {IAppUser} from '../../model/IAppUser';
 
 @Component({
   selector: 'app-personnal-page',
@@ -10,14 +14,32 @@ import {finalize} from 'rxjs/operators';
 })
 export class PersonnalPageComponent implements OnInit {
 
-  constructor( private storage: AngularFireStorage) {}
+  postList: IPost[] = [];
+
+  currentUser: IAppUser;
+
+  post: IPost;
+
+
+  constructor(private storage: AngularFireStorage,
+              private router: Router,
+              private postService: PostService) {
+    this.postService.getAllPost().subscribe(next => {
+      this.postList = next;
+    });
+    this.postService.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
+  }
 
   ngOnInit(): void {
   }
-  title = "cloudsStorage";
+
+  title = 'cloudsStorage';
   selectedFile: File = null;
   fb;
   downloadURL: Observable<string>;
+
   onFileSelected(event) {
     let n = Date.now();
     const file = event.target.files[0];
@@ -45,4 +67,12 @@ export class PersonnalPageComponent implements OnInit {
       });
   }
 
+  createPost() {
+    // this.post.appUser = this.currentUser;
+    // this.post.image = this.fb;
+    // this.postService.addNewPost(this.post).subscribe(posted =>{
+    //   this.postList.unshift(posted);
+    //   this.router.navigateByUrl('/post/timeline').then(r => {})
+    // });
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-new-feed',
