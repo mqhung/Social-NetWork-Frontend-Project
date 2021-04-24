@@ -13,52 +13,7 @@
   <!-- Timeline
   ================================================= -->
   <div class="timeline">
-    <div class="timeline-cover">
-
-      <!--Timeline Menu for Large Screens-->
-      <div class="timeline-nav-bar hidden-sm hidden-xs">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="profile-info">
-              <img [src]="currentUser.avatar" alt="" class="img-responsive profile-photo">
-              <h3>{{currentUser.firstName + " " + currentUser.lastName}}</h3>
-              <p class="text-muted">{{currentUser.email}} </p>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <ul class="list-inline profile-menu">
-              <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
-              <li><a>About</a></li>
-              <li><a>Album</a></li>
-              <li><a>Friends</a></li>
-            </ul>
-            <ul class="follow-me list-inline">
-              <li>1,299 people following her</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!--Timeline Menu for Large Screens End-->
-
-      <!--Timeline Menu for Small Screens-->
-      <div class="navbar-mobile hidden-lg hidden-md">
-        <div class="profile-info">
-          <img [src]="currentUser.avatar" alt="" class="img-responsive profile-photo">
-          <h4>{{currentUser.firstName}}</h4>
-          <p class="text-muted">{{currentUser.email}}</p>
-        </div>
-        <div class="mobile-menu">
-          <ul class="list-inline">
-            <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
-            <!--            <li><a [routerLink]="'/post/about'">About</a></li>-->
-            <!--            <li><a [routerLink]="'/post/album'">Album</a></li>-->
-            <!--            <li><a [routerLink]="'/post/friend'">Friends</a></li>-->
-          </ul>
-        </div>
-      </div>
-      <!--Timeline Menu for Small Screens End-->
-
-    </div>
+    <app-cover [guestUserId]="currentUser.id"></app-cover>
     <div id="page-contents">
       <div class="row">
         <div class="col-md-3"></div>
@@ -67,15 +22,13 @@
           <!-- Post Create Box
           ================================================= -->
 
-          <app-add-post [userId]="currentUser.id"></app-add-post>
+          <app-add-post [currentUserId]="currentUser.id"></app-add-post>
 
           <!-- Post Create Box End-->
 
           <!-- Post Content
           ================================================= -->
-          <app-create-comment [postId]="currentUser.id"></app-create-comment>
-
-<!--          <div class="post-content" *ngFor="let post of postList">-->
+          <app-list-post [userHavePostList]="currentUser.id"></app-list-post>
 
           <!-- Post Content End
           ================================================= -->
