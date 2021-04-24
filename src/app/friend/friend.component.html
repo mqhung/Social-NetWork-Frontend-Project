@@ -83,13 +83,13 @@
     <div class="timeline-cover">
 
       <!--Timeline Menu for Large Screens-->
-      <div class="timeline-nav-bar hidden-sm hidden-xs" >
-        <div class="row" >
-          <div class="col-md-3" >
-            <div class="profile-info" *ngFor="let friend of friendList">
-              <img src="{{friend.avatar}}" alt="" class="img-responsive profile-photo"/>
-              <a>{{friend.firstName}}</a>
-              <p class="text-muted">{{friend.address}}</p>
+      <div class="timeline-nav-bar hidden-sm hidden-xs">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-info">
+              <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <a>{{user.firstName}}</a>
+              <p class="text-muted">{{user.address}}</p>
             </div>
           </div>
           <div class="col-md-9">
@@ -111,10 +111,10 @@
 
       <!--Timeline Menu for Small Screens-->
       <div class="navbar-mobile hidden-lg hidden-md">
-        <div class="profile-info" *ngFor="let friend of friendList">
-          <img src="{{friend.avatar}}" alt="" class="img-responsive profile-photo"/>
-          <a>{{friend.firstName}}</a>
-          <p class="text-muted">{{friend.address}}</p>
+        <div class="profile-info">
+          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
+          <a>{{user.firstName}}</a>
+          <p class="text-muted">{{user.address}}</p>
         </div>
         <div class="mobile-menu">
           <ul class="list-inline">
@@ -125,8 +125,9 @@
           </ul>
           <button class="btn-primary">Add Friend</button>
         </div>
-      </div><
-<!--      Timeline Menu for Small Screens End-->
+      </div>
+      <
+      <!--      Timeline Menu for Small Screens End-->
 
     </div>
     <div id="page-contents">
@@ -136,21 +137,40 @@
 
           <!-- Friend List
           ================================================= -->
+          <!--          <div class="friend-list">-->
+          <!--            <div class="row">-->
+          <!--              <div class="col-md-6 col-sm-6">-->
+          <!--                <div class="friend-card">-->
+          <!--                  <img src="assets/images/covers/1.jpg" alt="profile-cover" class="img-responsive cover"/>-->
+          <!--                  <div class="card-info">-->
+          <!--                    <img src="assets/images/users/user-3.jpg" alt="user" class="profile-photo-lg"/>-->
+          <!--                    <div class="friend-info">-->
+          <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
+          <!--                      <h5><a href="timeline.html" class="profile-link">test</a></h5>-->
+          <!--                      <p>Student at Harvard</p>-->
+          <!--                    </div>-->
+          <!--                  </div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
           <div class="friend-list">
             <div class="row">
-              <div class="col-md-6 col-sm-6">
+              <ul class="col-md-6 col-sm-6">
                 <div class="friend-card">
-                  <img src="assets/images/covers/1.jpg" alt="profile-cover" class="img-responsive cover"/>
-                  <div class="card-info">
-                    <img src="assets/images/users/user-3.jpg" alt="user" class="profile-photo-lg"/>
-                    <div class="friend-info">
-                      <a href="#" class="pull-right text-green">My Friend</a>
-                      <h5><a href="timeline.html" class="profile-link">test</a></h5>
-                      <p>Student at Harvard</p>
+                  <li *ngFor="let friend of friendList">
+                    <img src="{{friend.avatar}}" alt="profile-cover" class="img-responsive cover"/>
+                    <div class="card-info">
+                      <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
+                      <div class="friend-info">
+                        <a href="#" class="pull-right text-green">My Friend</a>
+                        <h5><a href="timeline.html" class="profile-link">"{{friend.firstName}}"</a></h5>
+                        <p>"{{friend.birthday}}"</p>
+                      </div>
                     </div>
-                  </div>
+                  </li>
                 </div>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
