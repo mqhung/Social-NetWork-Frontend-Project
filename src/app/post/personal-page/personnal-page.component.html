@@ -312,8 +312,9 @@
                     veniam, quis nostrud </p>
                 </div>
                 <div class="post-comment">
-                  <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2018/11/3-8.png" alt=""
-                       class="profile-photo-sm">
+                  <a [routerLink]="'/post/timeline'"><img src="https://cellphones.com.vn/sforum/wp-content/uploads/2018/11/3-8.png"
+                       class="profile-photo-sm"></a>
+                  <app-create-comment [postId]="1"></app-create-comment>
                 </div>
               </div>
             </div>

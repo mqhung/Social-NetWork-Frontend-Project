@@ -18,10 +18,10 @@ const routes: Routes = [
   //   path: 'show',
   //   component: ListCommentComponent
   // },
-  {
-    path: 'create',
-    component: CreateCommentComponent
-  }
+  // {
+  //   path: 'create',
+  //   component: CreateCommentComponent
+  // }
 ];
 
 @NgModule({
