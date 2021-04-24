@@ -164,8 +164,11 @@
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                        <h5><a href="timeline.html" class="profile-link">"{{friend.firstName}}"</a></h5>
-                        <p>"{{friend.birthday}}"</p>
+                        <h5><a [routerLink]="'/post/timeline'" class="profile-link">{{friend.firstName}}</a></h5>
+                        <p>B.O.D: {{friend.birthday}}</p>
+                        <p>Quê quán: {{friend.address}}</p>
+                        <p>Giới tính: {{friend.gender}}</p>
+                        <p>Bạn chung: {{mutualFriendList.length}}</p>
                       </div>
                     </div>
                   </li>

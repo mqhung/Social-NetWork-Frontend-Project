@@ -17,27 +17,31 @@ export class FriendComponent implements OnInit {
   userPending: IAppUser;
   pendingList: IAppUser[];
 
+  userLogin: IAppUser;
+  friendListLogin: IAppUser[];
+  mutualFriendList: IAppUser[] = [];
 
   constructor(private friendService: FriendService, private userService: UserService
   ) {
   }
 
   getFriendList() {
-    this.userService.getCurrentUser().subscribe(
-      response => {
-        this.userFriend = <IAppUser>response;
-        console.log(this.userFriend.id);
-        this.friendService.getFriendList(this.userFriend.id).subscribe(
-          response => {
-            this.friendList = <IAppUser[]>response,
-              this.sumListFriend = this.friendList.length;
-          },
-          error => console.error(error)
-        )
-      },
-      error => console.error(error)
-    );
-
+    if (this.userService.getCurrentUser() !== null) {
+      this.userService.getCurrentUser().subscribe(
+        response => {
+          this.userFriend = <IAppUser>response;
+          console.log(this.userFriend.id);
+          this.friendService.getFriendList(this.userFriend.id).subscribe(
+            response => {
+              this.friendList = <IAppUser[]>response,
+                this.sumListFriend = this.friendList.length;
+            },
+            error => console.error(error)
+          )
+        },
+        error => console.error(error)
+      );
+    } else return null;
   }
 
   getPendingFriendList() {
@@ -54,6 +58,28 @@ export class FriendComponent implements OnInit {
       },
       error => console.error(error)
     );
+  }
+
+  getMutualFriendList() {
+    this.userService.getCurrentUser().subscribe(
+      response => {
+        this.userLogin = <IAppUser>response;
+        this.friendService.getFriendList(this.userLogin.id).subscribe(
+          response => {
+            this.friendListLogin = <IAppUser[]>response;
+            for (let i = 0; i < this.friendList.length; i++) {
+              for (let j = 0; j < this.friendListLogin.length; j++) {
+                if (this.friendList[i].id == this.friendListLogin[j].id) {
+                  this.mutualFriendList.push(this.friendList[i]);
+                  // console.log(this.friendList[i]);
+                }
+              }
+            }
+          },
+          error => console.error(error)
+        )
+      }
+    )
   }
 
   getUser() {
