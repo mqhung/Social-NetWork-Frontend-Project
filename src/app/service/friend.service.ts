@@ -15,12 +15,20 @@ export class FriendService {
 
   private friendUrl = environment.URL + 'relationship';
 
-  // tslint:disable-next-line:typedef
+
   getFriendList(userId: number) {
     return this.http.get(this.friendUrl + '/listFriend/' + userId).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
     );
+  }
+
+  getPendingFriendList(userId: number) {
+    return this.http.get(this.friendUrl + '/listPendingFriend/' + userId).pipe(
+      tap(
+        receivedList => JSON.stringify(receivedList)),
+      catchError(err => of([]))
+    )
   }
 }
