@@ -71,7 +71,7 @@ export class FriendComponent implements OnInit {
               for (let j = 0; j < this.friendListLogin.length; j++) {
                 if (this.friendList[i].id == this.friendListLogin[j].id) {
                   this.mutualFriendList.push(this.friendList[i]);
-                  // console.log(this.friendList[i]);
+                  console.log(this.friendList[i]);
                 }
               }
             }
