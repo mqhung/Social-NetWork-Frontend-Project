@@ -16,16 +16,20 @@ export class PersonnalPageComponent implements OnInit {
 
   postList: IPost[] = [];
 
-  currentUser: any;
+  currentUser: IAppUser;
 
+  post: IPost;
 
 
   constructor(private storage: AngularFireStorage,
               private router: Router,
               private postService: PostService) {
     this.postService.getAllPost().subscribe(next => {
-        this.postList = next;
-      });
+      this.postList = next;
+    });
+    this.postService.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
   }
 
   ngOnInit(): void {
@@ -63,4 +67,12 @@ export class PersonnalPageComponent implements OnInit {
       });
   }
 
+  createPost() {
+    // this.post.appUser = this.currentUser;
+    // this.post.image = this.fb;
+    // this.postService.addNewPost(this.post).subscribe(posted =>{
+    //   this.postList.unshift(posted);
+    //   this.router.navigateByUrl('/post/timeline').then(r => {})
+    // });
+  }
 }
