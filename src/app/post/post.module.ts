@@ -4,19 +4,28 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { NewFeedComponent } from './new-feed/new-feed.component';
 import { PersonnalPageComponent } from './personal-page/personnal-page.component';
-import {AppModule} from '../app.module';
-import {UserComponent} from './user/user.component';
+import {CoverComponent} from './cover/cover.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { NavbarComponent } from './navbar/navibar.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { ListPostComponent } from './list-post/list-post.component';
 
 
 @NgModule({
   declarations: [
     NewFeedComponent,
     PersonnalPageComponent,
-    UserComponent
+    CoverComponent,
+    NavbarComponent,
+    AddPostComponent,
+    ListPostComponent
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class PostModule { }

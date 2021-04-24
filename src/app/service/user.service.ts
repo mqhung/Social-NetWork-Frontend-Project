@@ -17,7 +17,7 @@ export class UserService {
 
   private userUrl = environment.URL + 'users';
 
-  getUser() {
+  getCurrentUser() {
     return this.findUserById(this.jwtService.currentUserValue.id);
   }
 

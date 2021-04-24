@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {PostService} from '../../service/post/post.service';
+import {IPost} from '../../model/IPost';
+import {IAppUser} from '../../model/IAppUser';
+import {IPostStatus} from '../../model/i-post-status';
 
 @Component({
   selector: 'app-personnal-page',
@@ -10,39 +15,25 @@ import {finalize} from 'rxjs/operators';
 })
 export class PersonnalPageComponent implements OnInit {
 
-  constructor( private storage: AngularFireStorage) {}
+
+  currentUser: IAppUser;
+
+
+  constructor(
+    private router: Router,
+    private postService: PostService) {
+    this.isLogin();
+    this.postService.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
+  }
 
   ngOnInit(): void {
   }
-  title = "cloudsStorage";
-  selectedFile: File = null;
-  fb;
-  downloadURL: Observable<string>;
-  onFileSelected(event) {
-    let n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.fb = url;
-            }
-            console.log(this.fb);
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-
-        }
-      });
-  }
-
+ isLogin(){
+   let loginUser = localStorage.getItem("currentUser");
+   if (loginUser == null) {
+     this.router.navigate(['/login']);
+   }
+ }
 }

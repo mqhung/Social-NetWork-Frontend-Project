@@ -1,0 +1,39 @@
+<div class="post-content" *ngFor="let post of postList">
+
+  <!--Post Date-->
+  <div class="post-date hidden-xs hidden-sm">
+    <h5>{{post.appUser.firstName}}</h5>
+    <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+  </div><!--Post Date End-->
+
+  <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+  <div class="post-container">
+    <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
+    <div class="post-detail">
+      <div class="user-info">
+        <h5><a href="timeline.html" class="profile-link">{{post.appUser.firstName}}</a> <span
+          class="following">following</span></h5>
+        <p class="text-muted">Published a photo at {{post.createdTime| date : 'dd MM, yyyy, hh: mm'}}</p>
+      </div>
+      <div class="reaction">
+        <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+      </div>
+      <div class="line-divider"></div>
+      <div class="post-text">
+        <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
+        <p>{{post.content}}</p>
+      </div>
+      <div class="line-divider"></div>
+      <!--                ///comment-->
+      <div class="post-comment">
+        <img src="./assets/images/users/user-11.jpg" alt="" class="profile-photo-sm">
+        <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum
+          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+      </div>
+      <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
+
+    </div>
+  </div>
+</div>

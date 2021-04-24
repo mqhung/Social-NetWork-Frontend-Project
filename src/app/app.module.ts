@@ -8,12 +8,13 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { FriendComponent } from './friend/friend.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HandlefriendComponent } from './handlefriend/handlefriend.component';
+import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
 
 
 @NgModule({
@@ -34,10 +35,10 @@ import { HandlefriendComponent } from './handlefriend/handlefriend.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  exports: [
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

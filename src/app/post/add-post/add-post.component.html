@@ -1,0 +1,44 @@
+<div class="create-post">
+  <div class="row">
+    <div class="col-md-7 col-sm-7">
+      <div class="form-group">
+        <img [src]="currentUser.avatar" alt="" class="profile-photo-md">
+        <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
+                  placeholder="Write what you wish" [(ngModel)]="post.content">
+
+        </textarea>
+      </div>
+      <div *ngIf="fb!=null">
+        <br>
+        <br>
+        <div class="form-group">
+          <img [src]="fb" alt="" width="200px">
+        </div>
+        <button (click)="deleteImage()" class="btn btn-primary pull-right">Delete</button>
+      </div>
+    </div>
+    <div class="col-md-5 col-sm-5">
+      <div class="tools">
+        <ul class="publishing-tools list-inline">
+
+          <li>
+            <a><label for="file-input"><i class="ion-images"></i></label></a>
+          </li>
+
+        </ul>
+        <button class="btn btn-primary pull-right" (click)="createPost()">Publish</button>
+        <input type="file"
+               id="file-input"
+               #userPhoto
+               (change)="onFileSelected($event)"
+               name="image"
+               autocomplete="off"
+               style="display: none"
+        />
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
