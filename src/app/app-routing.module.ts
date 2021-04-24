@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./post/post.module').then(module => module.PostModule)
   },
   {
-    path: 'listFriend/:id',
+    path: 'listFriend',
     component: FriendComponent
   },
   {
