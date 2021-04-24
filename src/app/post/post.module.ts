@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navibar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
+import {CreateCommentComponent} from './create-comment/create-comment.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ListPostComponent } from './list-post/list-post.component';
     CoverComponent,
     NavbarComponent,
     AddPostComponent,
-    ListPostComponent
+    ListPostComponent,
+    CreateCommentComponent
   ],
   imports: [
     CommonModule,

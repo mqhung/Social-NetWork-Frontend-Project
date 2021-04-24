@@ -45,6 +45,7 @@ export class CreateCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createComment();
   }
 
   @Input()

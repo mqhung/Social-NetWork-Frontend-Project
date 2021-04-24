@@ -22,10 +22,11 @@ export class ListCommentComponent implements OnInit {
     //   // @ts-ignore
     //   this.showComment(id);
     // });
-    this.showComment(this.postId);
+
   }
 
   ngOnInit(): void {
+    this.showComment(this.postId);
   }
 
   showComment(postId: number){
