@@ -22,7 +22,7 @@ export class PostService {
   }
 
   getAllPostByUserId(id: number): Observable<IPost[]> {
-    return this.http.get<IPost[]>(this.postURL + 'get-all-post-by-user-id' + id).pipe();
+    return this.http.get<IPost[]>(this.postURL + 'get-all-post-by-user-id/' + id).pipe();
   }
 
   getPostById(id: number): Observable<IPost> {

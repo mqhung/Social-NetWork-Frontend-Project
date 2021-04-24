@@ -4,39 +4,7 @@
 ================================================= -->
 
 <header id="header">
-  <nav class="navbar navbar-default navbar-fixed-top menu">
-    <div class="container">
-
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" [routerLink]="'/post/new-feed'"><img src="./assets/images/logo.png" alt="logo"></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right main-menu">
-          <li class="nav-item dropdown"><a [routerLink]="'/post/new-feed'">Trang chủ</a></li>
-          <li class="nav-item dropdown"><a
-            [routerLink]="'/post/timeline'">{{currentUser.firstName + " " + currentUser.lastName}}</a></li>
-          <li class="nav-item dropdown"><a href="contact.html">Account Setting</a></li>
-          <li class="nav-item dropdown"><a href="contact.html">Sign Out</a></li>
-        </ul>
-        <form class="navbar-form navbar-right hidden-sm">
-          <div class="form-group">
-            <i class="icon ion-android-search"></i>
-            <input type="text" class="form-control" placeholder="Search friends, photos, videos">
-          </div>
-        </form>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-  </nav>
+  <app-navbar></app-navbar>
 </header>
 <!--Header End-->
 
@@ -66,7 +34,6 @@
             </ul>
             <ul class="follow-me list-inline">
               <li>1,299 people following her</li>
-              <li><button class="btn-primary">Add Friend</button></li>
             </ul>
           </div>
         </div>
@@ -99,85 +66,18 @@
 
           <!-- Post Create Box
           ================================================= -->
-          <div class="create-post">
-            <div class="row">
-              <div class="col-md-7 col-sm-7">
-                <div class="form-group">
-                  <img [src]="currentUser.avatar" alt="" class="profile-photo-md">
-                  <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control">
-<!--                            placeholder="Write what you wish" [(ngModel)]="post.content">-->
-                  </textarea>
-                </div>
-              </div>
-              <div class="col-md-5 col-sm-5">
-                <div class="tools">
-                  <ul class="publishing-tools list-inline">
-                    <li><a href="#"><i class="ion-compose"></i></a></li>
-                    <!--                    <input type="file"-->
-                    <!--                           id="file"-->
-                    <!--                           #userPhoto-->
-                    <!--                           (change)="onFileSelected($event)"-->
-                    <!--                           name="image"-->
-                    <!--                           autocomplete="off"-->
-                    <!--                    />-->
-                    <li><a><i class="ion-images"></i></a></li>
-                  </ul>
-                  <button class="btn btn-primary pull-right" (click)="createPost()">Publish</button>
-                </div>
-              </div>
-            </div>
-          </div><!-- Post Create Box End-->
+
+          <app-add-post [userId]="currentUser.id"></app-add-post>
+
+          <!-- Post Create Box End-->
 
           <!-- Post Content
           ================================================= -->
 
           <div class="post-content" *ngFor="let post of postList">
 
-            <!--Post Date-->
-            <div class="post-date hidden-xs hidden-sm">
-              <h5>{{post.appUser.firstName}}</h5>
-              <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
-            </div><!--Post Date End-->
-
-            <img [src]="post.image" alt="post-image" class="img-responsive post-image">
-            <div class="post-container">
-              <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
-              <div class="post-detail">
-                <div class="user-info">
-                  <h5><a href="timeline.html" class="profile-link">{{post.appUser.firstName}}</a> <span
-                    class="following">following</span></h5>
-                  <p class="text-muted">Published a photo at {{post.createdTime| date : 'dd MM, yyyy, hh: mm'}}</p>
-                </div>
-
-                <div class="reaction">
-                  <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-                  <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                </div>
-
-                <div class="line-divider"></div>
-                <div>
-                  <app-list-comment [postId]="post.id"></app-list-comment>
-                </div>
-                <div class="post-text">
-                  <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
-                  <p>{{post.content}}</p>
-                </div>
-
-                <div class="line-divider">
-                  <app-create-comment [postId]="post.id"></app-create-comment>
-                </div>
-
-                <!--                ///comment-->
-                <div class="post-comment">
-                  <img src="./assets/images/users/user-11.jpg" alt="" class="profile-photo-sm">
-                  <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
-                </div>
-                <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-              </div>
-            </div>
-          </div>
+          <!-- Post Content End
+          ================================================= -->
 
 
         </div>
@@ -284,7 +184,6 @@
 <!--<div id="spinner-wrapper" style="display: none;">-->
 <!--  <div class="spinner"></div>-->
 <!--</div>-->
-
 
 
 </body>
