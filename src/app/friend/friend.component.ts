@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {IAppUser} from '../model/IAppUser';
 import {FriendService} from '../service/friend.service';
 import {UserService} from "../service/user.service";
-import {Subscription} from "rxjs";
-import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
   selector: 'app-friend',
@@ -13,21 +11,15 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class FriendComponent implements OnInit {
   friendList: IAppUser[] = [];
   sumListFriend: number;
+  sumListPending: number;
   user: IAppUser;
   userFriend: IAppUser;
+  userPending: IAppUser;
+  pendingList: IAppUser[];
 
-  // sub: Subscription;
-  // id: number;
 
-
-  constructor(private friendService: FriendService,
-              private  userService: UserService,
-              private activeRouter: ActivatedRoute) {
-    // this.sub = this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
-    //   // @ts-ignore
-    //   this.id = +paramMap.get('id');
-    //   this.getUserById(this.id);
-    // });
+  constructor(private friendService: FriendService, private userService: UserService
+  ) {
   }
 
   getFriendList() {
@@ -48,6 +40,22 @@ export class FriendComponent implements OnInit {
 
   }
 
+  getPendingFriendList() {
+    this.userService.getCurrentUser().subscribe(
+      response => {
+        this.userPending = <IAppUser>response;
+        this.friendService.getPendingFriendList(this.userPending.id).subscribe(
+          response => {
+            this.pendingList = <IAppUser[]>response,
+              this.sumListPending = this.pendingList.length;
+          },
+          error => console.error(error)
+        );
+      },
+      error => console.error(error)
+    );
+  }
+
   getUser() {
     this.userService.getCurrentUser().subscribe(
       response => {
@@ -61,12 +69,6 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.getFriendList();
     this.getUser();
+    this.getPendingFriendList();
   }
-
-  // private getUserById(id: number) {
-  //   this.userService.findUserById(id).subscribe(f => {
-  //     // @ts-ignore
-  //     this.friendList = f;
-  //   });
-  // }
 }

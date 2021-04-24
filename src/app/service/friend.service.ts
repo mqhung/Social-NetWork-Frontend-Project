@@ -24,8 +24,8 @@ export class FriendService {
     );
   }
 
-  getMutualFriendList(userId: number) {
-    return this.http.get(this.friendUrl + '/listMutualFriend/' + userId).pipe(
+  getPendingFriendList(userId: number) {
+    return this.http.get(this.friendUrl + '/listPendingFriend/' + userId).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
