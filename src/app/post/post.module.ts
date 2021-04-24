@@ -7,13 +7,19 @@ import { PersonnalPageComponent } from './personal-page/personnal-page.component
 import {CoverComponent} from './cover/cover.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { NavbarComponent } from './navbar/navibar.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { ListPostComponent } from './list-post/list-post.component';
 
 
 @NgModule({
   declarations: [
     NewFeedComponent,
     PersonnalPageComponent,
-    CoverComponent
+    CoverComponent,
+    NavbarComponent,
+    AddPostComponent,
+    ListPostComponent
   ],
   imports: [
     CommonModule,
