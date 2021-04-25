@@ -7,6 +7,7 @@ import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Router} from '@angular/router';
 import {ListPostComponent} from '../list-post/list-post.component';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-add-post',
@@ -27,7 +28,7 @@ export class AddPostComponent implements OnInit {
   };
   currentUser: IAppUser;
 
-  constructor(              private storage: AngularFireStorage,
+  constructor(private storage: AngularFireStorage,
               private postService: PostService,
               private router: Router) {
     postService.getCurrentUser().subscribe(next => {
@@ -74,12 +75,12 @@ export class AddPostComponent implements OnInit {
   createPost() {
     this.post.image = this.fb;
     this.postService.addNewPost(this.post).subscribe(posted => {
-      this.deleteImage();
+        this.deleteImage();
       this.post.content = '';
+      console.log('ok')
+      this.router.navigateByUrl('timeline');
 
-      this.router.navigate(['/timeline']);
-
-    });
+      });
   }
 
   deleteImage() {
