@@ -20,8 +20,7 @@ export class UserComponent implements OnInit {
     this.userService.findAllUser().subscribe(response => {
         this.userList = <IAppUser[]> response;
         console.log(this.userList);
-      },
-      error => console.error(error)
+      }
     );
   }
 }
