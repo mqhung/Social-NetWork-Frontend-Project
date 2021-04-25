@@ -12,12 +12,13 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private postService: PostService) {
-    this.postService.getCurrentUser().subscribe(next => {
-      this.currentUser = next;
-    });
   }
 
   ngOnInit(): void {
+    this.postService.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
+
   }
 
 }
