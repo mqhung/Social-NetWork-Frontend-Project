@@ -33,7 +33,12 @@
           magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
       </div>
       <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-
+      <div class="post-comment">
+        <app-list-comment [postId]="post.id"></app-list-comment>
+      </div>
+      <div class="post-comment">
+        <app-create-comment [postId]="post.id"></app-create-comment>
+      </div>
     </div>
   </div>
 </div>

@@ -41,7 +41,6 @@ export class CreateCommentComponent implements OnInit {
   constructor(private router: Router,
               private commentService: CommentService,
   ) {
-    //goi onload
   }
 
   ngOnInit(): void {

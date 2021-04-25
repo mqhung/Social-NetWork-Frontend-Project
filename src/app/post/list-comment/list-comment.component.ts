@@ -26,11 +26,11 @@ export class ListCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showComment(this.postId);
+    this.showComment();
   }
 
-  showComment(postId: number){
-    this.commentService.getAllComment(postId).subscribe(commentList => {
+  showComment(){
+    this.commentService.getAllComment(this.postId).subscribe(commentList => {
       this.comments = commentList;
     });
   }

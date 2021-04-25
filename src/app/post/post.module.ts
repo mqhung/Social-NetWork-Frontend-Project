@@ -11,18 +11,20 @@ import { NavbarComponent } from './navbar/navibar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import {CreateCommentComponent} from './create-comment/create-comment.component';
+import {ListCommentComponent} from './list-comment/list-comment.component';
 
 
 @NgModule({
-  declarations: [
-    NewFeedComponent,
-    PersonnalPageComponent,
-    CoverComponent,
-    NavbarComponent,
-    AddPostComponent,
-    ListPostComponent,
-    CreateCommentComponent
-  ],
+    declarations: [
+        NewFeedComponent,
+        PersonnalPageComponent,
+        CoverComponent,
+        NavbarComponent,
+        AddPostComponent,
+        ListPostComponent,
+        CreateCommentComponent,
+        ListCommentComponent
+    ],
   imports: [
     CommonModule,
     PostRoutingModule,
