@@ -3,6 +3,7 @@ import {FormsModule} from '@angular/forms'
 import {Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
 import {Comment} from '../../model/comment';
+import {PostService} from '../../service/post/post.service';
 
 @Component({
   selector: 'app-create-comment',
@@ -20,21 +21,27 @@ export class CreateCommentComponent implements OnInit {
 
   };
 
+  @Input()
+  postId: number;
+
+
   constructor(private router: Router,
               private commentService: CommentService,
+              private postService: PostService
   ) {
+    this.postService.getCurrentUser().subscribe(next => {
+      this.comments.appUser = next;
+    })
   }
 
   ngOnInit(): void {
     this.comments.postId = this.postId;
   }
 
-  @Input()
-  postId: number;
 
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {
-      // this.router.navigate(['/']);
+      this.router.navigate(['timeline']);
     });
   }
 }
