@@ -28,7 +28,7 @@
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
+              <li><a [routerLink] class="active">Friends ( {{sumListFriend}} )</a></li>
             </ul>
             <ul class="follow-me list-inline">
               <li>{{friendList.length}} people following her</li>
@@ -49,7 +49,7 @@
             <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
             <li><a href="timeline-about.html">About</a></li>
             <li><a href="timeline-album.html">Album</a></li>
-            <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
+            <li><a [routerLink] class="active">Friends ( {{sumListFriend}} )</a></li>
           </ul>
           <button class="btn-primary">Add Friend</button>
         </div>
@@ -62,26 +62,6 @@
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-7">
-
-          <!-- Friend List
-          ================================================= -->
-          <!--          <div class="friend-list">-->
-          <!--            <div class="row">-->
-          <!--              <div class="col-md-6 col-sm-6">-->
-          <!--                <div class="friend-card">-->
-          <!--                  <img src="assets/images/covers/1.jpg" alt="profile-cover" class="img-responsive cover"/>-->
-          <!--                  <div class="card-info">-->
-          <!--                    <img src="assets/images/users/user-3.jpg" alt="user" class="profile-photo-lg"/>-->
-          <!--                    <div class="friend-info">-->
-          <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-          <!--                      <h5><a href="timeline.html" class="profile-link">test</a></h5>-->
-          <!--                      <p>Student at Harvard</p>-->
-          <!--                    </div>-->
-          <!--                  </div>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
           <div class="friend-list">
             <div class="row">
               <ul class="col-md-5 col-sm-5">
@@ -92,7 +72,7 @@
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                        <h5><a [routerLink]="'/post/timeline'" class="profile-link">{{friend.firstName}}</a></h5>
+                        <h5><a [routerLink]="'/post/user/' + friend.id" class="profile-link">{{friend.firstName}}</a></h5>
                         <p>B.O.D: {{friend.birthday}}</p>
                         <p>Quê quán: {{friend.address}}</p>
                         <p>Giới tính: {{friend.gender}}</p>
