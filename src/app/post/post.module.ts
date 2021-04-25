@@ -21,6 +21,9 @@ import { ListPostComponent } from './list-post/list-post.component';
     AddPostComponent,
     ListPostComponent
   ],
+  exports: [
+    NavbarComponent
+  ],
   imports: [
     CommonModule,
     PostRoutingModule,
