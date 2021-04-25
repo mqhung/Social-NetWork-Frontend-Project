@@ -12,6 +12,8 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import { GuestPageComponent } from './guest-page/guest-page.component';
 import { FooterComponent } from './footer/footer.component';
+import {ListCommentComponent} from './list-comment/list-comment.component';
+import {CreateCommentComponent} from './create-comment/create-comment.component';
 import {UserComponent} from './user/user.component';
 
 
@@ -25,6 +27,8 @@ import {UserComponent} from './user/user.component';
     ListPostComponent,
     GuestPageComponent,
     FooterComponent,
+    ListCommentComponent,
+    CreateCommentComponent,
     UserComponent
   ],
   exports: [
