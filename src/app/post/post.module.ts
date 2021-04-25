@@ -30,7 +30,8 @@ import {CreateCommentComponent} from './create-comment/create-comment.component'
     CreateCommentComponent
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    CoverComponent
   ],
   imports: [
     CommonModule,

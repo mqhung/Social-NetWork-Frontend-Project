@@ -2,76 +2,6 @@
 <!-- Header
 ================================================= -->
 <header id="header">
-<!--  <nav class="navbar navbar-default navbar-fixed-top menu">-->
-<!--    <div class="container">-->
-
-<!--      &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
-<!--      <div class="navbar-header">-->
-<!--        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
-<!--                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
-<!--          <span class="sr-only">Toggle navigation</span>-->
-<!--          <span class="icon-bar"></span>-->
-<!--          <span class="icon-bar"></span>-->
-<!--          <span class="icon-bar"></span>-->
-<!--        </button>-->
-<!--        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"/></a>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-<!--      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-<!--        <ul class="nav navbar-nav navbar-right main-menu">-->
-<!--          <li class="dropdown"><a href="index.html">Home</a></li>-->
-<!--          <li class="dropdown">-->
-<!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
-<!--               aria-expanded="false">Newsfeed <span><img src="assets/images/down-arrow.png" alt=""/></span></a>-->
-<!--            <ul class="dropdown-menu newsfeed-home">-->
-<!--              <li><a href="newsfeed.html">Newsfeed</a></li>-->
-<!--              <li><a href="newsfeed-people-nearby.html">People Nearly</a></li>-->
-<!--              <li><a href="newsfeed-friends.html">My friends</a></li>-->
-<!--              <li><a href="newsfeed-messages.html">Chatroom</a></li>-->
-<!--              <li><a href="newsfeed-images.html">Images</a></li>-->
-<!--              <li><a href="newsfeed-videos.html">Videos</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
-<!--          <li class="dropdown">-->
-<!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
-<!--               aria-expanded="false">Timeline <span><img src="assets/images/down-arrow.png" alt=""/></span></a>-->
-<!--            <ul class="dropdown-menu login">-->
-<!--              <li><a href="timeline.html">Timeline</a></li>-->
-<!--              <li><a href="timeline-about.html">Timeline About</a></li>-->
-<!--              <li><a href="timeline-album.html">Timeline Album</a></li>-->
-<!--              <li><a href="timeline-friends.html">Timeline Friends</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
-<!--          <li class="dropdown">-->
-<!--            <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true"-->
-<!--               aria-expanded="false">All Pages <span><img src="assets/images/down-arrow.png" alt=""/></span></a>-->
-<!--            <ul class="dropdown-menu page-list">-->
-<!--              <li><a href="index.html">Landing Page</a></li>-->
-<!--              <li><a href="newsfeed.html">Newsfeed</a></li>-->
-<!--              <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>-->
-<!--              <li><a href="newsfeed-friends.html">My friends</a></li>-->
-<!--              <li><a href="newsfeed-messages.html">Chatroom</a></li>-->
-<!--              <li><a href="newsfeed-images.html">Images</a></li>-->
-<!--              <li><a href="newsfeed-videos.html">Videos</a></li>-->
-<!--              <li><a href="timeline.html">Timeline</a></li>-->
-<!--              <li><a href="timeline-about.html">Timeline About</a></li>-->
-<!--              <li><a href="timeline-album.html">Timeline Album</a></li>-->
-<!--              <li><a href="timeline-friends.html">Timeline Friends</a></li>-->
-<!--              <li><a href="contact.html">Contact Us</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
-<!--          <li class="dropdown"><a href="contact.html">Contact</a></li>-->
-<!--        </ul>-->
-<!--        <form class="navbar-form navbar-right hidden-sm">-->
-<!--          <div class="form-group">-->
-<!--            <i class="icon ion-android-search"></i>-->
-<!--            <input type="text" class="form-control" placeholder="Search friends, photos, videos">-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
-<!--    </div>&lt;!&ndash; /.container &ndash;&gt;-->
-<!--  </nav>-->
   <app-navbar></app-navbar>
 </header>
 <!--Header End-->
@@ -89,8 +19,8 @@
           <div class="col-md-3">
             <div class="profile-info">
               <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-              <a>{{user.firstName}}</a>
-              <p class="text-muted">{{user.address}}</p>
+              <h3>{{user.firstName + " " + user.lastName}}</h3>
+              <p class="text-muted">{{user.email}} </p>
             </div>
           </div>
           <div class="col-md-9">
@@ -98,36 +28,32 @@
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
+              <li><a [routerLink] class="active">Friends</a></li>
             </ul>
             <ul class="follow-me list-inline">
-              <li>{{friendList.length}} people following her</li>
-              <li>
-                <button class="btn-primary">Add Friend</button>
-              </li>
+<!--              <li>{{friendList.length}} people following her</li>-->
             </ul>
           </div>
         </div>
       </div><!--Timeline Menu for Large Screens End-->
 
       <!--Timeline Menu for Small Screens-->
-      <div class="navbar-mobile hidden-lg hidden-md">
-        <div class="profile-info">
-          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-          <a>{{user.firstName}}</a>
-          <p class="text-muted">{{user.address}}</p>
-        </div>
-        <div class="mobile-menu">
-          <ul class="list-inline">
-            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
-            <li><a href="timeline-about.html">About</a></li>
-            <li><a href="timeline-album.html">Album</a></li>
-            <li><a [routerLink] class="active">Friends ( {{friendList.length}} )</a></li>
-          </ul>
-          <button class="btn-primary">Add Friend</button>
-        </div>
-      </div>
-      <
+<!--      <div class="navbar-mobile hidden-lg hidden-md">-->
+<!--        <div class="profile-info">-->
+<!--          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>-->
+<!--          <a>{{user.firstName}}</a>-->
+<!--          <p class="text-muted">{{user.address}}</p>-->
+<!--        </div>-->
+<!--        <div class="mobile-menu">-->
+<!--          <ul class="list-inline">-->
+<!--            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>-->
+<!--            <li><a href="timeline-about.html">About</a></li>-->
+<!--            <li><a href="timeline-album.html">Album</a></li>-->
+<!--            <li><a [routerLink] class="active">Friends</a></li>-->
+<!--          </ul>-->
+<!--          <button class="btn-primary">Add Friend</button>-->
+<!--        </div>-->
+<!--      </div>-->
       <!--      Timeline Menu for Small Screens End-->
 
     </div>
@@ -135,26 +61,6 @@
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-7">
-
-          <!-- Friend List
-          ================================================= -->
-          <!--          <div class="friend-list">-->
-          <!--            <div class="row">-->
-          <!--              <div class="col-md-6 col-sm-6">-->
-          <!--                <div class="friend-card">-->
-          <!--                  <img src="assets/images/covers/1.jpg" alt="profile-cover" class="img-responsive cover"/>-->
-          <!--                  <div class="card-info">-->
-          <!--                    <img src="assets/images/users/user-3.jpg" alt="user" class="profile-photo-lg"/>-->
-          <!--                    <div class="friend-info">-->
-          <!--                      <a href="#" class="pull-right text-green">My Friend</a>-->
-          <!--                      <h5><a href="timeline.html" class="profile-link">test</a></h5>-->
-          <!--                      <p>Student at Harvard</p>-->
-          <!--                    </div>-->
-          <!--                  </div>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
           <div class="friend-list">
             <div class="row">
               <ul class="col-md-5 col-sm-5">
@@ -165,7 +71,7 @@
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                        <h5><a [routerLink]="'/post/timeline'" class="profile-link">{{friend.firstName}}</a></h5>
+                        <h5><a [routerLink]="'/post/user/' + friend.id" class="profile-link">{{friend.firstName}}</a></h5>
                         <p>B.O.D: {{friend.birthday}}</p>
                         <p>Quê quán: {{friend.address}}</p>
                         <p>Giới tính: {{friend.gender}}</p>
@@ -210,6 +116,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
