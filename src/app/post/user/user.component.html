@@ -4,8 +4,8 @@
     <div class="follow-user">
       <img src="{{user.avatar}}" alt="" class="profile-photo-sm pull-left" />
       <div>
-        <h5><a href="timeline.html">{{user.firstName}} {{user.lastName}}</a></h5>
-        <a [routerLink]="'/post/timeline'" class="text-green">Add friend</a>
+        <h5><a [routerLink]="'/post/user/'+ user.id">{{user.firstName}} {{user.lastName}}</a></h5>
+        <a [routerLink]="'/post/user/'+ user.id" class="text-green">Add friend</a>
       </div>
     </div>
   </div>

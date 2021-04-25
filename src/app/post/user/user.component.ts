@@ -13,10 +13,11 @@ export class UserComponent implements OnInit {
   user: IAppUser;
   sumListUser: number;
   constructor(private userService: UserService,private jwtService: JwtService) {
-    this.showAllUser();
+
   }
 
   ngOnInit(): void {
+    this.showAllUser();
   }
 
   showAllUser(){
@@ -31,6 +32,5 @@ export class UserComponent implements OnInit {
           }
         }
       });
-
   }
 }
