@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-import { Router} from '@angular/router';
-import {CommentService} from '../comment.service';
-import {Comment} from '../comment';
+import {FormsModule} from '@angular/forms'
+import {Router} from '@angular/router';
+import {CommentService} from '../../service/comment.service';
+import {Comment} from '../../model/comment';
 
 @Component({
   selector: 'app-create-comment',
@@ -10,28 +10,10 @@ import {Comment} from '../comment';
   styleUrls: ['./create-comment.component.css']
 })
 export class CreateCommentComponent implements OnInit {
-
+  // tempContent: string;
   comments: Comment = {
     id: 0,
-    appUser: {
-      id: 0,
-      username: '',
-      password: '',
-      birthday: null,
-      firstName: '',
-      lastName: '',
-      gender: '',
-      phone: 0,
-      email: '',
-      address: '',
-      avatar: '',
-      createdDate: null,
-      blocked: false,
-      appRole: {
-        id: 0,
-        name: ''
-      }
-    },
+    appUser: null,
     postId: 0,
     content: '',
     createdTime: null
@@ -44,7 +26,7 @@ export class CreateCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createComment();
+    this.comments.postId = this.postId;
   }
 
   @Input()
@@ -52,8 +34,9 @@ export class CreateCommentComponent implements OnInit {
 
   createComment() {
     // @ts-ignore
-    this.commentService.createComment(this.comments.postId, this.comments).subscribe(() => {
-      this.router.navigate(['/']);
+    // this.comments.content = this.tempContent;
+    this.commentService.createComment(this.comments).subscribe(() => {
+      // this.router.navigate(['/']);
     });
   }
 }

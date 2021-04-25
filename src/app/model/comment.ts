@@ -1,4 +1,4 @@
-import {IAppUser} from '../model/IAppUser';
+import {IAppUser} from './IAppUser';
 import {Timestamp} from 'rxjs';
 
 export interface Comment {

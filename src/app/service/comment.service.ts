@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Comment} from './comment';
+import {Comment} from '../model/comment';
 
 const API_URL = `${environment.URL}`;
 
@@ -15,11 +15,11 @@ export class CommentService {
   }
 
   getAllComment(postId: number): Observable<Comment[]> {
-    return this.httpClient.get<Comment[]>(API_URL + `comments/show/` +postId);
+    return this.httpClient.get<Comment[]>(API_URL + `comments/show/` + postId);
   }
 
-  createComment(comment: Comment, postId: number): Observable<Comment> {
-    return this.httpClient.post<Comment>(API_URL + `comments/create/${postId}`, comment);
+  createComment( comment: Comment): Observable<Comment> {
+    return this.httpClient.post<Comment>(API_URL + `comments/create`, comment);
   }
 
   getById(id: number): Observable<Comment> {

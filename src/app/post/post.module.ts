@@ -29,7 +29,7 @@ import {ListCommentComponent} from './list-comment/list-comment.component';
     CommonModule,
     PostRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class PostModule { }

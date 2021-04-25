@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Comment} from '../comment';
-import {CommentService} from '../comment.service';
+import {Comment} from '../../model/comment';
+import {CommentService} from '../../service/comment.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {compareNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
 
