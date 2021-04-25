@@ -10,7 +10,7 @@ import {PostService} from '../../service/post/post.service';
 export class ListPostComponent {
 
   @Input()
-  currentUserId: number;
+  userHavePostList: number;
 
   postList: IPost[] = [];
 
@@ -18,7 +18,7 @@ export class ListPostComponent {
 
   ngOnInit(): void {
 
-    this.postService.getAllPostByUserId(this.currentUserId).subscribe(next => {
+    this.postService.getAllPostByUserId(this.userHavePostList).subscribe(next => {
       this.postList = next;
     });
 

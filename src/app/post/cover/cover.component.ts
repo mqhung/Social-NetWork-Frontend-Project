@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PostService} from '../../service/post/post.service';
 import {IAppUser} from '../../model/IAppUser';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-cover',
@@ -9,15 +10,18 @@ import {IAppUser} from '../../model/IAppUser';
 })
 export class CoverComponent implements OnInit {
 
-  currentUser: IAppUser;
+  @Input()
+  guestUserId: number
+  guestUser: IAppUser;
 
   constructor(private postService: PostService) {
-    this.postService.getCurrentUser().subscribe(user => {
-      this.currentUser = user;
-    })
+
   }
 
   ngOnInit(): void {
+    this.postService.getUserById(this.guestUserId).subscribe(user => {
+      this.guestUser = user;
+    })
   }
 
 }
