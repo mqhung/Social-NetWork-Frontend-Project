@@ -10,7 +10,8 @@ import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navibar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
-import {UserComponent} from './user/user.component';
+import { GuestPageComponent } from './guest-page/guest-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -21,7 +22,11 @@ import {UserComponent} from './user/user.component';
     NavbarComponent,
     AddPostComponent,
     ListPostComponent,
-    UserComponent
+    GuestPageComponent,
+    FooterComponent
+  ],
+  exports: [
+    NavbarComponent
   ],
   imports: [
     CommonModule,
