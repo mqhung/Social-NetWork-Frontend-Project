@@ -33,8 +33,6 @@ export class CreateCommentComponent implements OnInit {
   postId: number;
 
   createComment() {
-    // @ts-ignore
-    // this.comments.content = this.tempContent;
     this.commentService.createComment(this.comments).subscribe(() => {
       // this.router.navigate(['/']);
     });

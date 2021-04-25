@@ -1,4 +1,4 @@
 <div *ngFor="let c of comments" class="feed-item">
-  <p>{{c.appUser.firstName}}</p>
+    <a [routerLink]="'post/user/'+c.appUser.id"><p>{{c.appUser.firstName}}</p></a>
   <p>{{c.content}}</p>
 </div>
