@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PersonnalPageComponent} from './personal-page/personnal-page.component';
 import {NewFeedComponent} from './new-feed/new-feed.component';
+import {GuestPageComponent} from './guest-page/guest-page.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,9 @@ const routes: Routes = [
   {
     path: 'new-feed',
     component: NewFeedComponent
-  }
+  },
+  {path: 'user/:id',
+  component: GuestPageComponent}
 ];
 
 @NgModule({
