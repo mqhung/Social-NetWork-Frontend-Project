@@ -13,7 +13,8 @@
   <!-- Timeline
   ================================================= -->
   <div class="timeline">
-    <app-cover [guestUserId]="currentUser.id"></app-cover>
+    <app-cover [guestUserId]="guestUserId"></app-cover>
+
     <div id="page-contents">
       <div class="row">
         <div class="col-md-3"></div>
@@ -22,13 +23,16 @@
           <!-- Post Create Box
           ================================================= -->
 
-          <app-add-post [currentUserId]="currentUser.id"></app-add-post>
-
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <!-- Post Create Box End-->
 
           <!-- Post Content
           ================================================= -->
-          <app-list-post [guestUserId]="currentUser.id"></app-list-post>
+          <app-list-post [guestUserId]="guestUserId"></app-list-post>
 
           <!-- Post Content End
           ================================================= -->

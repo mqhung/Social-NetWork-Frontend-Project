@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {IPost} from '../../model/IPost';
 import {Observable} from 'rxjs';
 import {IAppUser} from '../../model/IAppUser';
+import {IPostStatus} from '../../model/i-post-status';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,9 @@ export class PostService {
 
   getUserById(id: number): Observable<IAppUser>{
     return this.http.get<IAppUser>(this.postURL+'get-user-by-id/'+id).pipe();
+  }
+
+  getAllPostStatus(): Observable<IPostStatus[]>{
+    return this.http.get<IPostStatus[]>(this.postURL+'get-Post-status').pipe();
   }
 }
