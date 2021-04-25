@@ -15,10 +15,10 @@
           <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
           <li><a>About</a></li>
           <li><a>Album</a></li>
-          <li><a>Friends</a></li>
+          <li><a [routerLink]="'/listFriend'">Friends</a></li>
         </ul>
         <ul class="follow-me list-inline">
-          <li>1,299 people following her</li>
+<!--          <li>{{friendList.length}} people following her</li>-->
         </ul>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
         <!--            <li><a [routerLink]="'/post/about'">About</a></li>-->
         <!--            <li><a [routerLink]="'/post/album'">Album</a></li>-->
-        <!--            <li><a [routerLink]="'/post/friend'">Friends</a></li>-->
+        <li><a [routerLink]="'/listFriend'">Friends</a></li>
       </ul>
     </div>
   </div>

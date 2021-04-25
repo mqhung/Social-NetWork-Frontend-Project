@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PostService} from '../../service/post/post.service';
 import {IAppUser} from '../../model/IAppUser';
 import {UserService} from '../../service/user.service';
+import {FriendService} from "../../service/friend.service";
 
 @Component({
   selector: 'app-cover',

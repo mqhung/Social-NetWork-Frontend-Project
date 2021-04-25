@@ -28,7 +28,8 @@ import {UserComponent} from './user/user.component';
     UserComponent
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    CoverComponent
   ],
   imports: [
     CommonModule,
