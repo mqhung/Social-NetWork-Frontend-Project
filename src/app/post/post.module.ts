@@ -12,6 +12,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import { GuestPageComponent } from './guest-page/guest-page.component';
 import { FooterComponent } from './footer/footer.component';
+import {UserComponent} from './user/user.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     AddPostComponent,
     ListPostComponent,
     GuestPageComponent,
-    FooterComponent
+    FooterComponent,
+    UserComponent
   ],
   exports: [
     NavbarComponent
