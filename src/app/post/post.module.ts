@@ -26,7 +26,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    CoverComponent
   ],
   imports: [
     CommonModule,

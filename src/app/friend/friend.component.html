@@ -19,8 +19,8 @@
           <div class="col-md-3">
             <div class="profile-info">
               <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-              <a>{{user.firstName}}</a>
-              <p class="text-muted">{{user.address}}</p>
+              <h3>{{user.firstName + " " + user.lastName}}</h3>
+              <p class="text-muted">{{user.email}} </p>
             </div>
           </div>
           <div class="col-md-9">
@@ -28,33 +28,32 @@
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink] class="active">Friends ( {{sumListFriend}} )</a></li>
+              <li><a [routerLink] class="active">Friends</a></li>
             </ul>
             <ul class="follow-me list-inline">
-              <li>{{friendList.length}} people following her</li>
+<!--              <li>{{friendList.length}} people following her</li>-->
             </ul>
           </div>
         </div>
       </div><!--Timeline Menu for Large Screens End-->
 
       <!--Timeline Menu for Small Screens-->
-      <div class="navbar-mobile hidden-lg hidden-md">
-        <div class="profile-info">
-          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-          <a>{{user.firstName}}</a>
-          <p class="text-muted">{{user.address}}</p>
-        </div>
-        <div class="mobile-menu">
-          <ul class="list-inline">
-            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
-            <li><a href="timeline-about.html">About</a></li>
-            <li><a href="timeline-album.html">Album</a></li>
-            <li><a [routerLink] class="active">Friends ( {{sumListFriend}} )</a></li>
-          </ul>
-          <button class="btn-primary">Add Friend</button>
-        </div>
-      </div>
-      <
+<!--      <div class="navbar-mobile hidden-lg hidden-md">-->
+<!--        <div class="profile-info">-->
+<!--          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>-->
+<!--          <a>{{user.firstName}}</a>-->
+<!--          <p class="text-muted">{{user.address}}</p>-->
+<!--        </div>-->
+<!--        <div class="mobile-menu">-->
+<!--          <ul class="list-inline">-->
+<!--            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>-->
+<!--            <li><a href="timeline-about.html">About</a></li>-->
+<!--            <li><a href="timeline-album.html">Album</a></li>-->
+<!--            <li><a [routerLink] class="active">Friends</a></li>-->
+<!--          </ul>-->
+<!--          <button class="btn-primary">Add Friend</button>-->
+<!--        </div>-->
+<!--      </div>-->
       <!--      Timeline Menu for Small Screens End-->
 
     </div>
@@ -117,6 +116,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
