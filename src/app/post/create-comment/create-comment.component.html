@@ -1,11 +1,12 @@
-<!--<form (ngSubmit)="createComment()">-->
-<!--  <a [routerLink]="'/post/timeline'" type="button">{{comments.appUser.username}}</a>-->
-<!--  <input name="content" id="content" class="form-control" placeholder="Post comment"-->
-<!--         [(ngModel)]="comments.content"> <br>-->
-<!--  <button type="submit" class="btn btn-primary">Chấp nhận</button>-->
-<!--      |-->
-<!--  <a [routerLink]="'/post/timeline'">-->
-<!--    <button type="submit" class="btn btn-primary">Hủy</button>-->
-<!--  </a>-->
-<!--</form>-->
+<form (ngSubmit)="createComment()" class="post-comment">
+  <img [src]="comments.appUser.avatar" alt="" class="profile-photo-sm"/>
+  <input name="content" type="text" id="content" class="form-control" placeholder="Post comment"
+         [(ngModel)]="comments.content">
+  <button type="submit">Chấp nhận</button>
+  |
+  <button [routerLink]="'/post/timeline'">
+    Hủy
+  </button>
+</form>
 
+<!--  <input type="text" class="form-control" placeholder="Post a comment">-->
