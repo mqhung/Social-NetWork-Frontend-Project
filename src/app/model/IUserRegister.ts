@@ -1,4 +1,5 @@
 import {IAppRole} from './i-app-role';
+import {Timestamp} from 'rxjs';
 
 export class IUserRegister {
   public id?: number;
@@ -8,11 +9,11 @@ export class IUserRegister {
   public firstName?: string;
   public lastName?: string;
   public gender?: string;
-  public phoneNumber?: string;
+  public phone?: string;
   public email?: string;
   public address?: string;
   public avatar?: string;
-  public createDate?: any;
+  public createDate?: Timestamp<any>;
   public blocked?: boolean;
   public roles?: [IAppRole];
 

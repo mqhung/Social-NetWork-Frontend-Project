@@ -5,6 +5,7 @@ import {catchError, tap} from "rxjs/operators";
 import {Observable, of} from 'rxjs';
 import {JwtService} from './auth/jwt.service';
 import {IAppUser} from '../model/IAppUser';
+import {IUserRegister} from '../model/IUserRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,13 @@ export class UserService {
         catchError(err => of([]))
       )
     )
+  }
+
+  getUser(id: number): Observable<any> {
+    return this.http.get(`${this.userUrl}/update/${id}`)
+  }
+
+  updateUser(id: number, user: IUserRegister): Observable<any> {
+    return this.http.put(`${this.userUrl}/update/${id}`, user);
   }
 }
