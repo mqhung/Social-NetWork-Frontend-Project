@@ -87,7 +87,7 @@ export class AddPostComponent implements OnInit {
       this.deleteImage();
       this.post.content = '';
       console.log('ok');
-      this.router.navigateByUrl('timeline');
+      this.router.navigateByUrl('/');
 
     });
   }

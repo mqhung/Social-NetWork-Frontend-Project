@@ -85,7 +85,7 @@
             <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left"/>
             <div class="post-detail">
               <div class="user-info">
-                <h5><a [routerLink]="'user/'+post.appUser.id"
+                <h5><a [routerLink]="'/user/'+post.appUser.id"
                        class="profile-link">{{post.appUser.firstName + ' ' + post.appUser.lastName}}</a> <span
                   class="following">following</span></h5>
                 <p class="text-muted">Published at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
@@ -102,7 +102,7 @@
               </div>
               <div class="line-divider"></div>
               <app-list-comment [postId]="post.id"></app-list-comment>
-              <app-create-comment></app-create-comment>
+              <app-create-comment [postId]="post.id"></app-create-comment>
             </div>
           </div>
         </div>

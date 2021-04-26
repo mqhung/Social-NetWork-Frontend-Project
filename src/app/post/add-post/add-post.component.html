@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-7 col-sm-7">
       <div class="form-group">
-        <img [src]="currentUser.avatar" alt="" class="profile-photo-md">
+        <img *ngIf="currentUser.avatar!=null" [src]="currentUser.avatar" alt="" class="profile-photo-md">
+<!--        <img *ngIf="currentUser.avatar ==null" src = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="" class="profile-photo-md">-->
         <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control"
                   placeholder="Write what you wish" [(ngModel)]="post.content">
 
@@ -18,7 +19,7 @@
       </div>
     </div>
     <div class="col-md-5 col-sm-5">
-      <select class="form-select" aria-label="Default select example" [(ngModel)]="post.status.id">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="post.status.id" style="border: none">
         <option *ngFor="let postStatus of listPostStatus" [value]="postStatus.id">{{postStatus.name}}</option>
       </select>
       <div class="tools">
@@ -38,7 +39,6 @@
                autocomplete="off"
                style="display: none"
         />
-
 
       </div>
     </div>
