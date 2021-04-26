@@ -1,7 +1,7 @@
 <div class="col-md-2 static">
-  <div class="suggestions" id="sticky-sidebar" *ngFor="let user of userList">
+  <div class="suggestions" id="sticky-sidebar">
     <h4 class="grey">Friend Suggestion</h4>
-    <div class="follow-user">
+    <div class="follow-user" *ngFor="let user of userList">
       <img src="{{user.avatar}}" alt="" class="profile-photo-sm pull-left" />
       <div>
         <h5><a [routerLink]="'/post/user/'+ user.id">{{user.firstName}} {{user.lastName}}</a></h5>
