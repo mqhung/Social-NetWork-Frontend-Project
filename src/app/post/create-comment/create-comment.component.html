@@ -1,8 +1,9 @@
 <form (ngSubmit)="createComment()" class="post-comment">
   <img [src]="comments.appUser.avatar" alt="" class="profile-photo-sm"/>
-  <input name="content" type="text" id="content" class="form-control" placeholder="Post comment"
-         [(ngModel)]="comments.content">
+    <input name="content" type="text" id="content" class="form-control-static"
+           placeholder="Post comment"
+           size="55px"
+           [(ngModel)]="comments.content">
+  <p>' '</p>
   <button type="submit" class="btn btn-primary">Gửi</button>
 </form>
-
-<!--  <input type="text" class="form-control" placeholder="Post a comment">-->
