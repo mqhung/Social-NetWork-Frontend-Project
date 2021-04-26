@@ -30,6 +30,7 @@ export class CreateCommentComponent implements OnInit {
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
+
     });
   }
 

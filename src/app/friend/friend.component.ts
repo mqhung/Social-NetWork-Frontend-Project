@@ -22,8 +22,7 @@ export class FriendComponent implements OnInit {
   mutualFriendList: IAppUser[] = [];
 
 
-  constructor(private friendService: FriendService, private userService: UserService
-  ) {
+  constructor(private friendService: FriendService, private userService: UserService) {
   }
 
   getFriendList() {
@@ -99,6 +98,5 @@ export class FriendComponent implements OnInit {
     this.getMutualFriendList();
     this.getUser();
     this.getPendingFriendList();
-
   }
 }
