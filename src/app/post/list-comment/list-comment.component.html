@@ -1,11 +1,8 @@
 <div *ngFor="let c of comments" class="post-comment">
-  <img *ngIf="c.appUser.avatar!=null" [src]="c.appUser.avatar" class="profile-photo-sm"/>
-<!--  <img *ngIf="c.appUser.avatar!=null" src = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" class="profile-photo-sm"/>-->
-
+  <img [src]="c.appUser.avatar" class="profile-photo-sm"/>
   <span>
-    <a [routerLink]="'/user/'+c.appUser.id">{{c.appUser.firstName}}</a>
+    <a class="profile-link" [routerLink]="'post/user/'+c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
     <p class="text-muted"> {{c.createdTime | date : 'hh: mm | dd/ MM/ yyyy'}}</p>
   </span>
-
 </div>

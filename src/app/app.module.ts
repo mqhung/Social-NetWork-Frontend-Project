@@ -14,9 +14,11 @@ import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
-import { UserInfoComponent } from './user-info/user-info.component';
-import {PostModule} from './post/post.module';
+import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
+import {UserInfoComponent} from './user-info/user-info.component';
+import {PostModule} from './post/post.module';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @NgModule({
@@ -25,8 +27,10 @@ import {HandlefriendComponent} from './handlefriend/handlefriend.component';
     FriendComponent,
     RegisterComponent,
     LoginComponent,
+    LogoutComponent,
     UserInfoComponent,
-    HandlefriendComponent
+    HandlefriendComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
