@@ -11,20 +11,18 @@ import {FriendService} from '../../service/friend.service';
 })
 export class UserComponent implements OnInit {
   userList: IAppUser[] = [];
+  userListNoFriend: IAppUser[] = [];
   user: IAppUser;
   sumListUser: number;
   isFriend: boolean = false;
   str: string = '';
-  data: any = {
-    "status":2
-  };
-status: any;
   constructor(private userService: UserService, private jwtService: JwtService, private friendService: FriendService) {
 
   }
 
   ngOnInit(): void {
     this.showAllUser();
+    // this.showAllUserNoFriend();
   }
 
   getUser() {
@@ -47,22 +45,53 @@ status: any;
               this.userList.splice(i, 1);
             }
           }
-          for (let i = 0; i < this.userList.length; i++) {
-          }
+          // for (let i = 0; i < this.userList.length; i++){
+          //
+          // }
         }
       });
   }
 
-  checkFriend(userReceiveId: number): any {
+  // showAllUserNoFriend(){
+  //   this.userService.showAllUserNoFriend().subscribe(
+  //     response => {
+  //       this.userListNoFriend = <IAppUser[]> response;
+  //       if (this.userService.getCurrentUser() != null){
+  //         for (let i = 0; i < this.userList.length; i++) {
+  //           if (this.jwtService.currentUserValue.id == this.userList[i].id) {
+  //             this.userList.splice(i, 1);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   )
+  // }
+
+  checkFriend(userReceiveId: number){
     this.userService.getCurrentUser().subscribe(
-      response => {
-        this.user = <IAppUser> response;
+      response => {this.user = <IAppUser> response;
+        var status;
         this.friendService.checkFriend(this.user.id, userReceiveId).subscribe(
-          data => {
-            this.status = data;
+          response => {status = response;
+            switch (status) {
+              case 0:
+                this.isFriend = false;
+                break;
+              case 1:
+                this.isFriend = false;
+                break;
+              case 2:
+                this.isFriend = true;
+                break;
+              case 3:
+                this.isFriend = false;
+                break;
+            }
           },
-        );
+          error => console.log(error)
+        )
       },
+      error => console.error(error)
     );
   }
 
