@@ -6,9 +6,9 @@
     <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
   </div><!--Post Date End-->
 
-  <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
-  <div class="post-container">
-    <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
+  <img  *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+  <div class="post-container" >
+    <img  [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
     <div class="post-detail">
       <div class="user-info">
         <h5><a href="timeline.html" class="profile-link">{{post.appUser.firstName}}</a> <span
@@ -35,7 +35,7 @@
       <div class="post-comment">
         <app-list-comment [postId]="post.id"></app-list-comment>
       </div>
-      <div class="post-comment">
+      <div class="post-comment" *ngIf="currentUser!=null">
         <app-create-comment [postId]="post.id"></app-create-comment>
       </div>
     </div>

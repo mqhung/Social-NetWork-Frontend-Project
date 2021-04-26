@@ -16,7 +16,12 @@ export class CoverComponent implements OnInit {
   guestUserId: number
   guestUser: IAppUser;
 
+  currentUser: IAppUser;
+
   constructor(private postService: PostService) {
+    this.postService.getCurrentUser().subscribe(next =>{
+      this.currentUser = next;
+    });
 
   }
 

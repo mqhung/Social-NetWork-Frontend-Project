@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IPost} from '../../model/IPost';
 import {PostService} from '../../service/post/post.service';
+import {IAppUser} from "../../model/IAppUser";
 
 @Component({
   selector: 'app-list-post',
@@ -12,9 +13,15 @@ export class ListPostComponent {
   @Input()
   guestUserId: number;
 
+  currentUser: IAppUser;
+
   postList: IPost[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService) {
+    this.postService.getCurrentUser().subscribe(next =>{
+      this.currentUser =next;
+    })
+  }
 
   ngOnInit(): void {
 
