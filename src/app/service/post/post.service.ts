@@ -53,4 +53,8 @@ export class PostService {
   getAllPostStatus(): Observable<IPostStatus[]>{
     return this.http.get<IPostStatus[]>(this.postURL+'get-Post-status').pipe();
   }
+
+  getAllFriendPost(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.postURL+'get-all-friend-post').pipe();
+  }
 }
