@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
 import {Comment} from '../../model/comment';
@@ -31,7 +31,8 @@ export class CreateCommentComponent implements OnInit {
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
-    })
+
+    });
   }
 
   ngOnInit(): void {
@@ -41,7 +42,10 @@ export class CreateCommentComponent implements OnInit {
 
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {
-      this.router.navigate(['timeline']);
-    });
+      // this.router.navigate(['post/timeline']);
+      this.postService.getCurrentUser().subscribe(next => {
+        this.comments.appUser = next;
+      });
+    })
   }
 }
