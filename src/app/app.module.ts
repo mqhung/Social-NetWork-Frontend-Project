@@ -14,7 +14,6 @@ import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
-import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -24,6 +23,8 @@ import { LogoutComponent } from './logout/logout.component';
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
+    UserInfoComponent,
+    HandlefriendComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { LogoutComponent } from './logout/logout.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PostModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }

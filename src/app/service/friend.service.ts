@@ -15,12 +15,55 @@ export class FriendService {
 
   private friendUrl = environment.URL + 'relationship';
 
-  // tslint:disable-next-line:typedef
+
   getFriendList(userId: number) {
     return this.http.get(this.friendUrl + '/listFriend/' + userId).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
     );
+  }
+
+  getPendingFriendList(userId: number) {
+    return this.http.get(this.friendUrl + '/listPendingFriend/' + userId).pipe(
+      tap(
+        receivedList => JSON.stringify(receivedList)),
+      catchError(err => of([]))
+    )
+  }
+
+  sendFriendRequest(userReceiveId: number, user: any){
+    return this.http.post(this.friendUrl + '/create/' + userReceiveId,user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  handleFriendRequest(userSendId: number, statusId: number, user: any){
+    return this.http.put(this.friendUrl + '/edit/' + userSendId + '/' + statusId, user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  unFriend(userSendId: number, user: any){
+    return this.http.put(this.friendUrl + '/unfriend/' + userSendId, user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  checkFriend(userSendId: number,userReceiveId :number) {
+    return this.http.get(this.friendUrl + '/checkFriend/' + userSendId+"/"+userReceiveId).pipe(
+      tap(
+        receivedList => JSON.stringify(receivedList)),
+      catchError(err => of([]))
+    )
   }
 }
