@@ -18,12 +18,16 @@
       </div>
     </div>
     <div class="col-md-5 col-sm-5">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="post.status.id">
+        <option *ngFor="let postStatus of listPostStatus" [value]="postStatus.id">{{postStatus.name}}</option>
+      </select>
       <div class="tools">
+
         <ul class="publishing-tools list-inline">
-            <li><label for="file-input"><a><i class="ion-compose"></i></a></label></li>
-            <li><label for="file-input"><a><i class="ion-images"></i></a></label></li>
-            <li><label for="file-input"><a><i class="ion-ios-videocam"></i></a></label></li>
-            <li><label for="file-input"><a><i class="ion-map"></i></a></label></li>
+          <li><label for="file-input"><a><i class="ion-compose"></i></a></label></li>
+          <li><label for="file-input"><a><i class="ion-images"></i></a></label></li>
+          <li><label for="file-input"><a><i class="ion-ios-videocam"></i></a></label></li>
+          <li><label for="file-input"><a><i class="ion-map"></i></a></label></li>
         </ul>
         <button class="btn btn-primary pull-right" (click)="createPost()">Publish</button>
         <input type="file"

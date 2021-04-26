@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FriendComponent} from './friend/friend.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'listPendingFriend',
+    component: HandlefriendComponent
   }
 ];
 

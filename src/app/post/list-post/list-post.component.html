@@ -13,7 +13,12 @@
       <div class="user-info">
         <h5><a href="timeline.html" class="profile-link">{{post.appUser.firstName}}</a> <span
           class="following">following</span></h5>
-        <p class="text-muted">Published a photo at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}</p>
+        <p class="text-muted">Published a photo
+          at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+          &nbsp;
+
+
+          <i class="icon ion-alert"></i> {{post.status.name}}</p>
       </div>
       <div class="reaction">
         <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>

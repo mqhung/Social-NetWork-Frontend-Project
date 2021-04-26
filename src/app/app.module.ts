@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
 import { UserInfoComponent } from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
+import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {PostModule} from './post/post.module';
     RegisterComponent,
     LoginComponent,
     UserInfoComponent,
+    HandlefriendComponent
   ],
   imports: [
     BrowserModule,
