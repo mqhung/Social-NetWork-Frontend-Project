@@ -42,10 +42,10 @@ export class CreateCommentComponent implements OnInit {
 
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {
-      // this.router.navigate(['post/timeline']);
+      // this.router.navigate(['timeline']);
       this.postService.getCurrentUser().subscribe(next => {
         this.comments.appUser = next;
       });
-    })
+    });
   }
 }

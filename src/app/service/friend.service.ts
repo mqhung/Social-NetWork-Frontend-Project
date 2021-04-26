@@ -32,8 +32,35 @@ export class FriendService {
     )
   }
 
-  checkFriend(relatingId: number, relatedId: number) {
-    return this.http.get(this.friendUrl + '/checkFriend/' + relatingId + "/" + relatedId).pipe(
+  sendFriendRequest(userReceiveId: number, user: any){
+    return this.http.post(this.friendUrl + '/create/' + userReceiveId,user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  handleFriendRequest(userSendId: number, statusId: number, user: any){
+    return this.http.put(this.friendUrl + '/edit/' + userSendId + '/' + statusId, user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  unFriend(userSendId: number, user: any){
+    return this.http.put(this.friendUrl + '/unfriend/' + userSendId, user).pipe(
+      tap(
+        receiveList => JSON.stringify(receiveList)
+      ),
+      catchError(err => of([]))
+    )
+  }
+
+  checkFriend(userSendId: number,userReceiveId :number) {
+    return this.http.get(this.friendUrl + '/checkFriend/' + userSendId+"/"+userReceiveId).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
