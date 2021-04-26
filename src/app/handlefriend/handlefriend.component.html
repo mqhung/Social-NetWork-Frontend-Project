@@ -29,7 +29,7 @@
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
               <li><a [routerLink]="'/listFriend'">Friends</a></li>
-              <li><a [routerLink] class="active">Friends Request</a></li>
+              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>
             </ul>
           </div>
         </div>
@@ -56,7 +56,7 @@
                         <p>Country: {{friend.address}}</p>
                         <p>Gender: {{friend.gender}}</p>
                         <a class="btn btn-primary" (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>
-                        <a class="btn btn-danger" (click)="acceptInviteFriend(friend.id,3,i)">Delete</a>
+                        <a style="margin-left: 5px" class="btn btn-danger" (click)="acceptInviteFriend(friend.id,3,i)">Delete</a>
                       </div>
                     </div>
                   </li>
