@@ -3,7 +3,6 @@ import {JwtService} from './jwt.service';
 import {HttpEvent, HttpHandler, HttpRequest, HttpInterceptor} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-// @Injectable()
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +12,6 @@ export class JwtInterceptorService implements HttpInterceptor{
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
     const currentUser = this.jwtService.currentUserValue;
-    console.log(currentUser)
     if (currentUser && currentUser.token){
       request = request.clone({
         setHeaders: {

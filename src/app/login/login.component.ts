@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
         },
         error => {
-          alert("Tài khoản của bạn đã bị khoá hoặc sai mật khẩu!");
+          alert("Sai tài khoản hoặc mật khẩu!");
           this.loading = false;
         });
   }
