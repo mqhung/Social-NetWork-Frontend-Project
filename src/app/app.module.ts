@@ -14,6 +14,10 @@ import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
+import {LogoutComponent} from './logout/logout.component';
+import {HandlefriendComponent} from './handlefriend/handlefriend.component';
+import {UserInfoComponent} from './user-info/user-info.component';
+import {PostModule} from './post/post.module';
 
 
 @NgModule({
