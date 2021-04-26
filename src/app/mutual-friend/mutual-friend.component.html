@@ -28,11 +28,9 @@
               <li><a [routerLink]="'/post/user/'+userFriend.id">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink]="'/listFriend/'+userFriend.id" class="active">Friends</a></li>
-              <li *ngIf="user.id!=userFriend.id"><a [routerLink]="'/mutual-friends/'+userFriend.id">Mutual Friends </a>
-              </li>
-              <li *ngIf="user.id==userFriend.id"><a [routerLink]="'/listPendingFriend'">Friends
-                Request({{sumListPending}})</a></li>
+              <li><a [routerLink]="'/listFriend/'+userFriend.id">Friends</a></li>
+              <li *ngIf="user.id!=userFriend.id"><a [routerLink]="'/mutual-friends/'+userFriend.id" class="active">Mutual
+                Friends </a></li>
             </ul>
             <ul class="follow-me list-inline">
               <!--              <li>{{friendList.length}} people following her</li>-->
@@ -69,7 +67,7 @@
             <div class="row">
               <ul class="col-md-5 col-sm-5">
                 <div class="friend-card">
-                  <li *ngFor="let friend of friendList, let i = index">
+                  <li *ngFor="let friend of mutualFriendList, let i = index">
                     <img src="{{friend.avatar}}" alt="profile-cover" class="img-responsive cover"/>
                     <div class="card-info">
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
@@ -81,7 +79,6 @@
                         <p>B.O.D: {{friend.birthday}}</p>
                         <p>Country: {{friend.address}}</p>
                         <p>Gender: {{friend.gender}}</p>
-                        <a class="btn btn-primary" (click)="unFriend(friend.id,i)">UnFriend</a>
                       </div>
                     </div>
                   </li>

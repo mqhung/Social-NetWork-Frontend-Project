@@ -19,7 +19,7 @@
         <li *ngIf="currentUser!=null" class="nav-item dropdown"><a [routerLink]="'/post/new-feed'">Home</a></li>
         <li *ngIf="currentUser!=null" class="nav-item dropdown"><a
           [routerLink]="'/post/timeline'">{{currentUser.firstName + " " + currentUser.lastName}}</a></li>
-        <li *ngIf="currentUser==null" class="nav-item dropdown"><a href="contact.html">Login</a></li>
+        <li *ngIf="currentUser==null" class="nav-item dropdown"><a [routerLink]="'/login'">Login</a></li>
         <li *ngIf="currentUser!=null" class="nav-item dropdown"><a href="contact.html">Setting</a></li>
         <li *ngIf="currentUser!=null" class="nav-item dropdown"><a href="contact.html">Sign Out</a></li>
       </ul>

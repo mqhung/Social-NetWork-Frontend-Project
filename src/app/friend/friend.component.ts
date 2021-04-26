@@ -3,6 +3,7 @@ import {IAppUser} from '../model/IAppUser';
 import {FriendService} from '../service/friend.service';
 import {UserService} from '../service/user.service';
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {PostService} from "../service/post/post.service";
 
 @Component({
   selector: 'app-friend',
@@ -28,7 +29,8 @@ export class FriendComponent implements OnInit {
 
   constructor(private friendService: FriendService,
               private userService: UserService,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute,
+              private postService: PostService) {
     this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
       let id = +paraMap.get('id');
       this.guestUserId = id;
@@ -44,7 +46,6 @@ export class FriendComponent implements OnInit {
       });
 
   }
-
   // getFriendList() {
   //   if (this.userService.getCurrentUser() !== null) {
   //     this.userService.getCurrentUser().subscribe(
@@ -65,6 +66,11 @@ export class FriendComponent implements OnInit {
   //     return null;
   //   }
   // }
+  getFriendUserById(id: number){
+    this.postService.getUserById(id).subscribe(next =>{
+      this.userFriend = next;
+    })
+  }
 
   getPendingFriendList() {
     this.userService.getCurrentUser().subscribe(
@@ -133,6 +139,7 @@ export class FriendComponent implements OnInit {
   ngOnInit(): void {
     this.getFriendList(this.guestUserId);
     this.getSimilarFriendList(this.guestUserId)
+    this.getFriendUserById(this.guestUserId)
     this.getUser();
     this.getPendingFriendList();
   }
