@@ -18,22 +18,45 @@
         <div class="row">
           <div class="col-md-3">
             <div class="profile-info">
-              <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-              <h3>{{user.firstName + " " + user.lastName}}</h3>
-              <p class="text-muted">{{user.email}} </p>
+              <img src="{{userFriend.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <h3>{{userFriend.firstName + " " + userFriend.lastName}}</h3>
+              <p class="text-muted">{{userFriend.email}} </p>
             </div>
           </div>
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
-              <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
+              <li><a [routerLink]="'/post/user/'+userFriend.id">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink]="'/listFriend'">Friends</a></li>
-              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>
+              <li><a [routerLink]="'/listFriend/'+userFriend.id">Friends</a></li>
+              <li *ngIf="user.id!=userFriend.id"><a [routerLink]="'/mutual-friends/'+userFriend.id" class="active">Mutual
+                Friends </a></li>
+            </ul>
+            <ul class="follow-me list-inline">
+              <!--              <li>{{friendList.length}} people following her</li>-->
             </ul>
           </div>
         </div>
       </div><!--Timeline Menu for Large Screens End-->
+
+      <!--Timeline Menu for Small Screens-->
+      <!--      <div class="navbar-mobile hidden-lg hidden-md">-->
+      <!--        <div class="profile-info">-->
+      <!--          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>-->
+      <!--          <a>{{user.firstName}}</a>-->
+      <!--          <p class="text-muted">{{user.address}}</p>-->
+      <!--        </div>-->
+      <!--        <div class="mobile-menu">-->
+      <!--          <ul class="list-inline">-->
+      <!--            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>-->
+      <!--            <li><a href="timeline-about.html">About</a></li>-->
+      <!--            <li><a href="timeline-album.html">Album</a></li>-->
+      <!--            <li><a [routerLink] class="active">Friends</a></li>-->
+      <!--          </ul>-->
+      <!--          <button class="btn-primary">Add Friend</button>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      Timeline Menu for Small Screens End-->
 
     </div>
     <div id="page-contents">
@@ -44,19 +67,18 @@
             <div class="row">
               <ul class="col-md-5 col-sm-5">
                 <div class="friend-card">
-                  <li *ngFor="let friend of pendingList, let i = index">
-                    <img src="{{friend.avatar}}" style="width: 200px; height: 200px" alt="user"
-                         class="profile-photo-lg"/>
+                  <li *ngFor="let friend of mutualFriendList, let i = index">
+                    <img src="{{friend.avatar}}" alt="profile-cover" class="img-responsive cover"/>
                     <div class="card-info">
+                      <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
+                        <a href="#" class="pull-right text-green">My Friend</a>
                         <h5><a [routerLink]="'/post/user/' + friend.id"
                                class="profile-link">{{friend.firstName + " " + friend.lastName}}</a>
                         </h5>
                         <p>B.O.D: {{friend.birthday}}</p>
                         <p>Country: {{friend.address}}</p>
                         <p>Gender: {{friend.gender}}</p>
-                        <a class="btn btn-primary" (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>
-                        <a style="margin-left: 5px" class="btn btn-danger" (click)="acceptInviteFriend(friend.id,3,i)">Delete</a>
                       </div>
                     </div>
                   </li>
@@ -171,5 +193,4 @@
 <!--</div>-->
 
 </body>
-
 
