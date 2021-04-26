@@ -12,7 +12,7 @@ export class IUserRegister {
   public email?: string;
   public address?: string;
   public avatar?: string;
-  public createDate?: string;
+  public createDate?: any;
   public blocked?: boolean;
   public roles?: [IAppRole];
 
