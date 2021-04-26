@@ -47,7 +47,6 @@
                   <li *ngFor="let friend of pendingList, let i = index">
                     <img src="{{friend.avatar}}" style="width: 200px; height: 200px" alt="user" class="profile-photo-lg"/>
                     <div class="card-info">
-<!--                      <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>-->
                       <div class="friend-info">
                         <h5><a class="profile-link">{{friend.firstName}} {{friend.lastName}}</a></h5>
                         <a class="btn btn-primary" (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>

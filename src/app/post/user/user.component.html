@@ -1,11 +1,11 @@
 <div class="col-md-2 static">
+  <h4 class="grey">Friend Suggestion</h4>
   <div class="suggestions" id="sticky-sidebar" *ngFor="let user of userList">
-    <h4 class="grey">Friend Suggestion</h4>
     <div class="follow-user">
       <img src="{{user.avatar}}" alt="" class="profile-photo-sm pull-left" />
       <div>
         <h5><a [routerLink]="'/post/user/'+ user.id">{{user.firstName}} {{user.lastName}}</a></h5>
-        <a [routerLink]="'/post/user/'+ user.id" class="text-green">Add friend</a>
+        <button (click)="addFriend(user.id)" class="btn btn-primary"><span id="{{user.id}}">Add Friend</span></button>
       </div>
     </div>
   </div>
