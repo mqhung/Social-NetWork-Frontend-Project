@@ -11,7 +11,6 @@ import {PostService} from '../../service/post/post.service';
   styleUrls: ['./create-comment.component.css']
 })
 export class CreateCommentComponent implements OnInit {
-  // tempContent: string;
   comments: Comment = {
     id: 0,
     appUser: null,

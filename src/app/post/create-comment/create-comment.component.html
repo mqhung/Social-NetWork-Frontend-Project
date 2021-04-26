@@ -2,11 +2,5 @@
   <img [src]="comments.appUser.avatar" alt="" class="profile-photo-sm"/>
   <input name="content" type="text" id="content" class="form-control" placeholder="Post comment"
          [(ngModel)]="comments.content">
-  <button type="submit">Chấp nhận</button>
-  |
-  <button [routerLink]="'/post/timeline'">
-    Hủy
-  </button>
+  <button type="submit" class="btn btn-primary">Gửi</button>
 </form>
-
-<!--  <input type="text" class="form-control" placeholder="Post a comment">-->
