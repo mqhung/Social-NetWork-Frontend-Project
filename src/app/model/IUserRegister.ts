@@ -4,7 +4,6 @@ export class IUserRegister {
   public id?: number;
   public username?: string;
   public password?: string;
-  public confirmPassword?: string;
   public birthday?: any;
   public firstName?: string;
   public lastName?: string;
