@@ -10,7 +10,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
   styleUrls: ['./friend.component.css']
 })
 export class FriendComponent implements OnInit {
-  // friendList: IAppUser[] = [];
+  friendList: IAppUser[] = [];
   sumListFriend: number;
   sumListPending: number;
   user: IAppUser;
@@ -18,8 +18,7 @@ export class FriendComponent implements OnInit {
   userPending: IAppUser;
   pendingList: IAppUser[];
 
-  // similarFriendList: IAppUser[];
-  friendList: IAppUser[];
+  similarFriendList: IAppUser[];
 
   userLogin: IAppUser;
   friendListLogin: IAppUser[];
@@ -29,11 +28,21 @@ export class FriendComponent implements OnInit {
 
   constructor(private friendService: FriendService,
               private userService: UserService,
-              private activatedRouter: ActivatedRoute  ) {
+              private activatedRouter: ActivatedRoute) {
     this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
       let id = +paraMap.get('id');
       this.guestUserId = id;
     });
+  }
+
+  getFriendList(id: number) {
+
+    this.friendService.getFriendList(id).subscribe(
+      response => {
+        this.friendList = <IAppUser[]>response,
+          this.sumListFriend = this.friendList.length;
+      });
+
   }
 
   // getFriendList() {
@@ -117,18 +126,16 @@ export class FriendComponent implements OnInit {
 
   getSimilarFriendList(id: number) {
     this.friendService.getSimilarFriendList(id).subscribe(next => {
-      // this.similarFriendList = next;
-      this.friendList = next;
+      this.similarFriendList = next;
     })
   }
 
   ngOnInit(): void {
-    // this.getFriendList();
+    this.getFriendList(this.guestUserId);
     this.getSimilarFriendList(this.guestUserId)
     this.getUser();
     this.getPendingFriendList();
   }
-
 
 
 }
