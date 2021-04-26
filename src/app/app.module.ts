@@ -18,6 +18,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {PostModule} from './post/post.module';
     LoginComponent,
     LogoutComponent,
     UserInfoComponent,
-    HandlefriendComponent
+    HandlefriendComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
