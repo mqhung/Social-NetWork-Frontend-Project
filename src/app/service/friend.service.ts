@@ -60,11 +60,10 @@ export class FriendService {
   }
 
   checkFriend(userSendId: number,userReceiveId :number) {
-    // return this.http.get(this.friendUrl + '/checkFriend/' + userSendId+"/"+userReceiveId).pipe(
-    //   tap(
-    //     receivedList => JSON.stringify(receivedList)),
-    //   catchError(err => of([]))
-    // )
-    return this.http.get(this.friendUrl+ '/checkFriend/' + userSendId+"/"+userReceiveId);
+    return this.http.get(this.friendUrl + '/checkFriend/' + userSendId+"/"+userReceiveId).pipe(
+      tap(
+        receivedList => JSON.stringify(receivedList)),
+      catchError(err => of([]))
+    )
   }
 }
