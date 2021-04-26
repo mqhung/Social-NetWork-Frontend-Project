@@ -66,7 +66,7 @@
             <div class="row">
               <ul class="col-md-5 col-sm-5">
                 <div class="friend-card">
-                  <li *ngFor="let friend of friendList">
+                  <li *ngFor="let friend of friendList, let i = index">
                     <img src="{{friend.avatar}}" alt="profile-cover" class="img-responsive cover"/>
                     <div class="card-info">
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
@@ -77,6 +77,7 @@
                         <p>Quê quán: {{friend.address}}</p>
                         <p>Giới tính: {{friend.gender}}</p>
                         <p>Bạn chung: {{mutualFriendList.length}}</p>
+                        <a class="btn btn-primary" (click)="unFriend(friend.id,i)">UnFriend</a>
                       </div>
                     </div>
                   </li>
