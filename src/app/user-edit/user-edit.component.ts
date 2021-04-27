@@ -36,7 +36,7 @@ export class UserEditComponent implements OnInit {
 
     }
     this.prepareForm();
-    this.getUser();
+    this.getUserCurrent();
   }
 
   prepareForm() {
@@ -47,7 +47,7 @@ export class UserEditComponent implements OnInit {
     })
   }
 
-  getUser() {
+  getUserCurrent() {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUser(x.id).subscribe(value => {
@@ -78,6 +78,7 @@ export class UserEditComponent implements OnInit {
   }
 
   update() {
+    this.user.avatar = this.fb;
     let userNewInfo = this.setInfo();
     this.userService.updateUser(this.user.id, userNewInfo).subscribe(() => {
       alert("Update success!");
@@ -100,7 +101,7 @@ export class UserEditComponent implements OnInit {
           this.arrayPicture = fileRef.getDownloadURL();
           this.arrayPicture.subscribe(url => {
             if (url) {
-              this.user.avatar = url;
+              this.fb = url;
             }
             console.log(this.user.avatar);
           });
