@@ -11,7 +11,7 @@ import {PostService} from '../../service/post/post.service';
   styleUrls: ['./create-comment.component.css']
 })
 export class CreateCommentComponent implements OnInit {
-  comments: Comment = {
+  comment: Comment = {
     id: 0,
     appUser: null,
     postId: 0,
@@ -30,18 +30,24 @@ export class CreateCommentComponent implements OnInit {
               // public listComment: ListCommentComponent
   ) {
     this.postService.getCurrentUser().subscribe(next => {
-      this.comments.appUser = next;
+      this.comment.appUser = next;
 
     });
   }
 
   ngOnInit(): void {
-    this.comments.postId = this.postId;
+    this.comment.postId = this.postId;
   }
 
+  showComment() {
+    this.commentService.getAllComment(this.postId).subscribe(commentList => {
+      // @ts-ignore
+      this.comments = commentList;
+    });
+  }
 
   createComment() {
-    this.commentService.createComment(this.comments).subscribe(() => {
+    this.commentService.createComment(this.comment).subscribe(() => {
       // this.comments.content = '';
       // this.router.navigate(['timeline']);
       // this.comments = next;
@@ -49,9 +55,10 @@ export class CreateCommentComponent implements OnInit {
       //  let  listCommentComponent: ListCommentComponent;
       //   listCommentComponent.comments.push(next);
       // });
-      this.postService.getCurrentUser().subscribe(next => {
-        this.comments.appUser = next;
-      });
+      // this.postService.getCurrentUser().subscribe(next => {
+      //   this.comments.appUser = next;
+      // });
+      this.showComment();
     });
   }
 }

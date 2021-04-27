@@ -39,9 +39,11 @@ export class EditCommentComponent implements OnInit {
     });
   }
 
+
   edit() {
     this.commentService.updateComment(this.comment.id, this.comment).subscribe(() => {
       this.router.navigate(['/timeline']);
+      this.router.navigate(['/new-feed']);
     });
   }
 

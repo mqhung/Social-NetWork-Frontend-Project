@@ -4,6 +4,8 @@ import {CommentService} from '../../service/comment.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {compareNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
 import {Subscription} from 'rxjs';
+import {PostService} from '../../service/post/post.service';
+import {IAppUser} from '../../model/IAppUser';
 
 @Component({
   selector: 'app-list-comment',
@@ -40,21 +42,35 @@ export class ListCommentComponent implements OnInit {
   //   content: '',
   //   createdTime: null
   // };
+  comment: Comment = {
+    id: 0,
+    appUser: null,
+    postId: 0,
+    content: '',
+    createdTime: null
+
+  };
+
+  currentUser: IAppUser;
   @Input()
   postId: number;
 
   constructor(private router: Router,
               private commentService: CommentService,
+              private postService: PostService,
               private activatedRouter: ActivatedRoute) {
     // this.sub = this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
     //   this.id = Number(paraMap.get('id'));
     //   this.getById(this.id);
     // });
-
+    this.postService.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
   }
 
   ngOnInit(): void {
     this.showComment();
+    this.comment.postId = this.postId;
   }
 
   showComment() {
@@ -76,8 +92,14 @@ export class ListCommentComponent implements OnInit {
   // }
 
   deleteComment(id: number) {
-    this.commentService.deleteComment(id).subscribe(() => {
-      this.router.navigate(['/new-feed']);
+    this.commentService.deleteComment(id).subscribe(deleteComment => {
+      this.showComment();
+    });
+  }
+  createComment() {
+    this.commentService.createComment(this.comment).subscribe(next => {
+      this.comments.push(next);
+      this.comment.content = '';
     });
   }
 
