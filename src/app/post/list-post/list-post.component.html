@@ -9,7 +9,7 @@
   <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
   <div class="post-container">
     <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
-<!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
+    <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
 
     <div class="post-detail">
       <div class="user-info">
@@ -25,6 +25,8 @@
       <div class="reaction">
         <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
         <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+        <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
+        <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
       </div>
       <div class="line-divider"></div>
       <div class="post-text">
