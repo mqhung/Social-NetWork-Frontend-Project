@@ -35,7 +35,13 @@ const routes: Routes = [
   {
     path: 'listPendingFriend',
     component: HandlefriendComponent
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   }
+
 ];
 
 @NgModule({
