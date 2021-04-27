@@ -25,8 +25,8 @@
       <div class="reaction">
         <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
         <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-        <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
-        <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
+        <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
+        <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
       </div>
       <div class="line-divider"></div>
       <div class="post-text">
@@ -36,10 +36,10 @@
       <div class="line-divider"></div>
       <!--                ///comment-->
       <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-      <div class="post-comment">
+      <div class="post-comment" >
         <app-list-comment [postId]="post.id"></app-list-comment>
       </div>
-      <div class="post-comment">
+      <div class="post-comment" *ngIf="currentUser!=null">
         <app-create-comment [postId]="post.id"></app-create-comment>
       </div>
     </div>
