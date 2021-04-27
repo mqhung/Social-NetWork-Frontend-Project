@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
 import {Comment} from '../../model/comment';
 import {PostService} from '../../service/post/post.service';
+import {ListCommentComponent} from '../list-comment/list-comment.component';
 
 @Component({
   selector: 'app-create-comment',
@@ -20,13 +21,15 @@ export class CreateCommentComponent implements OnInit {
 
   };
 
+
   @Input()
   postId: number;
 
 
   constructor(private router: Router,
               private commentService: CommentService,
-              private postService: PostService
+              private postService: PostService,
+              // public listComment: ListCommentComponent
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
@@ -38,13 +41,18 @@ export class CreateCommentComponent implements OnInit {
     this.comments.postId = this.postId;
   }
 
+  @Output()
+  listComment: Comment[];
 
   createComment() {
-    this.commentService.createComment(this.comments).subscribe(() => {
+    this.commentService.createComment(this.comments).subscribe(next => {
+      this.comments.content = '';
       // this.router.navigate(['timeline']);
-      this.postService.getCurrentUser().subscribe(next => {
-        this.comments.appUser = next;
-      });
+      // this.comments = next;
+      // this.commentService.getAllComment(this.postId).subscribe(next => {
+       let  listCommentComponent: ListCommentComponent;
+        listCommentComponent.comments.push(next);
+      // });
     });
   }
 }
