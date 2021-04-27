@@ -50,7 +50,7 @@ export class ListCommentComponent implements OnInit {
     createdTime: null
 
   };
-
+  userPosted: IAppUser;
   currentUser: IAppUser;
   @Input()
   postId: number;
@@ -69,6 +69,9 @@ export class ListCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.postService.getPostById(this.postId).subscribe(next =>{
+      this.userPosted = next.appUser;
+    });
     this.showComment();
     this.comment.postId = this.postId;
   }
@@ -92,10 +95,13 @@ export class ListCommentComponent implements OnInit {
   // }
 
   deleteComment(id: number) {
+    // if(this.comment.appUser != null) {
     this.commentService.deleteComment(id).subscribe(deleteComment => {
       this.showComment();
     });
+    // }
   }
+
   createComment() {
     this.commentService.createComment(this.comment).subscribe(next => {
       this.comments.push(next);
