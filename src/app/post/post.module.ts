@@ -31,10 +31,11 @@ import {UserComponent} from './user/user.component';
     CreateCommentComponent,
     UserComponent
   ],
-  exports: [
-    NavbarComponent,
-    CoverComponent
-  ],
+    exports: [
+        NavbarComponent,
+        CoverComponent,
+        FooterComponent
+    ],
   imports: [
     CommonModule,
     PostRoutingModule,

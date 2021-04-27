@@ -18,43 +18,46 @@
         <div class="row">
           <div class="col-md-3">
             <div class="profile-info">
-              <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
-              <h3>{{user.firstName + " " + user.lastName}}</h3>
-              <p class="text-muted">{{user.email}} </p>
+              <img src="{{userFriend.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <h3>{{userFriend.firstName + " " + userFriend.lastName}}</h3>
+              <p class="text-muted">{{userFriend.email}} </p>
             </div>
           </div>
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
-              <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
+              <li><a [routerLink]="'/post/user/'+userFriend.id">Timeline</a></li>
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
-              <li><a [routerLink] class="active">Friends</a></li>
-              <li><a [routerLink]="'/listPendingFriend'">Friends Request({{sumListPending}})</a></li>
+              <li><a [routerLink]="'/listFriend/'+userFriend.id" class="active">Friends</a></li>
+              <li *ngIf="user.id!=userFriend.id"><a [routerLink]="'/mutual-friends/'+userFriend.id">Mutual Friends </a>
+              </li>
+              <li *ngIf="user.id==userFriend.id"><a [routerLink]="'/listPendingFriend'">Friends
+                Request({{sumListPending}})</a></li>
             </ul>
             <ul class="follow-me list-inline">
-<!--              <li>{{friendList.length}} people following her</li>-->
+              <!--              <li>{{friendList.length}} people following her</li>-->
             </ul>
           </div>
         </div>
       </div><!--Timeline Menu for Large Screens End-->
 
       <!--Timeline Menu for Small Screens-->
-<!--      <div class="navbar-mobile hidden-lg hidden-md">-->
-<!--        <div class="profile-info">-->
-<!--          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>-->
-<!--          <a>{{user.firstName}}</a>-->
-<!--          <p class="text-muted">{{user.address}}</p>-->
-<!--        </div>-->
-<!--        <div class="mobile-menu">-->
-<!--          <ul class="list-inline">-->
-<!--            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>-->
-<!--            <li><a href="timeline-about.html">About</a></li>-->
-<!--            <li><a href="timeline-album.html">Album</a></li>-->
-<!--            <li><a [routerLink] class="active">Friends</a></li>-->
-<!--          </ul>-->
-<!--          <button class="btn-primary">Add Friend</button>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="navbar-mobile hidden-lg hidden-md">-->
+      <!--        <div class="profile-info">-->
+      <!--          <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>-->
+      <!--          <a>{{user.firstName}}</a>-->
+      <!--          <p class="text-muted">{{user.address}}</p>-->
+      <!--        </div>-->
+      <!--        <div class="mobile-menu">-->
+      <!--          <ul class="list-inline">-->
+      <!--            <li><a [routerLink]="'/post/timeline'">Timeline</a></li>-->
+      <!--            <li><a href="timeline-about.html">About</a></li>-->
+      <!--            <li><a href="timeline-album.html">Album</a></li>-->
+      <!--            <li><a [routerLink] class="active">Friends</a></li>-->
+      <!--          </ul>-->
+      <!--          <button class="btn-primary">Add Friend</button>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <!--      Timeline Menu for Small Screens End-->
 
     </div>
@@ -72,12 +75,13 @@
                       <img src="{{friend.avatar}}" alt="user" class="profile-photo-lg"/>
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                        <h5><a [routerLink]="'/post/user/' + friend.id" class="profile-link">{{friend.firstName}}</a></h5>
+                        <h5><a [routerLink]="'/post/user/' + friend.id"
+                               class="profile-link">{{friend.firstName + " " + friend.lastName}}</a>
+                        </h5>
                         <p>B.O.D: {{friend.birthday}}</p>
-                        <p>Quê quán: {{friend.address}}</p>
-                        <p>Giới tính: {{friend.gender}}</p>
-                        <p>Bạn chung: {{mutualFriendList.length}}</p>
-                        <a class="btn btn-primary" (click)="unFriend(friend.id,i)">UnFriend</a>
+                        <p>Country: {{friend.address}}</p>
+                        <p>Gender: {{friend.gender}}</p>
+                        <a class="btn btn-danger" (click)="unFriend(friend.id,i)">UnFriend</a>
                       </div>
                     </div>
                   </li>

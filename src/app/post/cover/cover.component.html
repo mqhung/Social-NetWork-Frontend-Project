@@ -15,7 +15,7 @@
           <li><a [routerLink]="'/post/timeline'" class="active">Timeline</a></li>
           <li><a>About</a></li>
           <li><a>Album</a></li>
-          <li *ngIf="currentUser!=null" ><a [routerLink]="'/listFriend'">Friends</a></li>
+          <li *ngIf="currentUser!=null" ><a [routerLink]="'/listFriend/'+guestUserId" >Friends</a></li>
           <li *ngIf="currentUser==null" ><a >Friends</a></li>
         </ul>
         <ul class="follow-me list-inline">
