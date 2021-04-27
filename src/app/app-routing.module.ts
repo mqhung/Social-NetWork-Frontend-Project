@@ -35,6 +35,11 @@ const routes: Routes = [
   {
     path: 'user-edit/:id',
     component: UserEditComponent
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   }
 ];
 

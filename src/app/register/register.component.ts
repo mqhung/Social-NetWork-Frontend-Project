@@ -79,7 +79,8 @@ export class RegisterComponent implements OnInit {
       firstName: this.registerForm.value.firstName,
       lastName: this.registerForm.value.lastName,
       email: this.registerForm.value.email,
-      phone: this.registerForm.value.phone
+      phone: this.registerForm.value.phone,
+      createdDate: Date.now()
     };
     return user;
   }

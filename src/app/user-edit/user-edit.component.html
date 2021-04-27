@@ -1,147 +1,147 @@
 
-<!--<div class="row container-fluid mt-5 ml-1" style="background: #f8f9fc">-->
-<!--  <div class="col-2 test"></div>-->
-<!--  <div class="card text-center register col-lg-8 " style="background: white !important;">-->
-<!--    <div class=" text-center mt-2">-->
-<!--      <h2>Thông tin cá nhân</h2>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      &lt;!&ndash; Login&ndash;&gt;-->
+<div class="row container-fluid mt-5 ml-1" style="background: #f8f9fc">
+  <div class="col-2 test"></div>
+  <div class="card text-center register col-lg-8 " style="background: white !important;">
+    <div class=" text-center mt-2">
+      <h2>Thông tin cá nhân</h2>
+    </div>
+    <div class="card-body">
+      <!-- Login-->
 
-<!--      <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt=""></div>-->
-<!--      <form [formGroup]="updateForm" (ngSubmit)="update()">-->
+      <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt=""></div>
+      <form [formGroup]="updateForm" (ngSubmit)="update()">
 
-<!--        <div class="input-group mb-3">-->
-<!--          <div class="input-group-prepend">-->
-<!--            <span class="input-group-text">Upload</span>-->
-<!--          </div>-->
-<!--          <div class="custom-file">-->
-<!--            <input type="file" class="form-control" (change)="saveImg($event)" id="inputGroupFile01">-->
-<!--            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>First Name</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"-->
-<!--                 placeholder="First Name">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Last Name</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="firstName" id="lastName" name="lastName"-->
-<!--                 placeholder="Last Name">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Email</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="email"-->
-<!--                 placeholder="Email">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Số điện thoại</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="phoneNumber"-->
-<!--                 placeholder="Số điện thoại">-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-<div class="container mt-5">
-  <h1 class="text-capitalize text-primary">Edit exam</h1>
-  <div class="d-block w-50 m-auto">
-    <form name="form" class="form-group" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      <div class="form-group ">
-        <label for="id">Id</label>
-        <input type="text" class="form-control" name="id" id="id" [(ngModel)]="id" readonly>
-      </div>
-      <div class="form-group">
-        <label for="username">Username<i class="text-danger ml-1">*</i></label>
-        <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.username" #username="ngModel" readonly>
-      </div>
-      <div *ngIf="f.submitted && username.invalid">
-        <div *ngIf="username.errors?.required" class="text-danger">Username is required</div>
-      </div>
-
-      <div class="form-group">
-        <label for="firstName">First-name<i class="text-danger ml-1">*</i></label>
-        <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required="required">
-      </div>
-      <div *ngIf="f.submitted && firstName.invalid">
-        <div *ngIf="firstName.errors?.required" class="text-danger">first name is required</div>
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Last-name<i class="text-danger ml-1">*</i></label>
-        <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required="required">
-      </div>
-      <div *ngIf="f.submitted && lastName.invalid">
-        <div *ngIf="lastName.errors?.required" class="text-danger">Last-name is required</div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email <i class="text-danger ml-1">*</i></label>
-        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="user.email" #email ="ngModel" required="required" email="email">
-      </div>
-      <div *ngIf="f.submitted && email.invalid">
-        <div *ngIf="email.errors?.required" class="text-danger">Email is required</div>
-        <div *ngIf="email.errors?.email" class="text-danger">Email must be a valid Email</div>
-      </div>
-      <div class="form-group ">
-        <label for="avatar">Avatar</label>
-        <input type="text" class="form-control" name="avatar" id="avatar" [(ngModel)]="user.avatar" #avatar ="ngModel">
-      </div>
-      <div>
-        Gender:
-        <div class="form-check form-check-inline">
-          <input type="radio" class="form-check-input" name="male" id="male" [(ngModel)]="user.gender" value="Male" #gender ="ngModel">
-          <label class="form-check-label" for="male">Male</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Upload</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="form-control" (change)="saveImg($event)" id="inputFile">
+            <label class="custom-file-label" for="inputFile">Choose file</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input type="radio" class="form-check-input" name="female" id="female" [(ngModel)]="user.gender" value="Female" #gender ="ngModel">
-          <label class="form-check-label" for="female">Female</label>
+        <div class="text-left">
+          <label>First Name</label>
         </div>
-      </div>
-      <br>
-      <div class="form-group ">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" name="address" id="address" [(ngModel)]="user.address" #address ="ngModel">
-      </div>
-      <div class="form-group ">
-        <label for="phone">Phone Number</label>
-        <input type="text" class="form-control" name="phone" id="phone" [(ngModel)]="user.phone" #phoneNumber ="ngModel">
-      </div>
-      <div class="form-group ">
-        <label for="dateOfBirth">Date of birth</label>
-        <input type="text" bsDatepicker autocomplete="OFF" class="form-control" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="user.birthday" #dob ="ngModel">
-      </div>
-      <div class="form-group">
-        <label for="roles">Roles</label>
-        <select class="form-control" id="roles" name="roles" [(ngModel)]="user.roles[0].name">
-          <option>user</option>
-          <option>admin</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <button type="submit" class="btn btn-success">Update</button>
-        <button type="button" routerLink="/admin/exam" class="btn btn-warning">Cancel</button>
-        <div *ngIf="f.submitted" class="alert alert-danger" style="max-width: 300px">
-          Update failed
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"
+                 placeholder="First Name">
         </div>
-      </div>
-    </form>
-
+        <div class="text-left">
+          <label>Last Name</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="firstName" id="lastName" name="lastName"
+                 placeholder="Last Name">
+        </div>
+        <div class="text-left">
+          <label>Email</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="email"
+                 placeholder="Email">
+        </div>
+        <div class="text-left">
+          <label>Số điện thoại</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="phone"
+                 placeholder="Số điện thoại">
+        </div>
+        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>
+      </form>
+    </div>
   </div>
 </div>
+
+
+<!--<div class="container mt-5">-->
+<!--  <h1 class="text-capitalize text-primary">Edit exam</h1>-->
+<!--  <div class="d-block w-50 m-auto">-->
+<!--    <form name="form" class="form-group" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+<!--      <div class="form-group ">-->
+<!--        <label for="id">Id</label>-->
+<!--        <input type="text" class="form-control" name="id" id="id" [(ngModel)]="id" readonly>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="username">Username<i class="text-danger ml-1">*</i></label>-->
+<!--        <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.username" #username="ngModel" readonly>-->
+<!--      </div>-->
+<!--      <div *ngIf="f.submitted && username.invalid">-->
+<!--        <div *ngIf="username.errors?.required" class="text-danger">Username is required</div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="firstName">First-name<i class="text-danger ml-1">*</i></label>-->
+<!--        <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required="required">-->
+<!--      </div>-->
+<!--      <div *ngIf="f.submitted && firstName.invalid">-->
+<!--        <div *ngIf="firstName.errors?.required" class="text-danger">first name is required</div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="lastName">Last-name<i class="text-danger ml-1">*</i></label>-->
+<!--        <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required="required">-->
+<!--      </div>-->
+<!--      <div *ngIf="f.submitted && lastName.invalid">-->
+<!--        <div *ngIf="lastName.errors?.required" class="text-danger">Last-name is required</div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="email">Email <i class="text-danger ml-1">*</i></label>-->
+<!--        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="user.email" #email ="ngModel" required="required" email="email">-->
+<!--      </div>-->
+<!--      <div *ngIf="f.submitted && email.invalid">-->
+<!--        <div *ngIf="email.errors?.required" class="text-danger">Email is required</div>-->
+<!--        <div *ngIf="email.errors?.email" class="text-danger">Email must be a valid Email</div>-->
+<!--      </div>-->
+<!--      <div class="form-group ">-->
+<!--        <label for="avatar">Avatar</label>-->
+<!--        <input type="text" class="form-control" name="avatar" id="avatar" [(ngModel)]="user.avatar" #avatar ="ngModel">-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        Gender:-->
+<!--        <div class="form-check form-check-inline">-->
+<!--          <input type="radio" class="form-check-input" name="male" id="male" [(ngModel)]="user.gender" value="Male" #gender ="ngModel">-->
+<!--          <label class="form-check-label" for="male">Male</label>-->
+<!--        </div>-->
+<!--        <div class="form-check form-check-inline">-->
+<!--          <input type="radio" class="form-check-input" name="female" id="female" [(ngModel)]="user.gender" value="Female" #gender ="ngModel">-->
+<!--          <label class="form-check-label" for="female">Female</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <br>-->
+<!--      <div class="form-group ">-->
+<!--        <label for="address">Address</label>-->
+<!--        <input type="text" class="form-control" name="address" id="address" [(ngModel)]="user.address" #address ="ngModel">-->
+<!--      </div>-->
+<!--      <div class="form-group ">-->
+<!--        <label for="phone">Phone Number</label>-->
+<!--        <input type="text" class="form-control" name="phone" id="phone" [(ngModel)]="user.phone" #phoneNumber ="ngModel">-->
+<!--      </div>-->
+<!--      <div class="form-group ">-->
+<!--        <label for="dateOfBirth">Date of birth</label>-->
+<!--        <input type="text" bsDatepicker autocomplete="OFF" class="form-control" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="user.birthday" #dob ="ngModel">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="roles">Roles</label>-->
+<!--        <select class="form-control" id="roles" name="roles" [(ngModel)]="user.roles[0].name">-->
+<!--          <option>user</option>-->
+<!--          <option>admin</option>-->
+<!--        </select>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <button type="submit" class="btn btn-success">Update</button>-->
+<!--        <button type="button" routerLink="/admin/exam" class="btn btn-warning">Cancel</button>-->
+<!--        <div *ngIf="f.submitted" class="alert alert-danger" style="max-width: 300px">-->
+<!--          Update failed-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+
+<!--  </div>-->
+<!--</div>-->
 
 
 

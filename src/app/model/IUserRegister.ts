@@ -13,7 +13,7 @@ export class IUserRegister {
   public email?: string;
   public address?: string;
   public avatar?: string;
-  public createDate?: Timestamp<any>;
+  public createdDate?: any;
   public blocked?: boolean;
   public roles?: [IAppRole];
 

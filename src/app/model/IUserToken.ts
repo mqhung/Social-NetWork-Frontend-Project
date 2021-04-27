@@ -14,7 +14,7 @@ export interface IUserToken {
    email?: string;
    address?: string;
    avatar?: string;
-   createDate?: Timestamp<any>;
+   createDate?: Date;
    blocked?: boolean;
    roles?: [IAppRole];
    token?: string;
