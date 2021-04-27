@@ -20,6 +20,7 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
+import { EditCommentComponent } from './post/edit-comment/edit-comment.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
     UserInfoComponent,
     HandlefriendComponent,
     UserEditComponent,
-    MutualFriendComponent
+    MutualFriendComponent,
+    EditCommentComponent
   ],
   imports: [
     BrowserModule,

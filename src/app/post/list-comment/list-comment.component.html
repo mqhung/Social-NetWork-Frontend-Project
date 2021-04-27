@@ -1,8 +1,12 @@
+<h6>There are {{comments.length}} comment</h6>
 <div *ngFor="let c of comments" class="post-comment">
   <img [src]="c.appUser.avatar" class="profile-photo-sm"/>
   <span>
-    <a class="profile-link" [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
+    <a class="profile-link"
+       [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
     <p class="text-muted"> {{c.createdTime| date : 'hh: mm | dd/ MM/ yyyy'}}</p>
+       <a [routerLink]="'/post/edit/' + c.id">Sửa</a>
+    <a [routerLink]="'/post/delete/' + c.id" style="margin-left: 10px" (click)="deleteComment(c.id)">Xoá</a>
   </span>
 </div>

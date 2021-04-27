@@ -14,11 +14,28 @@ import {ListCommentComponent} from '../list-comment/list-comment.component';
 export class CreateCommentComponent implements OnInit {
   comments: Comment = {
     id: 0,
-    appUser: null,
+    appUser: {
+      id: 0,
+      username: '',
+      password: '',
+      birthday: null,
+      firstName: '',
+      lastName: '',
+      gender: '',
+      phone: 0,
+      email: 'dattb28@gmail.com',
+      address: '',
+      avatar: '',
+      createdDate: null,
+      blocked: false,
+      appRole: {
+        id: 0,
+        name: ''
+      }
+    },
     postId: 0,
     content: '',
     createdTime: null
-
   };
 
 
@@ -33,7 +50,6 @@ export class CreateCommentComponent implements OnInit {
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
-
     });
   }
 
@@ -41,18 +57,18 @@ export class CreateCommentComponent implements OnInit {
     this.comments.postId = this.postId;
   }
 
-  @Output()
-  listComment: Comment[];
-
   createComment() {
-    this.commentService.createComment(this.comments).subscribe(next => {
-      this.comments.content = '';
+    this.commentService.createComment(this.comments).subscribe(() => {
+      // this.comments.content = '';
       // this.router.navigate(['timeline']);
       // this.comments = next;
       // this.commentService.getAllComment(this.postId).subscribe(next => {
-       let  listCommentComponent: ListCommentComponent;
-        listCommentComponent.comments.push(next);
+      //  let  listCommentComponent: ListCommentComponent;
+      //   listCommentComponent.comments.push(next);
       // });
+      this.postService.getCurrentUser().subscribe(next => {
+        this.comments.appUser = next;
+      });
     });
   }
 }
