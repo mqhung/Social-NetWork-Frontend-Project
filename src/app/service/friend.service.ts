@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {IAppUser} from "../model/IAppUser";
 
 
 @Injectable({
@@ -65,5 +66,9 @@ export class FriendService {
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
     )
+  }
+
+  getSimilarFriendList(id: number) :Observable<IAppUser[]>{
+    return this.http.get<IAppUser[]>(this.friendUrl+'/getSimilarFriend/'+id)
   }
 }

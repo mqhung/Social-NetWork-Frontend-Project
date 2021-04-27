@@ -5,6 +5,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
+import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./post/post.module').then(module => module.PostModule)
   },
   {
-    path: 'listFriend',
+    path: 'listFriend/:id',
     component: FriendComponent
   },
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'mutual-friends/:id',
+    component: MutualFriendComponent
   },
   {
     path: 'listPendingFriend',
