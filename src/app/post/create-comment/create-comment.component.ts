@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
 import {Comment} from '../../model/comment';
 import {PostService} from '../../service/post/post.service';
-import {ListCommentComponent} from '../list-comment/list-comment.component';
 
 @Component({
   selector: 'app-create-comment',
@@ -14,30 +13,12 @@ import {ListCommentComponent} from '../list-comment/list-comment.component';
 export class CreateCommentComponent implements OnInit {
   comments: Comment = {
     id: 0,
-    appUser: {
-      id: 0,
-      username: '',
-      password: '',
-      birthday: null,
-      firstName: '',
-      lastName: '',
-      gender: '',
-      phone: 0,
-      email: 'dattb28@gmail.com',
-      address: '',
-      avatar: '',
-      createdDate: null,
-      blocked: false,
-      appRole: {
-        id: 0,
-        name: ''
-      }
-    },
+    appUser: null,
     postId: 0,
     content: '',
     createdTime: null
-  };
 
+  };
 
   @Input()
   postId: number;
@@ -50,12 +31,14 @@ export class CreateCommentComponent implements OnInit {
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
+
     });
   }
 
   ngOnInit(): void {
     this.comments.postId = this.postId;
   }
+
 
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {

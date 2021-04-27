@@ -6,7 +6,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
-import {EditCommentComponent} from './post/edit-comment/edit-comment.component';
+import {UserEditComponent} from './user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -37,7 +37,15 @@ const routes: Routes = [
     path: 'listPendingFriend',
     component: HandlefriendComponent
   },
-
+  {
+    path: 'user-edit/:id',
+    component: UserEditComponent
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  }
 ];
 
 @NgModule({

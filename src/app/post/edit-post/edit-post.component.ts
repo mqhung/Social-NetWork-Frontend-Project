@@ -1,40 +1,35 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IPost} from '../../model/IPost';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../service/post/post.service';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {IPost} from '../../model/IPost';
 import {IAppUser} from '../../model/IAppUser';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {Router} from '@angular/router';
-import {ListPostComponent} from '../list-post/list-post.component';
-import {error} from '@angular/compiler/src/util';
 import {IPostStatus} from '../../model/i-post-status';
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css']
+  selector: 'app-edit-post',
+  templateUrl: './edit-post.component.html',
+  styleUrls: ['./edit-post.component.css']
 })
-export class AddPostComponent implements OnInit {
+export class EditPostComponent implements OnInit {
 
-  post: IPost = {
-    id: null,
-    appUser: null,
-    content: '',
-    createdTime: null,
-    image: null,
-    status: {
-      id: 1
-    }
-  };
-  currentUser: IAppUser;
+  post: IPost;
+  id: number;
+
   listPostStatus: IPostStatus[] = [];
 
-  constructor(private storage: AngularFireStorage,
-              private postService: PostService,
-              private router: Router) {
-    postService.getCurrentUser().subscribe(next => {
-      this.currentUser = next;
+  constructor(
+    private postService: PostService,
+    private router: Router,
+    private storage: AngularFireStorage,
+    private activatedRouter: ActivatedRoute) {
+    this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
+      this.id = +paraMap.get('id');
+    });
+    this.postService.getPostById(this.id).subscribe(next => {
+      this.post = next;
     });
     this.postService.getAllPostStatus().subscribe(next => {
       for (let i = 0; i < next.length; i++) {
@@ -42,16 +37,16 @@ export class AddPostComponent implements OnInit {
 
       }
     });
-
   }
 
   ngOnInit(): void {
+    // console.log(this.post);
   }
 
 
   title = 'cloudsStorage';
   selectedFile: File = null;
-  fb;
+  img;
   downloadURL: Observable<string>;
 
   onFileSelected(event) {
@@ -67,9 +62,9 @@ export class AddPostComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fb = url;
+              this.img = url;
             }
-            console.log(this.fb);
+            console.log(this.img);
           });
         })
       )
@@ -81,18 +76,18 @@ export class AddPostComponent implements OnInit {
       });
   }
 
-  createPost() {
-    this.post.image = this.fb;
-    this.postService.addNewPost(this.post).subscribe(posted => {
-      this.deleteImage();
-      this.post.content = '';
-      console.log('ok');
-      this.router.navigateByUrl('/post/new-feed');
+  updatePost() {
+    if (this.img!=null){
+      this.post.image = this.img;
+    }
+    this.postService.addNewPost(this.post).subscribe(() => {
+      this.router.navigateByUrl('/post/timeline');
 
     });
   }
 
   deleteImage() {
-    this.fb = null;
+    this.post.image = null;
+    this.img = null;
   }
 }

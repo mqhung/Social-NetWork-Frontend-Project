@@ -4,6 +4,7 @@ import {PersonnalPageComponent} from './personal-page/personnal-page.component';
 import {NewFeedComponent} from './new-feed/new-feed.component';
 import {GuestPageComponent} from './guest-page/guest-page.component';
 import {EditCommentComponent} from './edit-comment/edit-comment.component';
+import {EditPostComponent} from './edit-post/edit-post.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,14 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditCommentComponent
+  },
+  {
+    path: 'user/:id',
+    component: GuestPageComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditPostComponent
   }
 ];
 

@@ -3,6 +3,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {PostService} from '../../service/post/post.service';
 import {IPost} from '../../model/IPost';
 import {IAppUser} from '../../model/IAppUser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-feed',
@@ -13,9 +14,10 @@ export class NewFeedComponent implements OnInit {
 
   postList: IPost[] = [];
   currentUser: IAppUser;
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService,
+              private router: Router) {
    postService.getAllFriendPost().subscribe(next =>{
-     this.postList = next;
+     this.postList = next.reverse();
    });
     this.postService.getCurrentUser().subscribe(next => {
       this.currentUser = next;
@@ -24,5 +26,12 @@ export class NewFeedComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  deletePost(postId: number) {
+    if (confirm('delete this post')){
+      this.postService.deletePost(postId).subscribe(() => {
+        this.router.navigate(['/new-feed']);
+      });
 
+    }
+  }
 }
