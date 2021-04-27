@@ -13,9 +13,11 @@
       ================================================= -->
       <div class="col-md-3 static">
         <div class="profile-card">
-          <img [src]="currentUser.avatar" alt="user" class="profile-photo"/>
-          <h5><a [routerLink]="'/timeline'" class="text-white">{{currentUser.firstName+' '+currentUser.lastName}}</a></h5>
-          <a [routerLink]="'/timeline'" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
+          <img [src]="post.appUser.avatar" alt="user" class="profile-photo"/>
+          <h5><a [routerLink]="'/timeline'"
+                 class="text-white">{{post.appUser.firstName + ' ' + post.appUser.lastName}}</a></h5>
+          <a [routerLink]="'/timeline'" class="text-white"><i class="ion ion-android-person-add"></i> 1,299
+            followers</a>
         </div><!--profile card ends-->
         <ul class="nav-news-feed static">
           <li><i class="icon ion-ios-paper"></i>
@@ -40,31 +42,31 @@
         <div id="chat-block">
           <div class="title">Chat online</div>
           <ul class="online-users list-inline">
-            <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="./assets/images/users/user-2.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="images/users/user-2.jpg" alt="user"
                                                                           class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="./assets/images/users/user-3.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="images/users/user-3.jpg" alt="user"
                                                                          class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="John Doe"><img src="./assets/images/users/user-4.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="John Doe"><img src="images/users/user-4.jpg" alt="user"
                                                                        class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="./assets/images/users/user-5.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="images/users/user-5.jpg" alt="user"
                                                                            class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="James Carter"><img src="./assets/images/users/user-6.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="James Carter"><img src="images/users/user-6.jpg" alt="user"
                                                                            class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="./assets/images/users/user-7.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="images/users/user-7.jpg" alt="user"
                                                                           class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="./assets/images/users/user-8.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="images/users/user-8.jpg" alt="user"
                                                                            class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Anna Young"><img src="./assets/images/users/user-9.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Anna Young"><img src="images/users/user-9.jpg" alt="user"
                                                                          class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="./assets/images/users/user-10.jpg" alt="user"
+            <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="images/users/user-10.jpg" alt="user"
                                                                         class="img-responsive profile-photo"/><span
               class="online-dot"></span></a></li>
           </ul>
@@ -74,13 +76,34 @@
 
         <!-- Post Create Box
         ================================================= -->
-        <app-add-post></app-add-post>
+        <!--        <app-add-post></app-add-post>-->
         <!-- Post Create Box End-->
 
         <!-- Post Content
         ================================================= -->
-        <div class="post-content" *ngFor="let post of postList">
-          <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image"/>
+        <div class="post-content">
+          <button *ngIf="post.image!=null&&img==null" style="float: right" class="btn btn-primary"
+                  (click)="deleteImage()">Delete image
+          </button>
+          <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <label for="file-input">
+            <a *ngIf="post.image!=null&&img==null||img!=null" style="float: right" class="btn btn-primary">Change image
+            </a>
+          </label>
+          <label for="file-input">
+            <a *ngIf="post.image==null&&img==null" style="float: right" class="btn btn-primary">Add image</a>
+          </label>
+          <input type="file"
+                 id="file-input"
+                 #userPhoto
+                 (change)="onFileSelected($event)"
+                 name="image"
+                 autocomplete="off"
+                 style="display: none"
+          />
+          <img *ngIf="post.image!=null&&img==null" [src]="post.image" alt="post-image"
+               class="img-responsive post-image"/>
+          <img *ngIf="img!=null" [src]="img" alt="post-image" class="img-responsive post-image"/>
           <div class="post-container">
             <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left"/>
             <div class="post-detail">
@@ -90,23 +113,24 @@
                   class="following">following</span></h5>
                 <p class="text-muted">Published at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
                   &nbsp;
-                  <i class="icon ion-alert"></i> {{post.status.name}}</p>
+                  <select class="form-select" aria-label="Default select example" [(ngModel)]="post.status.id"
+                          style="border: none">
+                    <option *ngFor="let postStatus of listPostStatus"
+                            [value]="postStatus.id">{{postStatus.name}}</option>
+                  </select>
               </div>
               <div class="reaction">
                 <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
                 <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
-                <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
-
-
               </div>
               <div class="line-divider"></div>
               <div class="post-text">
-                <p>{{post.content}}</p>
+                <textarea [(ngModel)]="post.content">{{post.content}}</textarea>
+                <button class="btn-primary btn" (click)="updatePost()">Update</button>
               </div>
               <div class="line-divider"></div>
-              <app-list-comment [postId]="post.id"></app-list-comment>
-              <app-create-comment [postId]="post.id"></app-create-comment>
+              <!--              <app-list-comment [postId]="post.id"></app-list-comment>-->
+              <!--              <app-create-comment [postId]="post.id"></app-create-comment>-->
             </div>
           </div>
         </div>

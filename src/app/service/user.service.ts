@@ -17,6 +17,7 @@ export class UserService {
   }
 
   private userUrl = environment.URL + 'users';
+  private friendUrl = environment.URL + 'relationship';
 
   getCurrentUser() {
     return this.findUserById(this.jwtService.currentUserValue.id);
@@ -32,6 +33,14 @@ export class UserService {
 
   findAllUser() : Observable<IAppUser[]>{
     return this.http.get<IAppUser[]>(this.userUrl + '/').pipe(
+      tap(users => JSON.stringify(users),
+        catchError(err => of([]))
+      )
+    )
+  }
+
+  showAllUserNoFriend(): Observable<IAppUser[]>{
+    return this.http.get<IAppUser[]>(this.friendUrl + '/listNoFriend').pipe(
       tap(users => JSON.stringify(users),
         catchError(err => of([]))
       )

@@ -19,6 +19,7 @@ import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     LogoutComponent,
     UserInfoComponent,
     HandlefriendComponent,
-    UserEditComponent
+    UserEditComponent,
+    MutualFriendComponent
   ],
   imports: [
     BrowserModule,

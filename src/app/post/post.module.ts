@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import {ListCommentComponent} from './list-comment/list-comment.component';
 import {CreateCommentComponent} from './create-comment/create-comment.component';
 import {UserComponent} from './user/user.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 
 @NgModule({
@@ -29,12 +30,14 @@ import {UserComponent} from './user/user.component';
     FooterComponent,
     ListCommentComponent,
     CreateCommentComponent,
-    UserComponent
+    UserComponent,
+    EditPostComponent
   ],
-  exports: [
-    NavbarComponent,
-    CoverComponent
-  ],
+    exports: [
+        NavbarComponent,
+        CoverComponent,
+        FooterComponent
+    ],
   imports: [
     CommonModule,
     PostRoutingModule,

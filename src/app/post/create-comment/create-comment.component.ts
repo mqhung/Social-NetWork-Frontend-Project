@@ -42,6 +42,7 @@ export class CreateCommentComponent implements OnInit {
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {
       // this.router.navigate(['timeline']);
+      this.comments.content = '';
       this.postService.getCurrentUser().subscribe(next => {
         this.comments.appUser = next;
       });
