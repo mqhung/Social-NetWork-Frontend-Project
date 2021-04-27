@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
@@ -26,7 +26,8 @@ export class CreateCommentComponent implements OnInit {
 
   constructor(private router: Router,
               private commentService: CommentService,
-              private postService: PostService
+              private postService: PostService,
+              // public listComment: ListCommentComponent
   ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.comments.appUser = next;
@@ -41,8 +42,13 @@ export class CreateCommentComponent implements OnInit {
 
   createComment() {
     this.commentService.createComment(this.comments).subscribe(() => {
+      // this.comments.content = '';
       // this.router.navigate(['timeline']);
-      this.comments.content = '';
+      // this.comments = next;
+      // this.commentService.getAllComment(this.postId).subscribe(next => {
+      //  let  listCommentComponent: ListCommentComponent;
+      //   listCommentComponent.comments.push(next);
+      // });
       this.postService.getCurrentUser().subscribe(next => {
         this.comments.appUser = next;
       });
