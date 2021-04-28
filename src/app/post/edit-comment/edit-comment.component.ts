@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {Comment} from '../../model/comment';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CommentService} from '../../service/comment.service';
+import {IPost} from '../../model/IPost';
 
 @Component({
   selector: 'app-edit-comment',
@@ -23,7 +24,8 @@ export class EditCommentComponent implements OnInit {
 
   constructor(private router: Router,
               private commentService: CommentService,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute
+  ) {
     this.sub = this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
       this.id = Number(paraMap.get('id'));
       this.getById(this.id);

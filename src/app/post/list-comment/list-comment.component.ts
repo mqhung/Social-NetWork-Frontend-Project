@@ -95,11 +95,9 @@ export class ListCommentComponent implements OnInit {
   // }
 
   deleteComment(id: number) {
-    // if(this.comment.appUser != null) {
     this.commentService.deleteComment(id).subscribe(deleteComment => {
       this.showComment();
     });
-    // }
   }
 
   createComment() {
