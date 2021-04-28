@@ -23,6 +23,8 @@ export class NewFeedComponent implements OnInit {
     this.postService.getCurrentUser().subscribe(next => {
       this.currentUser = next;
     });
+
+    this.isLogin();
   }
 
   ngOnInit(): void {
@@ -40,4 +42,11 @@ export class NewFeedComponent implements OnInit {
 
     }
   }
+  isLogin(){
+    let loginUser = localStorage.getItem("currentUser");
+    if (loginUser == null) {
+      this.router.navigate(['/login']);
+    }
+  }
+
 }

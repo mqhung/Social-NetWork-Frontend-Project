@@ -16,7 +16,10 @@ export class ListPostComponent {
 
   currentUser: IAppUser;
 
-  // postList: IPost[];
+  PUBLIC = 1;
+  FRIEND_ONLY = 2;
+  PRIVATE = 3;
+
 
   constructor(public postService: PostService,
               private router: Router) {

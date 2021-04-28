@@ -1,44 +1,152 @@
+
+
 <div class="post-content" *ngFor="let post of postService.postListTimeline">
 
-  <!--Post Date-->
-  <div class="post-date hidden-xs hidden-sm">
-    <h5>{{post.appUser.firstName}}</h5>
-    <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
-  </div><!--Post Date End-->
+  <!--  case of not login user-->
+  <div *ngIf="currentUser ==null">
+    <div *ngIf="post.status.id ==PUBLIC">
+      <!--Post Date-->
+      <div class="post-date hidden-xs hidden-sm">
+        <h5>{{post.appUser.firstName}}</h5>
+        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+      </div><!--Post Date End-->
 
-  <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
-  <div class="post-container">
-    <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left">
-    <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
+      <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+      <div class="post-container">
+        <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
+             class="profile-photo-md pull-left">
+        <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
 
-    <div class="post-detail">
-      <div class="user-info">
-        <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
-          class="following">following</span></h5>
-        <p class="text-muted">Published a photo
-          at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
-          &nbsp;
+        <div class="post-detail">
+          <div class="user-info">
+            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+              class="following">following</span></h5>
+            <p class="text-muted">Published a photo
+              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+              &nbsp;
 
 
-          <i class="icon ion-alert"></i> {{post.status.name}}</p>
-      </div>
-      <div class="reaction">
-        <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-        <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
-        <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
-      </div>
-      <div class="line-divider"></div>
-      <div class="post-text">
-        <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
-        <p>{{post.content}}</p>
-      </div>
-      <div class="line-divider"></div>
-      <!--                ///comment-->
-      <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-      <div class="post-comment" >
-        <app-list-comment [postId]="post.id"></app-list-comment>
+              <i class="icon ion-alert"></i> {{post.status.name}}</p>
+          </div>
+          <div class="reaction">
+            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+               class="btn text-green">Edit</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+               class="btn text-green">Delete</a>
+          </div>
+          <div class="line-divider"></div>
+          <div class="post-text">
+            <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
+            <p>{{post.content}}</p>
+          </div>
+          <div class="line-divider"></div>
+          <!--                ///comment-->
+          <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
+          <div class="post-comment">
+            <app-list-comment [postId]="post.id"></app-list-comment>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <!--  case of currentUser-->
+  <div *ngIf="currentUser!=null&&currentUser.id ==post.appUser.id">
+      <!--Post Date-->
+      <div class="post-date hidden-xs hidden-sm">
+        <h5>{{post.appUser.firstName}}</h5>
+        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+      </div><!--Post Date End-->
+
+      <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+      <div class="post-container">
+        <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
+             class="profile-photo-md pull-left">
+        <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
+
+        <div class="post-detail">
+          <div class="user-info">
+            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+              class="following">following</span></h5>
+            <p class="text-muted">Published a photo
+              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+              &nbsp;
+
+
+              <i class="icon ion-alert"></i> {{post.status.name}}</p>
+          </div>
+          <div class="reaction">
+            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+               class="btn text-green">Edit</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+               class="btn text-green">Delete</a>
+          </div>
+          <div class="line-divider"></div>
+          <div class="post-text">
+            <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
+            <p>{{post.content}}</p>
+          </div>
+          <div class="line-divider"></div>
+          <!--                ///comment-->
+          <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
+          <div class="post-comment">
+            <app-list-comment [postId]="post.id"></app-list-comment>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!--  case of friend-->
+  <div *ngIf="currentUser!=null&&currentUser.id !=post.appUser.id">
+    <div *ngIf="post.status.id ==PUBLIC||post.status.id ==FRIEND_ONLY">
+      <!--Post Date-->
+      <div class="post-date hidden-xs hidden-sm">
+        <h5>{{post.appUser.firstName}}</h5>
+        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+      </div><!--Post Date End-->
+
+      <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+      <div class="post-container">
+        <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
+             class="profile-photo-md pull-left">
+        <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
+
+        <div class="post-detail">
+          <div class="user-info">
+            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+              class="following">following</span></h5>
+            <p class="text-muted">Published a photo
+              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+              &nbsp;
+
+
+              <i class="icon ion-alert"></i> {{post.status.name}}</p>
+          </div>
+          <div class="reaction">
+            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+               class="btn text-green">Edit</a>
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+               class="btn text-green">Delete</a>
+          </div>
+          <div class="line-divider"></div>
+          <div class="post-text">
+            <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
+            <p>{{post.content}}</p>
+          </div>
+          <div class="line-divider"></div>
+          <!--                ///comment-->
+          <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
+          <div class="post-comment">
+            <app-list-comment [postId]="post.id"></app-list-comment>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
