@@ -13,7 +13,7 @@
       <div class="col-md-9">
         <ul class="list-inline profile-menu">
           <li><a [routerLink]="'/user/'+guestUserId" class="active">Timeline</a></li>
-          <li><a>About</a></li>
+          <li><a [routerLink]="'/user/'+guestUserId+'/about'">About</a></li>
           <li><a>Album</a></li>
           <li *ngIf="currentUser!=null" ><a [routerLink]="'/listFriend/'+guestUserId" >Friends</a></li>
           <li *ngIf="currentUser==null" ><a >Friends</a></li>
