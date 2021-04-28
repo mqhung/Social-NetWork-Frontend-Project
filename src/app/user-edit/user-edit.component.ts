@@ -70,6 +70,9 @@ export class UserEditComponent implements OnInit {
           lastName: new FormControl(this.user.lastName),
           email: new FormControl(this.user.email),
           phone: new FormControl(this.user.phone),
+          address: new FormControl(this.user.address),
+          birthday: new FormControl(this.user.birthday),
+          gender: new FormControl(this.user.gender),
         })
       });
     });
@@ -84,6 +87,9 @@ export class UserEditComponent implements OnInit {
       lastName: this.updateForm.get('lastName').value,
       email: this.updateForm.get('email').value,
       phone: this.updateForm.get('phone').value,
+      address: this.updateForm.get('address').value,
+      birthday: this.updateForm.get('birthday').value,
+      gender: this.updateForm.get('gender').value,
       avatar: this.user.avatar
     }
     return newUser;

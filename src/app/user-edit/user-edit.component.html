@@ -1,59 +1,3 @@
-<!--<div class="row container-fluid mt-5 ml-1" style="background: #f8f9fc">-->
-<!--  <div class="col-2 test"></div>-->
-<!--  <div class="card text-center register col-lg-3 " >-->
-<!--    <div class=" text-center mt-2">-->
-<!--      <h2>Thông tin cá nhân</h2>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      &lt;!&ndash; Login&ndash;&gt;-->
-
-<!--      <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt=""></div>-->
-<!--      <form [formGroup]="updateForm" (ngSubmit)="update()">-->
-
-<!--        <div class="input-group mb-3">-->
-<!--          <div class="input-group-prepend">-->
-<!--            <span class="input-group-text">Upload</span>-->
-<!--          </div>-->
-<!--          <div class="custom-file">-->
-<!--            <input type="file" class="form-control" (change)="saveImg($event)" id="inputFile">-->
-<!--            <label class="custom-file-label" for="inputFile">Choose file</label>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>First Name</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"-->
-<!--                 placeholder="First Name">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Last Name</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName"-->
-<!--                 placeholder="Last Name">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Email</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="email"-->
-<!--                 placeholder="Email">-->
-<!--        </div>-->
-<!--        <div class="text-left">-->
-<!--          <label>Số điện thoại</label>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" formControlName="phone"-->
-<!--                 placeholder="Số điện thoại">-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
 <body>
 <!-- Header
 ================================================= -->
@@ -101,55 +45,6 @@
               <ul class="col-md-10 col-sm-5">
 
 
-                <!--                <div class="row container-fluid mt-5 ml-5" >-->
-                <!--                  <div class="col-2 test"></div>-->
-                <!--                  <div class="card text-center register col-lg-14 " >-->
-                <!--                    <div class="card-body">-->
-                <!--                      <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt="" width="200px" height="200px"></div>-->
-                <!--                      <form [formGroup]="updateForm" (ngSubmit)="update()">-->
-
-                <!--                        <div class="input-group mb-3">-->
-                <!--                          <div class="input-group-prepend">-->
-                <!--                            <span class="input-group-text">Upload</span>-->
-                <!--                          </div>-->
-                <!--                          <div class="custom-file">-->
-                <!--                            <input type="file" class="form-control" (change)="saveImg($event)" id="inputFile">-->
-                <!--                            <label class="custom-file-label" for="inputFile">Choose file</label>-->
-                <!--                          </div>-->
-                <!--                        </div>-->
-                <!--                        <div class="text-left">-->
-                <!--                          <label>First Name</label>-->
-                <!--                        </div>-->
-                <!--                        <div class="form-group">-->
-                <!--                          <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"-->
-                <!--                                 placeholder="First Name">-->
-                <!--                        </div>-->
-                <!--                        <div class="text-left">-->
-                <!--                          <label>Last Name</label>-->
-                <!--                        </div>-->
-                <!--                        <div class="form-group">-->
-                <!--                          <input type="text" class="form-control" formControlName="lastName" id="lastName" name="lastName"-->
-                <!--                                 placeholder="Last Name">-->
-                <!--                        </div>-->
-                <!--                        <div class="text-left">-->
-                <!--                          <label>Email</label>-->
-                <!--                        </div>-->
-                <!--                        <div class="form-group">-->
-                <!--                          <input type="text" class="form-control" formControlName="email"-->
-                <!--                                 placeholder="Email">-->
-                <!--                        </div>-->
-                <!--                        <div class="text-left">-->
-                <!--                          <label>Phone</label>-->
-                <!--                        </div>-->
-                <!--                        <div class="form-group">-->
-                <!--                          <input type="text" class="form-control" formControlName="phone"-->
-                <!--                                 placeholder="Số điện thoại">-->
-                <!--                        </div>-->
-                <!--                        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>-->
-                <!--                      </form>-->
-                <!--                    </div>-->
-                <!--                  </div>-->
-                <!--                </div>-->
                 <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt="" width="200px"
                                                        height="200px"></div>
                 <form class="user" [formGroup]="updateForm" (ngSubmit)="update()">
@@ -190,18 +85,18 @@
                     </div>
                   </div>
 
-<!--                  <div class="form-group row">-->
-<!--                    <div class="col-sm-6 mb-3 mb-sm-0">-->
-<!--                      <input type="text" class="form-control form-control-user"-->
-<!--                             id="exampleEmail" placeholder="Email" formControlName="email">-->
-<!--                      <div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-sm-6">-->
-<!--                      <input type="password" class="form-control form-control-user"-->
-<!--                             id="examplePassword" placeholder="Nhập mật khẩu" formControlName="password">-->
-<!--                    </div>-->
-<!--                  </div>-->
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label>Address</label>
+                      <input type="email" class="form-control form-control-user"
+                             id="address"  formControlName="address">
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Gender</label>
+                      <input type="text" class="form-control form-control-user"
+                             id="gender"  formControlName="gender">
+                    </div>
+                  </div>
 
                   <input type="submit" class="btn btn-primary center-block" value="Update Profile">
                   <hr>
@@ -312,10 +207,6 @@
   </div>
 </footer>
 
-<!--preloader-->
-<!--<div id="spinner-wrapper">-->
-<!--  <div class="spinner"></div>-->
-<!--</div>-->
 
 </body>
 

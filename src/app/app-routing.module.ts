@@ -48,7 +48,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'user-info',
+    path: 'user/:id/about',
     component: UserInfoComponent
   }
 ];
