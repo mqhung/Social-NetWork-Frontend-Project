@@ -5,19 +5,22 @@
     <a class="profile-link"
        [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
+
     <p class="text-muted"> {{c.createdTime| date : 'hh: mm | dd/ MM/ yyyy'}}</p>
-       <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id || currentUser!=null && currentUser.id==userPosted.id" [routerLink]="'/post/editComment/' + c.id">Edit</a>
-    <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id || currentUser!=null && currentUser.id==userPosted.id" [routerLink]="'/post/delete/' + c.id" style="margin-left: 10px"
-       (click)="deleteComment(c.id)">Delete</a>
+       <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id "
+          (click)="getCommentById(c.id)"><button class="btn-link">Edit</button></a>
+
+    <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id || currentUser!=null && currentUser.id==userPosted.id"
+       [routerLink]="'/post/delete/' + c.id" style="margin-left: 10px"
+       (click)="deleteComment(c.id)"><button class="btn-link">Delete</button></a>
   </span>
 </div>
-<div class="post-comment">
+<div class="post-container">
   <form *ngIf="currentUser!=null" (ngSubmit)="createComment()" class="post-comment">
     <img [src]="currentUser.avatar" alt="" class="profile-photo-sm"/>
-    <input name="content" type="text" id="content" class="form-control-static"
+    <input name="content" type="text" id="content" class="post-contents"
            placeholder="Post comment"
-           size="50px"
+           size="60px"
            [(ngModel)]="comment.content">
-    <button style="margin-left: 10px" type="submit" class="btn btn-primary">Comment</button>
   </form>
 </div>
