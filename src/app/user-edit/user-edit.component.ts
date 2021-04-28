@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
-import {IAppUser} from '../model/IAppUser';
-import {Subscription} from 'rxjs';
 import {IUserToken} from '../model/IUserToken';
 import {IUserRegister} from '../model/IUserRegister';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {JwtService} from '../service/auth/jwt.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
@@ -17,6 +15,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class UserEditComponent implements OnInit {
   currentUser: IUserToken;
+  idUserCurrent: any;
   user: IUserRegister;
   updateForm: FormGroup;
   arrayPicture: any;
@@ -24,11 +23,11 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: JwtService,
+    private jwtService: JwtService,
     private userService: UserService,
     private storage: AngularFireStorage
   ) {
-
+    this.checkLogin();
   }
 
   ngOnInit(): void {
@@ -42,13 +41,26 @@ export class UserEditComponent implements OnInit {
   prepareForm() {
     this.updateForm = new FormGroup({
       firstName: new FormControl(''),
+      lastName: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
     })
   }
 
+  checkLogin(){
+    if (localStorage.getItem('USERNAME') == null) {
+      this.router.navigate(['login']);
+    } else {
+      this.idUserCurrent = localStorage.getItem('ID');
+      this.userService.getUser(this.idUserCurrent).subscribe(value => {
+        this.user = value;
+        this.updateForm.patchValue(this.user);
+      });
+    }
+  }
+
   getUser() {
-    this.authenticationService.currentUser.subscribe(x => {
+    this.jwtService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUser(x.id).subscribe(value => {
         this.user = value;
@@ -58,6 +70,9 @@ export class UserEditComponent implements OnInit {
           lastName: new FormControl(this.user.lastName),
           email: new FormControl(this.user.email),
           phone: new FormControl(this.user.phone),
+          address: new FormControl(this.user.address),
+          birthday: new FormControl(this.user.birthday),
+          gender: new FormControl(this.user.gender),
         })
       });
     });
@@ -72,6 +87,9 @@ export class UserEditComponent implements OnInit {
       lastName: this.updateForm.get('lastName').value,
       email: this.updateForm.get('email').value,
       phone: this.updateForm.get('phone').value,
+      address: this.updateForm.get('address').value,
+      birthday: this.updateForm.get('birthday').value,
+      gender: this.updateForm.get('gender').value,
       avatar: this.user.avatar
     }
     return newUser;
@@ -81,7 +99,9 @@ export class UserEditComponent implements OnInit {
     let userNewInfo = this.setInfo();
     this.userService.updateUser(this.user.id, userNewInfo).subscribe(() => {
       alert("Update success!");
+      this.router.navigate(['/post/timeline']);
     }, error => {
+      alert('Error')
       console.log(error);
     })
   }

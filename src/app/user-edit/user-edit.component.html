@@ -1,147 +1,214 @@
+<body>
+<!-- Header
+================================================= -->
+<header id="header">
+  <app-navbar></app-navbar>
+</header>
+<!--Header End-->
 
-<div class="row container-fluid mt-5 ml-1" style="background: #f8f9fc">
-  <div class="col-2 test"></div>
-  <div class="card text-center register col-lg-8 " style="background: white !important;">
-    <div class=" text-center mt-2">
-      <h2>Thông tin cá nhân</h2>
+<div class="container">
+
+  <!-- Timeline
+  ================================================= -->
+  <div class="timeline">
+    <div class="timeline-cover">
+
+      <!--Timeline Menu for Large Screens-->
+      <div class="timeline-nav-bar hidden-sm hidden-xs">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-info">
+              <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <h3>{{user.firstName + " " + user.lastName}}</h3>
+              <p class="text-muted">{{user.email}} </p>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <ul class="list-inline profile-menu">
+              <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
+              <li><a href="timeline-about.html">About</a></li>
+              <li><a href="timeline-album.html">Album</a></li>
+              <li><a [routerLink]="'/listFriend'">Friends</a></li>
+              <!--              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>-->
+            </ul>
+          </div>
+        </div>
+      </div><!--Timeline Menu for Large Screens End-->
+
     </div>
-    <div class="card-body">
-      <!-- Login-->
+    <div id="page-contents">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+          <div class="friend-list">
+            <div class="row">
+              <ul class="col-md-10 col-sm-5">
 
-      <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt=""></div>
-      <form [formGroup]="updateForm" (ngSubmit)="update()">
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Upload</span>
+                <div class="row mb-3 text-center"><img class="col-12" src="{{user.avatar}}" alt="" width="200px"
+                                                       height="200px"></div>
+                <form class="user" [formGroup]="updateForm" (ngSubmit)="update()">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+<!--                      <span class="input-group-text">Upload</span>-->
+                      <label class="custom-file-label" for="inputFile">Change avatar</label>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="form-control" (change)="saveImg($event)" id="inputFile">
+<!--                      <label class="custom-file-label" for="inputFile">Choose file</label>-->
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control form-control-user" id="firstName"
+                             formControlName="firstName">
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control form-control-user" id="lastName"
+                             formControlName="lastName">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label>Email</label>
+                      <input type="email" class="form-control form-control-user"
+                             id="email"  formControlName="email">
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Phone</label>
+                      <input type="text" class="form-control form-control-user"
+                             id="phone"  formControlName="phone">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label>Address</label>
+                      <input type="email" class="form-control form-control-user"
+                             id="address"  formControlName="address">
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Gender</label>
+                      <input type="text" class="form-control form-control-user"
+                             id="gender"  formControlName="gender">
+                    </div>
+                  </div>
+
+                  <input type="submit" class="btn btn-primary center-block" value="Update Profile">
+                  <hr>
+                </form>
+
+
+              </ul>
+            </div>
           </div>
-          <div class="custom-file">
-            <input type="file" class="form-control" (change)="saveImg($event)" id="inputFile">
-            <label class="custom-file-label" for="inputFile">Choose file</label>
+        </div>
+        <div class="col-md-2 static">
+          <div id="sticky-sidebar">
+            <h4 class="grey">Sarah's activity</h4>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
+                <p class="text-muted">5 mins ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
+                <p class="text-muted">an hour ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
+                <p class="text-muted">4 hours ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
+                <p class="text-muted">a day ago</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="text-left">
-          <label>First Name</label>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" formControlName="firstName" id="firstName" name="firstName"
-                 placeholder="First Name">
-        </div>
-        <div class="text-left">
-          <label>Last Name</label>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" formControlName="firstName" id="lastName" name="lastName"
-                 placeholder="Last Name">
-        </div>
-        <div class="text-left">
-          <label>Email</label>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" formControlName="email"
-                 placeholder="Email">
-        </div>
-        <div class="text-left">
-          <label>Số điện thoại</label>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" formControlName="phone"
-                 placeholder="Số điện thoại">
-        </div>
-        <button type="submit" class="btn btn-success nutPhai mr-2">Thay đổi thông tin</button>
-      </form>
+      </div>
     </div>
   </div>
+
 </div>
 
 
-<!--<div class="container mt-5">-->
-<!--  <h1 class="text-capitalize text-primary">Edit exam</h1>-->
-<!--  <div class="d-block w-50 m-auto">-->
-<!--    <form name="form" class="form-group" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
-<!--      <div class="form-group ">-->
-<!--        <label for="id">Id</label>-->
-<!--        <input type="text" class="form-control" name="id" id="id" [(ngModel)]="id" readonly>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="username">Username<i class="text-danger ml-1">*</i></label>-->
-<!--        <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.username" #username="ngModel" readonly>-->
-<!--      </div>-->
-<!--      <div *ngIf="f.submitted && username.invalid">-->
-<!--        <div *ngIf="username.errors?.required" class="text-danger">Username is required</div>-->
-<!--      </div>-->
+<!-- Footer
+================================================= -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-wrapper">
+        <div class="col-md-3 col-sm-3">
+          <a href=""><img src="assets/images/logo-black.png" alt="" class="footer-logo"/></a>
+          <ul class="list-inline social-icons">
+            <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>For individuals</h6>
+          <ul class="footer-links">
+            <li><a href="">Signup</a></li>
+            <li><a href="">login</a></li>
+            <li><a href="">Explore</a></li>
+            <li><a href="">Finder app</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Language settings</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>For businesses</h6>
+          <ul class="footer-links">
+            <li><a href="">Business signup</a></li>
+            <li><a href="">Business login</a></li>
+            <li><a href="">Benefits</a></li>
+            <li><a href="">Resources</a></li>
+            <li><a href="">Advertise</a></li>
+            <li><a href="">Setup</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>About</h6>
+          <ul class="footer-links">
+            <li><a href="">About us</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms</a></li>
+            <li><a href="">Help</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <h6>Contact Us</h6>
+          <ul class="contact">
+            <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
+            <li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
+            <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>Thunder Team © 2016. All rights reserved</p>
+  </div>
+</footer>
 
-<!--      <div class="form-group">-->
-<!--        <label for="firstName">First-name<i class="text-danger ml-1">*</i></label>-->
-<!--        <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required="required">-->
-<!--      </div>-->
-<!--      <div *ngIf="f.submitted && firstName.invalid">-->
-<!--        <div *ngIf="firstName.errors?.required" class="text-danger">first name is required</div>-->
-<!--      </div>-->
 
-<!--      <div class="form-group">-->
-<!--        <label for="lastName">Last-name<i class="text-danger ml-1">*</i></label>-->
-<!--        <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required="required">-->
-<!--      </div>-->
-<!--      <div *ngIf="f.submitted && lastName.invalid">-->
-<!--        <div *ngIf="lastName.errors?.required" class="text-danger">Last-name is required</div>-->
-<!--      </div>-->
-
-<!--      <div class="form-group">-->
-<!--        <label for="email">Email <i class="text-danger ml-1">*</i></label>-->
-<!--        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="user.email" #email ="ngModel" required="required" email="email">-->
-<!--      </div>-->
-<!--      <div *ngIf="f.submitted && email.invalid">-->
-<!--        <div *ngIf="email.errors?.required" class="text-danger">Email is required</div>-->
-<!--        <div *ngIf="email.errors?.email" class="text-danger">Email must be a valid Email</div>-->
-<!--      </div>-->
-<!--      <div class="form-group ">-->
-<!--        <label for="avatar">Avatar</label>-->
-<!--        <input type="text" class="form-control" name="avatar" id="avatar" [(ngModel)]="user.avatar" #avatar ="ngModel">-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        Gender:-->
-<!--        <div class="form-check form-check-inline">-->
-<!--          <input type="radio" class="form-check-input" name="male" id="male" [(ngModel)]="user.gender" value="Male" #gender ="ngModel">-->
-<!--          <label class="form-check-label" for="male">Male</label>-->
-<!--        </div>-->
-<!--        <div class="form-check form-check-inline">-->
-<!--          <input type="radio" class="form-check-input" name="female" id="female" [(ngModel)]="user.gender" value="Female" #gender ="ngModel">-->
-<!--          <label class="form-check-label" for="female">Female</label>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <br>-->
-<!--      <div class="form-group ">-->
-<!--        <label for="address">Address</label>-->
-<!--        <input type="text" class="form-control" name="address" id="address" [(ngModel)]="user.address" #address ="ngModel">-->
-<!--      </div>-->
-<!--      <div class="form-group ">-->
-<!--        <label for="phone">Phone Number</label>-->
-<!--        <input type="text" class="form-control" name="phone" id="phone" [(ngModel)]="user.phone" #phoneNumber ="ngModel">-->
-<!--      </div>-->
-<!--      <div class="form-group ">-->
-<!--        <label for="dateOfBirth">Date of birth</label>-->
-<!--        <input type="text" bsDatepicker autocomplete="OFF" class="form-control" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="user.birthday" #dob ="ngModel">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="roles">Roles</label>-->
-<!--        <select class="form-control" id="roles" name="roles" [(ngModel)]="user.roles[0].name">-->
-<!--          <option>user</option>-->
-<!--          <option>admin</option>-->
-<!--        </select>-->
-<!--      </div>-->
-
-<!--      <div class="form-group">-->
-<!--        <button type="submit" class="btn btn-success">Update</button>-->
-<!--        <button type="button" routerLink="/admin/exam" class="btn btn-warning">Cancel</button>-->
-<!--        <div *ngIf="f.submitted" class="alert alert-danger" style="max-width: 300px">-->
-<!--          Update failed-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </form>-->
-
-<!--  </div>-->
-<!--</div>-->
+</body>
 
 
 

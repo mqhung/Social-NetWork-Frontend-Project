@@ -1,1 +1,175 @@
-<p>user-info works!</p>
+<body>
+<!-- Header
+================================================= -->
+<header id="header">
+  <app-navbar></app-navbar>
+</header>
+<!--Header End-->
+
+<div class="container">
+
+  <!-- Timeline
+  ================================================= -->
+  <div class="timeline">
+    <div class="timeline-cover">
+
+      <!--Timeline Menu for Large Screens-->
+      <div class="timeline-nav-bar hidden-sm hidden-xs">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-info">
+              <img src="{{user.avatar}}" alt="" class="img-responsive profile-photo"/>
+              <h3>{{user.firstName + " " + user.lastName}}</h3>
+              <p class="text-muted">{{user.email}} </p>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <ul class="list-inline profile-menu">
+              <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
+              <li><a [routerLink]="'/user/'+user.id+'/about'">About</a></li>
+              <li><a href="timeline-album.html">Album</a></li>
+              <li><a [routerLink]="'/listFriend/'+user.id">Friends</a></li>
+<!--              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>-->
+            </ul>
+          </div>
+        </div>
+      </div><!--Timeline Menu for Large Screens End-->
+
+    </div>
+    <div id="page-contents">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+          <div class="friend-list">
+            <div class="row">
+              <ul class="col-md-5 col-sm-5">
+<!--                <div class="friend-card">-->
+<!--                  <li *ngFor="let friend of pendingList, let i = index">-->
+<!--                    <img src="{{friend.avatar}}" style="width: 200px; height: 200px" alt="user"-->
+<!--                         class="profile-photo-lg"/>-->
+<!--                    <div class="card-info">-->
+<!--                      <div class="friend-info">-->
+<!--                        <h5><a [routerLink]="'/post/user/' + friend.id"-->
+<!--                               class="profile-link">{{friend.firstName + " " + friend.lastName}}</a>-->
+<!--                        </h5>-->
+<!--                        <p>B.O.D: {{friend.birthday}}</p>-->
+<!--                        <p>Country: {{friend.address}}</p>-->
+<!--                        <p>Gender: {{friend.gender}}</p>-->
+<!--                        <a class="btn btn-primary" (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>-->
+<!--                        <a style="margin-left: 5px" class="btn btn-danger" (click)="acceptInviteFriend(friend.id,3,i)">Delete</a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                </div>-->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 static">
+          <div id="sticky-sidebar">
+            <h4 class="grey">Sarah's activity</h4>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
+                <p class="text-muted">5 mins ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
+                <p class="text-muted">an hour ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
+                <p class="text-muted">4 hours ago</p>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="live-activity">
+                <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
+                <p class="text-muted">a day ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Footer
+================================================= -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-wrapper">
+        <div class="col-md-3 col-sm-3">
+          <a href=""><img src="assets/images/logo-black.png" alt="" class="footer-logo"/></a>
+          <ul class="list-inline social-icons">
+            <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+            <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>For individuals</h6>
+          <ul class="footer-links">
+            <li><a href="">Signup</a></li>
+            <li><a href="">login</a></li>
+            <li><a href="">Explore</a></li>
+            <li><a href="">Finder app</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Language settings</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>For businesses</h6>
+          <ul class="footer-links">
+            <li><a href="">Business signup</a></li>
+            <li><a href="">Business login</a></li>
+            <li><a href="">Benefits</a></li>
+            <li><a href="">Resources</a></li>
+            <li><a href="">Advertise</a></li>
+            <li><a href="">Setup</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <h6>About</h6>
+          <ul class="footer-links">
+            <li><a href="">About us</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms</a></li>
+            <li><a href="">Help</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <h6>Contact Us</h6>
+          <ul class="contact">
+            <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
+            <li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
+            <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>Thunder Team © 2016. All rights reserved</p>
+  </div>
+</footer>
+
+<!--preloader-->
+<!--<div id="spinner-wrapper">-->
+<!--  <div class="spinner"></div>-->
+<!--</div>-->
+
+</body>
+
+

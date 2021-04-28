@@ -26,7 +26,7 @@
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
               <li><a [routerLink]="'/post/user/'+userFriend.id">Timeline</a></li>
-              <li><a href="timeline-about.html">About</a></li>
+              <li><a [routerLink]="'/user/'+user.id+'/about'">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
               <li><a [routerLink]="'/listFriend/'+userFriend.id" class="active">Friends</a></li>
               <li *ngIf="user.id!=userFriend.id"><a [routerLink]="'/mutual-friends/'+userFriend.id">Mutual Friends </a>
