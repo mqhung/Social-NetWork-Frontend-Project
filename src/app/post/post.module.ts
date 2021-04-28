@@ -16,6 +16,7 @@ import {ListCommentComponent} from './list-comment/list-comment.component';
 import {CreateCommentComponent} from './create-comment/create-comment.component';
 import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ListLikerPostComponent } from './list-liker-post/list-liker-post.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     ListCommentComponent,
     CreateCommentComponent,
     UserComponent,
-    EditPostComponent
+    EditPostComponent,
+    ListLikerPostComponent
   ],
   exports: [
     NavbarComponent,
