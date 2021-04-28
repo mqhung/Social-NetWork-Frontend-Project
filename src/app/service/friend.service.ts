@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {IAppUser} from "../model/IAppUser";
+import {IAppUser} from '../model/IAppUser';
 
 
 @Injectable({
@@ -30,45 +30,49 @@ export class FriendService {
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
-    )
+    );
   }
 
-  sendFriendRequest(userReceiveId: number, user: any){
-    return this.http.post(this.friendUrl + '/create/' + userReceiveId,user).pipe(
+  sendFriendRequest(userReceiveId: number, user: any) {
+    return this.http.post(this.friendUrl + '/create/' + userReceiveId, user).pipe(
       tap(
         receiveList => JSON.stringify(receiveList)
       ),
       catchError(err => of([]))
-    )
+    );
   }
 
-  handleFriendRequest(userSendId: number, statusId: number, user: any){
+  handleFriendRequest(userSendId: number, statusId: number, user: any) {
     return this.http.put(this.friendUrl + '/edit/' + userSendId + '/' + statusId, user).pipe(
       tap(
         receiveList => JSON.stringify(receiveList)
       ),
       catchError(err => of([]))
-    )
+    );
   }
 
-  unFriend(userSendId: number, user: any){
+  unFriend(userSendId: number, user: any) {
     return this.http.put(this.friendUrl + '/unfriend/' + userSendId, user).pipe(
       tap(
         receiveList => JSON.stringify(receiveList)
       ),
       catchError(err => of([]))
-    )
+    );
   }
 
-  checkFriend(userSendId: number,userReceiveId :number) {
-    return this.http.get(this.friendUrl + '/checkFriend/' + userSendId+"/"+userReceiveId).pipe(
+  checkFriend(userSendId: number, userReceiveId: number) {
+    return this.http.get(this.friendUrl + '/checkFriend/' + userSendId + '/' + userReceiveId).pipe(
       tap(
         receivedList => JSON.stringify(receivedList)),
       catchError(err => of([]))
-    )
+    );
   }
 
-  getSimilarFriendList(id: number) :Observable<IAppUser[]>{
-    return this.http.get<IAppUser[]>(this.friendUrl+'/getSimilarFriend/'+id)
+  getSimilarFriendList(id: number): Observable<IAppUser[]> {
+    return this.http.get<IAppUser[]>(this.friendUrl + '/getSimilarFriend/' + id);
+  }
+
+  getSuggestionFriend(): Observable<IAppUser[]> {
+    return this.http.get<IAppUser[]>(this.friendUrl+'/getSuggestionFriend').pipe();
   }
 }

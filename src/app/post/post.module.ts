@@ -33,11 +33,12 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     UserComponent,
     EditPostComponent
   ],
-    exports: [
-        NavbarComponent,
-        CoverComponent,
-        FooterComponent
-    ],
+  exports: [
+    NavbarComponent,
+    CoverComponent,
+    FooterComponent,
+    UserComponent
+  ],
   imports: [
     CommonModule,
     PostRoutingModule,

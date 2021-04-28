@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'user/:id',
   component: GuestPageComponent},
   {
-    path: 'edit/:id',
+    path: 'editComment/:id',
     component: EditCommentComponent
   },
   {
