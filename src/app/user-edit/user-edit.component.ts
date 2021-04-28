@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
-import {IAppUser} from '../model/IAppUser';
-import {Subscription} from 'rxjs';
 import {IUserToken} from '../model/IUserToken';
 import {IUserRegister} from '../model/IUserRegister';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {JwtService} from '../service/auth/jwt.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
@@ -17,6 +15,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class UserEditComponent implements OnInit {
   currentUser: IUserToken;
+  idUserCurrent: any;
   user: IUserRegister;
   updateForm: FormGroup;
   arrayPicture: any;
@@ -24,11 +23,11 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: JwtService,
+    private jwtService: JwtService,
     private userService: UserService,
     private storage: AngularFireStorage
   ) {
-
+    this.checkLogin();
   }
 
   ngOnInit(): void {
@@ -36,19 +35,32 @@ export class UserEditComponent implements OnInit {
 
     }
     this.prepareForm();
-    this.getUserCurrent();
+    this.getUser();
   }
 
   prepareForm() {
     this.updateForm = new FormGroup({
       firstName: new FormControl(''),
+      lastName: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
     })
   }
 
-  getUserCurrent() {
-    this.authenticationService.currentUser.subscribe(x => {
+  checkLogin(){
+    if (localStorage.getItem('USERNAME') == null) {
+      this.router.navigate(['login']);
+    } else {
+      this.idUserCurrent = localStorage.getItem('ID');
+      this.userService.getUser(this.idUserCurrent).subscribe(value => {
+        this.user = value;
+        this.updateForm.patchValue(this.user);
+      });
+    }
+  }
+
+  getUser() {
+    this.jwtService.currentUser.subscribe(x => {
       this.currentUser = x;
       this.userService.getUser(x.id).subscribe(value => {
         this.user = value;
@@ -78,11 +90,12 @@ export class UserEditComponent implements OnInit {
   }
 
   update() {
-    this.user.avatar = this.fb;
     let userNewInfo = this.setInfo();
     this.userService.updateUser(this.user.id, userNewInfo).subscribe(() => {
       alert("Update success!");
+      this.router.navigate(['/post/timeline']);
     }, error => {
+      alert('Error')
       console.log(error);
     })
   }
@@ -101,7 +114,7 @@ export class UserEditComponent implements OnInit {
           this.arrayPicture = fileRef.getDownloadURL();
           this.arrayPicture.subscribe(url => {
             if (url) {
-              this.fb = url;
+              this.user.avatar = url;
             }
             console.log(this.user.avatar);
           });

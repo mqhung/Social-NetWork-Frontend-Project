@@ -29,7 +29,7 @@
               <li><a href="timeline-about.html">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
               <li><a [routerLink]="'/listFriend'">Friends</a></li>
-              <li><a [routerLink] class="active">Friends Request</a></li>
+<!--              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>-->
             </ul>
           </div>
         </div>
@@ -37,12 +37,12 @@
 
     </div>
     <div id="page-contents">
-<!--      <div class="row">-->
-<!--        <div class="col-md-3"></div>-->
-<!--        <div class="col-md-7">-->
-<!--          <div class="friend-list">-->
-<!--            <div class="row">-->
-<!--              <ul class="col-md-5 col-sm-5">-->
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+          <div class="friend-list">
+            <div class="row">
+              <ul class="col-md-5 col-sm-5">
 <!--                <div class="friend-card">-->
 <!--                  <li *ngFor="let friend of pendingList, let i = index">-->
 <!--                    <img src="{{friend.avatar}}" style="width: 200px; height: 200px" alt="user"-->
@@ -61,10 +61,10 @@
 <!--                    </div>-->
 <!--                  </li>-->
 <!--                </div>-->
-<!--              </ul>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="col-md-2 static">
           <div id="sticky-sidebar">
             <h4 class="grey">Sarah's activity</h4>
@@ -98,7 +98,7 @@
     </div>
   </div>
 
-
+</div>
 
 
 <!-- Footer
