@@ -17,6 +17,16 @@
           <li><a>Album</a></li>
           <li *ngIf="currentUser!=null" ><a [routerLink]="'/listFriend/'+guestUserId" >Friends</a></li>
           <li *ngIf="currentUser==null" ><a >Friends</a></li>
+          <div class="menu">
+            <form class="navbar-form navbar-right hidden-sm " (ngSubmit)="searchPostByContent()">
+              <div class="form-group">
+                <i class="icon ion-android-search"></i>
+                <input name="search" [(ngModel)]="contentToSearch" style="float: right" type="text" class="form-control" placeholder="Search for Post content">
+              </div>
+            </form>
+
+          </div>
+
         </ul>
         <ul class="follow-me list-inline">
 <!--          <li>{{friendList.length}} people following her</li>-->

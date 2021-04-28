@@ -12,12 +12,13 @@ import {Router} from '@angular/router';
 })
 export class NewFeedComponent implements OnInit {
 
-  postList: IPost[] = [];
+  // postList: IPost[] = [];
   currentUser: IAppUser;
-  constructor(private postService: PostService,
+  constructor(public postService: PostService,
               private router: Router) {
    postService.getAllFriendPost().subscribe(next =>{
-     this.postList = next.reverse();
+     this.postService.postListNewFeed = next.reverse();
+     // this.postService.postListTimeline =null;
    });
     this.postService.getCurrentUser().subscribe(next => {
       this.currentUser = next;
@@ -28,8 +29,13 @@ export class NewFeedComponent implements OnInit {
   }
   deletePost(postId: number) {
     if (confirm('delete this post')){
-      this.postService.deletePost(postId).subscribe(() => {
-        this.router.navigate(['/new-feed']);
+      this.postService.deletePost(postId).subscribe(post => {
+        for (let i = 0; i < this.postService.postListNewFeed.length; i++) {
+          if (this.postService.postListNewFeed[i].id==post.id){
+            this.postService.postListNewFeed.splice(i,1)
+          }
+        }
+        // this.router.navigate(['/new-feed']);
       });
 
     }

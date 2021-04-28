@@ -79,7 +79,7 @@
 
         <!-- Post Content
         ================================================= -->
-        <div class="post-content" *ngFor="let post of postList">
+        <div class="post-content" *ngFor="let post of this.postService.postListNewFeed">
           <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image"/>
           <div class="post-container">
             <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left"/>

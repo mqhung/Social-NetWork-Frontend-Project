@@ -16,17 +16,18 @@ export class ListPostComponent {
 
   currentUser: IAppUser;
 
-  postList: IPost[] = [];
+  // postList: IPost[];
 
-  constructor(private postService: PostService,
+  constructor(public postService: PostService,
               private router: Router) {
+    // this.postList = this.postService.postList;
   }
 
   ngOnInit(): void {
 
     this.postService.getAllPostByUserId(this.guestUserId).subscribe(next => {
-      this.postList = next.reverse();
-
+      this.postService.postListTimeline = next.reverse();
+      // this.postService.postListNewFeed =null
     });
 
     this.postService.getCurrentUser().subscribe(next => {
@@ -38,8 +39,14 @@ export class ListPostComponent {
 
   deletePost(postId: number) {
     if (confirm('delete this post')) {
-      this.postService.deletePost(postId).subscribe(() => {
-        this.router.navigate(['/timeline']);
+      this.postService.deletePost(postId).subscribe(next => {
+        for (let i = 0; i < this.postService.postListTimeline.length; i++) {
+          if (next.id == this.postService.postListTimeline[i].id) {
+            this.postService.postListTimeline.splice(i, 1);
+          }
+        }
+
+        // this.router.navigate(['/timeline']);
       });
     }
   }
