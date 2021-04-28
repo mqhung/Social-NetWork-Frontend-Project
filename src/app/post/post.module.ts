@@ -13,7 +13,6 @@ import { ListPostComponent } from './list-post/list-post.component';
 import { GuestPageComponent } from './guest-page/guest-page.component';
 import { FooterComponent } from './footer/footer.component';
 import {ListCommentComponent} from './list-comment/list-comment.component';
-import {CreateCommentComponent} from './create-comment/create-comment.component';
 import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 
@@ -29,7 +28,6 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     GuestPageComponent,
     FooterComponent,
     ListCommentComponent,
-    CreateCommentComponent,
     UserComponent,
     EditPostComponent
   ],
@@ -37,7 +35,9 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     NavbarComponent,
     CoverComponent,
     FooterComponent,
-    UserComponent
+    UserComponent,
+    ListPostComponent,
+    ListCommentComponent
   ],
   imports: [
     CommonModule,
