@@ -1,12 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {IPost} from '../../model/IPost';
 import {PostService} from '../../service/post/post.service';
 import {IAppUser} from '../../model/IAppUser';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ILikePost} from "../../model/ilike-post";
-import {LikePostService} from "../../service/like-post.service";
-import {JwtService} from "../../service/auth/jwt.service";
-import {UserService} from "../../service/user.service";
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-list-post',
@@ -26,7 +22,7 @@ export class ListPostComponent {
 
 
   constructor(public postService: PostService,
-              private router: Router, private actRoute: ActivatedRoute, private likePostService: LikePostService, private jwtService: JwtService, private userService: UserService) {
+              private router: Router) {
     // this.postList = this.postService.postList;
   }
 
@@ -56,66 +52,5 @@ export class ListPostComponent {
       });
     }
   }
-
-  likePost: ILikePost = {
-    id: null,
-    postId: null,
-    likerId: null,
-  };
-
-  post: IPost;
-  liked: boolean;
-  likeList: ILikePost[];
-
-  checkLikedStatus() {
-    this.liked = false;
-    this.likePostService.findAllLikePost().subscribe(
-      res => {
-        this.likeList = <ILikePost[]>res;
-        for (let i = 0; i < this.likeList.length; i++) {
-          if (this.actRoute.snapshot.params.id == null || !window.location.href.includes('timeline')) {
-            if (this.likeList[i].likerId === this.jwtService.currentUserValue.id) {
-              this.liked = true;
-            }
-          } else {
-            if (this.likeList[i].postId === parseInt(this.actRoute.snapshot.params.id)) {
-              if (this.likeList[i].likerId === this.jwtService.currentUserValue.id) {
-                this.liked = true;
-              }
-            }
-          }
-        }
-      }
-    )
-  }
-
-  likeAPost(id: number, postLike: number) {
-    // likeAPost() {
-    this.likePost.postId = id;
-    this.likePost.likerId = this.jwtService.currentUserValue.id;
-    this.likePostService.newLikePost(this.likePost).subscribe(
-      res => {
-        this.checkLikedStatus();
-        postLike++;
-      }
-    );
-  }
-
-  unLikeAPost(id: number, postLike: number) {
-  // unLikeAPost() {
-    this.likePostService.findAllLikePost().subscribe(
-      res => {
-        this.likeList = <ILikePost[]>res;
-        for (let i = 0; i < this.likeList.length; i++) {
-          if (this.likeList[i].likerId === this.jwtService.currentUserValue.id && this.likeList[i].postId === id) {
-            this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
-            postLike--;
-            this.liked = false;
-          }
-        }
-      }
-    )
-  }
-
 
 }
