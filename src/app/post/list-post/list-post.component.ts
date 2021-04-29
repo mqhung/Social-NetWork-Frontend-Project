@@ -63,7 +63,7 @@ export class ListPostComponent {
     likerId: null,
   };
 
-  @Input() post: IPost;
+  post: IPost;
   liked: boolean;
   likeList: ILikePost[];
 
@@ -89,26 +89,27 @@ export class ListPostComponent {
     )
   }
 
-  likeAPost(id: number) {
+  likeAPost(id: number, postLike: number) {
+    // likeAPost() {
     this.likePost.postId = id;
     this.likePost.likerId = this.jwtService.currentUserValue.id;
     this.likePostService.newLikePost(this.likePost).subscribe(
       res => {
         this.checkLikedStatus();
-        this.post.postLike++;
+        postLike++;
       }
     );
   }
 
-  unLikeAPost(id: number) {
-    // this.likePost.postId = id;
+  unLikeAPost(id: number, postLike: number) {
+  // unLikeAPost() {
     this.likePostService.findAllLikePost().subscribe(
       res => {
         this.likeList = <ILikePost[]>res;
         for (let i = 0; i < this.likeList.length; i++) {
           if (this.likeList[i].likerId === this.jwtService.currentUserValue.id && this.likeList[i].postId === id) {
             this.likePostService.unLikeAPost(this.likeList[i].id).subscribe();
-            this.post.postLike--;
+            postLike--;
             this.liked = false;
           }
         }

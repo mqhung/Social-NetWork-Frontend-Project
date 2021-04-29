@@ -72,7 +72,7 @@
             <i class="icon ion-alert"></i> {{post.status.name}}</p>
         </div>
         <div class="reaction">
-          <a (click)="likeAPost(post.id)" *ngIf="!liked">
+          <a (click)="likeAPost(post.id,post.postLike)" *ngIf="!liked&&post.appUser.id== currentUser.id">
             <i class="bi bi-heart"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
                  viewBox="0 0 16 16">
@@ -81,7 +81,7 @@
             </svg>
             <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
           </a>
-          <a (click)="unLikeAPost(post.id)" *ngIf="liked">
+          <a (click)="unLikeAPost(post.id,post.postLike)" *ngIf="liked&&post.appUser.id== currentUser.id">
             <i class="bi bi-heart-fill"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
                  viewBox="0 0 16 16">
@@ -139,7 +139,7 @@
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">
-            <a (click)="likeAPost(post.id)" *ngIf="!liked">
+            <a (click)="likeAPost(post.id,post.postLike)" *ngIf="!liked">
               <i class="bi bi-heart"></i>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
                    viewBox="0 0 16 16">
@@ -148,7 +148,7 @@
               </svg>
               <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
             </a>
-            <a (click)="unLikeAPost()" *ngIf="liked">
+            <a (click)="unLikeAPost(post.id,post.postLike)" *ngIf="liked">
               <i class="bi bi-heart-fill"></i>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
                    viewBox="0 0 16 16">
