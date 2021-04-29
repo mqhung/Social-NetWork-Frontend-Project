@@ -5,7 +5,7 @@
     <a class="profile-link"
        [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
-    <app-like-comment [comment]="c"></app-like-comment>
+    <app-like-comment *ngIf="currentUser!=null" [comment]="c"></app-like-comment>
     <p class="text-muted"> {{c.createdTime| date : 'hh: mm | dd/ MM/ yyyy'}}</p>
        <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id "
           (click)="getCommentById(c.id)"><button class="btn-link">Edit</button></a>

@@ -26,8 +26,6 @@
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
                class="btn text-green">Edit</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
