@@ -6,6 +6,7 @@ import {compareNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_v
 import {Subscription} from 'rxjs';
 import {PostService} from '../../service/post/post.service';
 import {IAppUser} from '../../model/IAppUser';
+import {FriendService} from '../../service/friend.service';
 
 @Component({
   selector: 'app-list-comment',
@@ -50,25 +51,25 @@ export class ListCommentComponent implements OnInit {
     createdTime: null,
     commentLike: null
   };
-
+  userFriend: IAppUser;
+  userPosted: IAppUser;
   currentUser: IAppUser;
   @Input()
   postId: number;
 
   constructor(private router: Router,
               private commentService: CommentService,
-              private postService: PostService,
-              private activatedRouter: ActivatedRoute) {
-    // this.sub = this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
-    //   this.id = Number(paraMap.get('id'));
-    //   this.getById(this.id);
-    // });
+              private postService: PostService
+  ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.currentUser = next;
     });
   }
 
   ngOnInit(): void {
+    this.postService.getPostById(this.postId).subscribe(next => {
+      this.userPosted = next.appUser;
+    });
     this.showComment();
     this.comment.postId = this.postId;
   }
@@ -79,28 +80,41 @@ export class ListCommentComponent implements OnInit {
     });
   }
 
-  // getById(id: number) {
-  //   this.commentService.getById(id).subscribe(comment => {
-  //     this.comment = comment;
-  //   });
-  // }
-  //
-  // edit() {
-  //   this.commentService.updateComment(this.comment.id, this.comment).subscribe(() => {
-  //     this.router.navigate(['/timeline']);
-  //   });
-  // }
-
   deleteComment(id: number) {
     this.commentService.deleteComment(id).subscribe(deleteComment => {
       this.showComment();
     });
   }
+
   createComment() {
-    this.commentService.createComment(this.comment).subscribe(next => {
-      this.comments.push(next);
+    if (this.comment.createdTime == null) {
+      this.commentService.createComment(this.comment).subscribe(next => {
+        this.comments.push(next);
+        this.comment.content = '';
+        this.comment.createdTime = null;
+      });
+    } else {
+      this.updateComment();
+      this.comment.createdTime = null;
       this.comment.content = '';
+    }
+
+  }
+
+  updateComment() {
+    this.commentService.updateComment(this.comment.id, this.comment).subscribe(() => {
+      this.showComment();
     });
   }
 
+  getCommentById(id: number) {
+    this.commentService.getById(id).subscribe(next => {
+      this.comment = next;
+      for (let i = 0; i < this.comments.length; i++) {
+        if (next.id == this.comments[i].id) {
+          this.comments.splice(i, 1);
+        }
+      }
+    });
+  }
 }

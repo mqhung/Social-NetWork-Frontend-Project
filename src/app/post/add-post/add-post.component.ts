@@ -25,8 +25,13 @@ export class AddPostComponent implements OnInit {
     image: null,
     status: {
       id: 1
-    }
+    },
+    postLike: null,
+    postDislike: null
   };
+
+  // postList: IPost[];
+
   currentUser: IAppUser;
   listPostStatus: IPostStatus[] = [];
 
@@ -41,7 +46,10 @@ export class AddPostComponent implements OnInit {
         this.listPostStatus.push(next[i]);
 
       }
+
     });
+    // this.postList = this.postService.postListTimeline;
+
 
   }
 
@@ -84,11 +92,18 @@ export class AddPostComponent implements OnInit {
   createPost() {
     this.post.image = this.fb;
     this.postService.addNewPost(this.post).subscribe(posted => {
+
+      for (let i = 0; i < this.listPostStatus.length; i++) {
+        if (posted.status.id == this.listPostStatus[i].id) {
+          posted.status = this.listPostStatus[i];
+        }
+      }
+      this.postService.postListTimeline.unshift(posted);
+      this.postService.postListNewFeed.unshift(posted);
+
       this.deleteImage();
       this.post.content = '';
-      console.log('ok');
-      this.router.navigateByUrl('/post/new-feed');
-
+      console.log(posted);
     });
   }
 

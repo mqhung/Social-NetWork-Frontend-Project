@@ -1,0 +1,18 @@
+<div class="modal-dialog modal-dialog-centered" role="document" style="width: 400px">
+  <div class="modal-content">
+    <div class="modal-header border-bottom-0">
+      <h5 class="modal-title" id="exampleModalLabel">Peoples like this post</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row" *ngFor="let liker of likerList">
+      <div class="col col-lg-2 col-md-4 col-sm-4 m-2 ml-5">
+        <img style="height: 50px; width: 50px; object-fit: cover; border-radius: 50%" src="{{liker.avatar}}" alt="">
+      </div>
+      <div class="col d-flex align-items-center">
+        <h5>{{liker.firstName + ' ' + liker.lastName}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

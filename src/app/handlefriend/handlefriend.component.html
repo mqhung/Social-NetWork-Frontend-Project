@@ -26,7 +26,7 @@
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
-              <li><a href="timeline-about.html">About</a></li>
+              <li><a [routerLink]="'/user/'+user.id+'/about'">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
               <li><a [routerLink]="'/listFriend'">Friends</a></li>
               <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>

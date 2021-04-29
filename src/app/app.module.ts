@@ -20,40 +20,36 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
-import { EditCommentComponent } from './post/edit-comment/edit-comment.component';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        FriendComponent,
-        RegisterComponent,
-        LoginComponent,
-        LogoutComponent,
-        UserInfoComponent,
-        HandlefriendComponent,
-        UserEditComponent,
-        MutualFriendComponent,
-        EditCommentComponent,
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgbModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        CommonModule,
-        ReactiveFormsModule,
-
-    ],
-    providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
-    ],
-    exports: [
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    FriendComponent,
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent,
+    UserInfoComponent,
+    HandlefriendComponent,
+    UserEditComponent,
+    MutualFriendComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    PostModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

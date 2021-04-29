@@ -6,11 +6,14 @@ import {Observable, of} from 'rxjs';
 import {JwtService} from './auth/jwt.service';
 import {IAppUser} from '../model/IAppUser';
 import {IUserRegister} from '../model/IUserRegister';
+import {IPost} from '../model/IPost';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+
 
   constructor(private http: HttpClient, private jwtService: JwtService) {
 

@@ -79,7 +79,7 @@
 
         <!-- Post Content
         ================================================= -->
-        <div class="post-content" *ngFor="let post of postList">
+        <div class="post-content" *ngFor="let post of this.postService.postListNewFeed">
           <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image"/>
           <div class="post-container">
             <img [src]="post.appUser.avatar" alt="user" class="profile-photo-md pull-left"/>
@@ -93,8 +93,14 @@
                   <i class="icon ion-alert"></i> {{post.status.name}}</p>
               </div>
               <div class="reaction">
-                <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-                <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+<!--                <a (click)="likeAPost()" *ngIf="!liked">-->
+<!--                  <span class="btn text-green" data-toggle="tooltip"><i class="icon ion-thumbsup"></i><ins>{{post.postLike}}</ins></span></a>-->
+<!--                <a data-toggle="tooltip" title="Peoples like this post">-->
+<!--                  <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>-->
+<!--                </a>-->
+<!--                <a (click)="unLikeAPost()" *ngIf="liked">-->
+<!--                  <span class="btn text-red" data-toggle="tooltip" ><i class="fa fa-thumbs-down" ></i><ins>{{post.postLike}}</ins></span>-->
+<!--                </a>-->
                 <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
                 <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
 
@@ -108,6 +114,9 @@
               <app-list-comment [postId]="post.id"></app-list-comment>
               <app-create-comment [postId]="post.id"></app-create-comment>
             </div>
+          </div>
+          <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <app-list-liker-post [postId] = post.id ></app-list-liker-post>
           </div>
         </div>
 
