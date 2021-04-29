@@ -6,6 +6,7 @@ import {compareNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_v
 import {Subscription} from 'rxjs';
 import {PostService} from '../../service/post/post.service';
 import {IAppUser} from '../../model/IAppUser';
+import {FriendService} from '../../service/friend.service';
 
 @Component({
   selector: 'app-list-comment',
@@ -50,6 +51,7 @@ export class ListCommentComponent implements OnInit {
     createdTime: null
 
   };
+  userFriend: IAppUser;
   userPosted: IAppUser;
   currentUser: IAppUser;
   @Input()
@@ -57,12 +59,8 @@ export class ListCommentComponent implements OnInit {
 
   constructor(private router: Router,
               private commentService: CommentService,
-              private postService: PostService,
-              private activatedRouter: ActivatedRoute) {
-    // this.sub = this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
-    //   this.id = Number(paraMap.get('id'));
-    //   this.getById(this.id);
-    // });
+              private postService: PostService
+  ) {
     this.postService.getCurrentUser().subscribe(next => {
       this.currentUser = next;
     });
@@ -82,18 +80,6 @@ export class ListCommentComponent implements OnInit {
     });
   }
 
-  // getById(id: number) {
-  //   this.commentService.getById(id).subscribe(comment => {
-  //     this.comment = comment;
-  //   });
-  // }
-  //
-  // edit() {
-  //   this.commentService.updateComment(this.comment.id, this.comment).subscribe(() => {
-  //     this.router.navigate(['/timeline']);
-  //   });
-  // }
-
   deleteComment(id: number) {
     this.commentService.deleteComment(id).subscribe(deleteComment => {
       this.showComment();
@@ -101,7 +87,7 @@ export class ListCommentComponent implements OnInit {
   }
 
   createComment() {
-    if (this.comment.createdTime==null){
+    if (this.comment.createdTime == null) {
       this.commentService.createComment(this.comment).subscribe(next => {
         this.comments.push(next);
         this.comment.content = '';
@@ -116,7 +102,7 @@ export class ListCommentComponent implements OnInit {
   }
 
   updateComment() {
-    this.commentService.updateComment(this.comment.id, this.comment).subscribe(() =>{
+    this.commentService.updateComment(this.comment.id, this.comment).subscribe(() => {
       this.showComment();
     });
   }
@@ -126,7 +112,7 @@ export class ListCommentComponent implements OnInit {
       this.comment = next;
       for (let i = 0; i < this.comments.length; i++) {
         if (next.id == this.comments[i].id) {
-          this.comments.splice(i,1);
+          this.comments.splice(i, 1);
         }
       }
     });
