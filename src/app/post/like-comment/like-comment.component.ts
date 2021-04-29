@@ -30,6 +30,7 @@ export class LikeCommentComponent implements OnInit {
 
   likeComments(){
     this.likeComment.commentId = this.comment.id;
+    console.log(this.comment.id);
     this.likeComment.likerId = this.jwtService.currentUserValue.id;
     this.likeCommentService.newLikeComment(this.likeComment).subscribe(
       response => {
