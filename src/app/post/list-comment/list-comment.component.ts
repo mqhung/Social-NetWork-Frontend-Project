@@ -69,7 +69,7 @@ export class ListCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.postService.getPostById(this.postId).subscribe(next =>{
+    this.postService.getPostById(this.postId).subscribe(next => {
       this.userPosted = next.appUser;
     });
     this.showComment();
@@ -95,18 +95,40 @@ export class ListCommentComponent implements OnInit {
   // }
 
   deleteComment(id: number) {
-    // if(this.comment.appUser != null) {
     this.commentService.deleteComment(id).subscribe(deleteComment => {
       this.showComment();
     });
-    // }
   }
 
   createComment() {
-    this.commentService.createComment(this.comment).subscribe(next => {
-      this.comments.push(next);
+    if (this.comment.createdTime==null){
+      this.commentService.createComment(this.comment).subscribe(next => {
+        this.comments.push(next);
+        this.comment.content = '';
+        this.comment.createdTime = null;
+      });
+    } else {
+      this.updateComment();
+      this.comment.createdTime = null;
       this.comment.content = '';
+    }
+
+  }
+
+  updateComment() {
+    this.commentService.updateComment(this.comment.id, this.comment).subscribe(() =>{
+      this.showComment();
     });
   }
 
+  getCommentById(id: number) {
+    this.commentService.getById(id).subscribe(next => {
+      this.comment = next;
+      for (let i = 0; i < this.comments.length; i++) {
+        if (next.id == this.comments[i].id) {
+          this.comments.splice(i,1);
+        }
+      }
+    });
+  }
 }

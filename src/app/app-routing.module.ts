@@ -7,6 +7,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
 import {UserEditComponent} from './user-edit/user-edit.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'user/:id/about',
+    component: UserInfoComponent
   }
 ];
 

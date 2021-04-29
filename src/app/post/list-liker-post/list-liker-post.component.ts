@@ -13,17 +13,17 @@ export class ListLikerPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getLikerList();
+    this.getLikerList();
   }
 
   @Input() postId;
   likerList: IAppUser[];
 
-  // getLikerList() {
-  //   this.likePostService.findLikerByPostId(this.postId).subscribe(
-  //     res => {
-  //       this.likerList = <IAppUser[]>res;
-  //     }
-  //   )
-  // }
+  getLikerList() {
+    this.likePostService.findLikerByPostId(this.postId).subscribe(
+      res => {
+        this.likerList = <IAppUser[]>res;
+      }
+    )
+  }
 }
