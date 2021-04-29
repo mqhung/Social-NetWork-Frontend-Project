@@ -48,7 +48,9 @@ import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
     PostModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })
