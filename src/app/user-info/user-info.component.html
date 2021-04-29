@@ -42,25 +42,77 @@
         <div class="col-md-7">
           <div class="friend-list">
             <div class="row">
-              <ul class="col-md-5 col-sm-5">
-<!--                <div class="friend-card">-->
-<!--                  <li *ngFor="let friend of pendingList, let i = index">-->
-<!--                    <img src="{{friend.avatar}}" style="width: 200px; height: 200px" alt="user"-->
-<!--                         class="profile-photo-lg"/>-->
-<!--                    <div class="card-info">-->
-<!--                      <div class="friend-info">-->
-<!--                        <h5><a [routerLink]="'/post/user/' + friend.id"-->
-<!--                               class="profile-link">{{friend.firstName + " " + friend.lastName}}</a>-->
-<!--                        </h5>-->
-<!--                        <p>B.O.D: {{friend.birthday}}</p>-->
-<!--                        <p>Country: {{friend.address}}</p>-->
-<!--                        <p>Gender: {{friend.gender}}</p>-->
-<!--                        <a class="btn btn-primary" (click)="acceptInviteFriend(friend.id,2,i)">Confirm</a>-->
-<!--                        <a style="margin-left: 5px" class="btn btn-danger" (click)="acceptInviteFriend(friend.id,3,i)">Delete</a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </li>-->
-<!--                </div>-->
+              <ul class="col-md-10 col-sm-5">
+
+                <div class="about-profile">
+<!--                  <div class="about-content-block">-->
+<!--                    <h4 class="grey"><i class="ion-man icon-in-title"></i>Personal Information</h4>-->
+<!--                  </div>-->
+                  <div class="about-content-block">
+                    <h4 class="grey"><i class="ion-information-circled icon-in-title"></i>Personal Information</h4>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-android-person"> First Name</h5>
+                        <p class="text-grey">{{user.firstName}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-android-person"> Last Name</h5>
+                        <p class="text-grey">{{user.lastName}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-transgender">Gender</h5>
+                        <p class="text-grey">{{user.gender}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-ios-email"> Email</h5>
+                        <p class="text-grey">{{user.email}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info ">
+                        <h5 class="ion-android-call"> Phone Number</h5>
+                        <p class="text-grey">{{user.phone}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-ios-calendar-outline"> Day of birth</h5>
+                        <p class="text-grey">{{user.birthday}}</p>
+                      </div>
+                    </div>
+                    <div class="organization">
+                      <div class="work-info">
+                        <h5 class="ion-android-pin"> Address</h5>
+                        <p class="text-grey">{{user.address}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="about-content-block">
+                    <h4 class="grey"><i class="ion-ios-heart icon-in-title"></i>Interests</h4>
+                    <ul class="interests list-inline">
+                      <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
+                      <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
+                      <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
+                      <li><span class="int-icons" title="Traveling"><i class="icon ion-android-plane"></i></span></li>
+                      <li><span class="int-icons" title="Eating"><i class="icon ion-android-restaurant"></i></span></li>
+                    </ul>
+                  </div>
+                  <div class="about-content-block">
+                    <h4 class="grey"><i class="ion-ios-cog icon-in-title"></i>Account</h4>
+                    <ul>
+                      <li><a [routerLink]="'/user/'+user.id+'/edit'"><h5>Edit Profile</h5></a></li>
+                      <li><a [routerLink]="'/user/'+user.id+'/password'"><h5>Change Password</h5></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+
               </ul>
             </div>
           </div>

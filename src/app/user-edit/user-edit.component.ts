@@ -44,6 +44,9 @@ export class UserEditComponent implements OnInit {
       lastName: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
+      address: new FormControl(''),
+      birthday: new FormControl(''),
+      gender: new FormControl(''),
     })
   }
 
@@ -99,7 +102,7 @@ export class UserEditComponent implements OnInit {
     let userNewInfo = this.setInfo();
     this.userService.updateUser(this.user.id, userNewInfo).subscribe(() => {
       alert("Update success!");
-      this.router.navigate(['/post/timeline']);
+      this.router.navigate(['/user/:id/about']);
     }, error => {
       alert('Error')
       console.log(error);
