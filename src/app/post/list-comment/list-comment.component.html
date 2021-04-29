@@ -16,7 +16,7 @@
   </span>
 </div>
 <div class="post-container">
-  <form *ngIf="currentUser!=null" (ngSubmit)="createComment()" class="post-comment">
+  <form *ngIf="currentUser!=null " (ngSubmit)="createComment()" class="post-comment">
     <img [src]="currentUser.avatar" alt="" class="profile-photo-sm"/>
     <input name="content" type="text" id="content" class="post-contents"
            placeholder="Post comment"
