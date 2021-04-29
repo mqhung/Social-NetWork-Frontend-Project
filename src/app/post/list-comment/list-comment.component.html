@@ -5,6 +5,7 @@
     <a class="profile-link"
        [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
+    <app-like-comment></app-like-comment>
     <p class="text-muted"> {{c.createdTime| date : 'hh: mm | dd/ MM/ yyyy'}}</p>
        <a *ngIf="currentUser!=null" [routerLink]="'/post/edit/' + c.id">Edit</a>
     <a  *ngIf="currentUser!=null" [routerLink]="'/post/delete/' + c.id" style="margin-left: 10px" (click)="deleteComment(c.id)">Delete</a>

@@ -24,34 +24,36 @@ import { EditCommentComponent } from './post/edit-comment/edit-comment.component
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FriendComponent,
-    RegisterComponent,
-    LoginComponent,
-    LogoutComponent,
-    UserInfoComponent,
-    HandlefriendComponent,
-    UserEditComponent,
-    MutualFriendComponent,
-    EditCommentComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
-    PostModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        FriendComponent,
+        RegisterComponent,
+        LoginComponent,
+        LogoutComponent,
+        UserInfoComponent,
+        HandlefriendComponent,
+        UserEditComponent,
+        MutualFriendComponent,
+        EditCommentComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        ReactiveFormsModule,
+
+    ],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+    ],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

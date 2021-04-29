@@ -16,6 +16,8 @@ import {ListCommentComponent} from './list-comment/list-comment.component';
 import {CreateCommentComponent} from './create-comment/create-comment.component';
 import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import {AppModule} from '../app.module';
+import {LikeCommentComponent} from './like-comment/like-comment.component';
 
 
 @NgModule({
@@ -31,18 +33,20 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     ListCommentComponent,
     CreateCommentComponent,
     UserComponent,
-    EditPostComponent
+    EditPostComponent,
+    LikeCommentComponent
   ],
     exports: [
         NavbarComponent,
         CoverComponent,
         FooterComponent
     ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        AppModule
+    ]
 })
 export class PostModule { }

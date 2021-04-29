@@ -16,8 +16,8 @@ export class CreateCommentComponent implements OnInit {
     appUser: null,
     postId: 0,
     content: '',
-    createdTime: null
-
+    createdTime: null,
+    commentLike: null
   };
 
   @Input()

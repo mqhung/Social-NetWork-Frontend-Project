@@ -7,4 +7,5 @@ export interface Comment {
   postId: number;
   content: string;
   createdTime: Timestamp<any>;
+  commentLike: number,
 }

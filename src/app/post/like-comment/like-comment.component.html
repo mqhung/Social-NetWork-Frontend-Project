@@ -1,0 +1,3 @@
+
+<a class="btn like ti-heart" data-toggle="tooltip" title="Like" style="color: blue" (click)="likeComments()" *ngIf="!commentLiked"> {{comment.commentLike}}</a>
+<a class="btn like ti-heart" data-toggle="tooltip" title="Like" style="color: red" (click)="unLikeComments()" *ngIf="commentLiked"> {{comment.commentLike}}</a>
