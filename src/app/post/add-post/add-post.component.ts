@@ -29,6 +29,9 @@ export class AddPostComponent implements OnInit {
     postLike: null,
     postDislike: null
   };
+
+  // postList: IPost[];
+
   currentUser: IAppUser;
   listPostStatus: IPostStatus[] = [];
 

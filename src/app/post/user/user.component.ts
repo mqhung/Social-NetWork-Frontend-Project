@@ -10,12 +10,13 @@ import {FriendService} from '../../service/friend.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  // userList: IAppUser[] = [];
+  userList: IAppUser[] = [];
   userListNoFriend: IAppUser[] = [];
   // user: IAppUser;
   // sumListUser: number;
   // isFriend: boolean = false;
   str: string = '';
+  nameSearch: any;
   constructor(private userService: UserService, private jwtService: JwtService, private friendService: FriendService) {
 
   }
@@ -23,6 +24,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     // this.showAllUser();
     this.showFriendSuggestion();
+    this.searchUser();
     // this.showAllUserNoFriend();
   }
 
@@ -109,6 +111,12 @@ export class UserComponent implements OnInit {
     this.friendService.getSuggestionFriend().subscribe(next => {
       this.userListNoFriend = next;
       console.log('DS: '+this.userListNoFriend.length)
+    })
+  }
+
+  searchUser(): any{
+    this.userService.searchUser(this.nameSearch).subscribe(next => {
+      this.userList = next;
     })
   }
 }

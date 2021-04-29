@@ -1,28 +1,5 @@
-<div class="post-content" *ngFor="let post of postService.postListTimeline">
-  <!--  case of not login user-->
-  <div *ngIf="currentUser ==null">
-    <div *ngIf="post.status.id ==PUBLIC">
-      <!--Post Date-->
-      <div class="post-date hidden-xs hidden-sm">
-        <h5>{{post.appUser.firstName}}</h5>
-        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
-      </div><!--Post Date End-->
-
-      <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
-      <div class="post-container">
-        <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
-             class="profile-photo-md pull-left">
-        <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
-
-        <div class="post-detail">
-          <div class="user-info">
-            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
-              class="following">following</span></h5>
-            <p class="text-muted">Published a photo
-              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
-              &nbsp;
-
-
+<div class="post-content" *ngFor="let post of postList">
+  <div *ngIf="post.status.id ==PUBLIC||post.status.id ==FRIEND_ONLY">
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">

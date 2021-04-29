@@ -57,4 +57,12 @@ export class UserService {
   updateUser(id: number, user: IUserRegister): Observable<any> {
     return this.http.put(`${this.userUrl}/update/${id}`, user);
   }
+
+  searchUser(name: string) : Observable<IAppUser[]>{
+    return this.http.get<IAppUser[]>(this.userUrl + '/search?name=' + name).pipe(
+      tap(users => JSON.stringify(users),
+        catchError(err => of([]))
+      )
+    )
+  }
 }

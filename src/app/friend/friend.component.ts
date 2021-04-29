@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+  import {Component, OnInit} from '@angular/core';
 import {IAppUser} from '../model/IAppUser';
 import {FriendService} from '../service/friend.service';
 import {UserService} from '../service/user.service';
