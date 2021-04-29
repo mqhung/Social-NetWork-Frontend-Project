@@ -77,9 +77,10 @@
             <i class="icon ion-alert"></i> {{post.status.name}}</p>
         </div>
         <div class="reaction">
-          <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-          <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+          <app-like-post [post]="post"></app-like-post>
+          <a data-toggle="tooltip" title="Peoples like this post">
+            <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
+          </a>          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
              class="btn text-green">Edit</a>
           <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
              class="btn text-green">Delete</a>
@@ -94,6 +95,10 @@
           <app-list-comment [postId]="post.id"></app-list-comment>
         </div>
       </div>
+    </div>
+    <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <app-list-liker-post [postId]=post.id></app-list-liker-post>
     </div>
   </div>
 </div>
@@ -126,9 +131,10 @@
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+            <app-like-post [post]="post"></app-like-post>
+            <a data-toggle="tooltip" title="Peoples like this post">
+              <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
+            </a>            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
                class="btn text-green">Edit</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
                class="btn text-green">Delete</a>
@@ -145,5 +151,10 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <app-list-liker-post [postId]=post.id></app-list-liker-post>
+    </div>
   </div>
+
 </div>
