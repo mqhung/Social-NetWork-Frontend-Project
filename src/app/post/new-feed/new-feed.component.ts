@@ -12,6 +12,9 @@ import {Router} from '@angular/router';
 })
 export class NewFeedComponent implements OnInit {
 
+  PUBLIC  =1;
+  FRIEND_ONLY = 2;
+  PRIVATE = 3;
   // postList: IPost[] = [];
   currentUser: IAppUser;
   constructor(public postService: PostService,

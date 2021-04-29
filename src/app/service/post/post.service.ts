@@ -13,8 +13,14 @@ export class PostService {
 
   postListTimeline: IPost[] = [];
   postListNewFeed: IPost[] = [];
+  currentUser: IAppUser;
+
 
   constructor(private http: HttpClient) {
+    this.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
+
   }
 
 
