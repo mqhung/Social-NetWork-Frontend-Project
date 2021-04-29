@@ -1,7 +1,4 @@
-
-
 <div class="post-content" *ngFor="let post of postService.postListTimeline">
-
   <!--  case of not login user-->
   <div *ngIf="currentUser ==null">
     <div *ngIf="post.status.id ==PUBLIC">
@@ -29,8 +26,6 @@
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
                class="btn text-green">Edit</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
@@ -53,50 +48,69 @@
   </div>
   <!--  case of currentUser-->
   <div *ngIf="currentUser!=null&&currentUser.id ==post.appUser.id">
-      <!--Post Date-->
-      <div class="post-date hidden-xs hidden-sm">
-        <h5>{{post.appUser.firstName}}</h5>
-        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
-      </div><!--Post Date End-->
+    <!--Post Date-->
+    <div class="post-date hidden-xs hidden-sm">
+      <h5>{{post.appUser.firstName}}</h5>
+      <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+    </div><!--Post Date End-->
 
-      <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
-      <div class="post-container">
-        <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
-             class="profile-photo-md pull-left">
-        <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
+    <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
+    <div class="post-container">
+      <img *ngIf="post.appUser.avatar!=null" [src]="post.appUser.avatar" alt="user"
+           class="profile-photo-md pull-left">
+      <!--    <img *ngIf="post.appUser.avatar==null" src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=" alt="post-image" class="img-responsive post-image">-->
 
-        <div class="post-detail">
-          <div class="user-info">
-            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
-              class="following">following</span></h5>
-            <p class="text-muted">Published a photo
-              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
-              &nbsp;
+      <div class="post-detail">
+        <div class="user-info">
+          <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+            class="following">following</span></h5>
+          <p class="text-muted">Published a photo
+            at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+            &nbsp;
 
 
-              <i class="icon ion-alert"></i> {{post.status.name}}</p>
-          </div>
-          <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
-               class="btn text-green">Edit</a>
-            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
-               class="btn text-green">Delete</a>
-          </div>
-          <div class="line-divider"></div>
-          <div class="post-text">
-            <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
-            <p>{{post.content}}</p>
-          </div>
-          <div class="line-divider"></div>
-          <!--                ///comment-->
-          <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
-          <div class="post-comment">
-            <app-list-comment [postId]="post.id"></app-list-comment>
-          </div>
+            <i class="icon ion-alert"></i> {{post.status.name}}</p>
+        </div>
+        <div class="reaction">
+          <a (click)="likeAPost(post.id,post.postLike)" *ngIf="!liked&&post.appUser.id== currentUser.id">
+            <i class="bi bi-heart"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                 viewBox="0 0 16 16">
+              <path
+                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+            </svg>
+            <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
+          </a>
+          <a (click)="unLikeAPost(post.id,post.postLike)" *ngIf="liked&&post.appUser.id== currentUser.id">
+            <i class="bi bi-heart-fill"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
+                 viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg>
+            <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
+          </a>
+          <a data-toggle="tooltip" title="Peoples like this post">
+            <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
+          </a>
+
+          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
+             class="btn text-green">Edit</a>
+          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+             class="btn text-green">Delete</a>
+        </div>
+        <div class="line-divider"></div>
+        <div class="post-text">
+          <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
+          <p>{{post.content}}</p>
+        </div>
+        <div class="line-divider"></div>
+        <!--                ///comment-->
+        <!--                <asdfsdfsf [postId] = "1" ></asdfsdfsf>-->
+        <div class="post-comment">
+          <app-list-comment [postId]="post.id"></app-list-comment>
         </div>
       </div>
+    </div>
   </div>
   <!--  case of friend-->
   <div *ngIf="currentUser!=null&&currentUser.id !=post.appUser.id">
@@ -125,8 +139,28 @@
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
           <div class="reaction">
-            <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-            <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+            <a (click)="likeAPost(post.id,post.postLike)" *ngIf="!liked">
+              <i class="bi bi-heart"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                   viewBox="0 0 16 16">
+                <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg>
+              <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
+            </a>
+            <a (click)="unLikeAPost(post.id,post.postLike)" *ngIf="liked">
+              <i class="bi bi-heart-fill"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
+                   viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+              </svg>
+              <p style="margin-left: 25px; margin-top: -18px">{{post.postLike}}</p>
+            </a>
+
+            <a data-toggle="tooltip" title="Peoples like this post">
+              <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i
+                class="fa fa-male"></i></span>
+            </a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
                class="btn text-green">Edit</a>
             <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
@@ -147,6 +181,8 @@
       </div>
     </div>
   </div>
-
-
+  <div class="modal fade" [attr.id]="'showLikerList' + post.id" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <app-list-liker-post [postId]=post.id></app-list-liker-post>
+  </div>
 </div>
