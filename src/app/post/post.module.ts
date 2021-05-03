@@ -17,7 +17,6 @@ import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListLikerPostComponent } from './list-liker-post/list-liker-post.component';
 import {LikeCommentComponent} from './like-comment/like-comment.component';
-import {SearchComponent} from './search/search.component';
 
 
 @NgModule({
@@ -35,7 +34,8 @@ import {SearchComponent} from './search/search.component';
     EditPostComponent,
     ListLikerPostComponent,
     LikeCommentComponent,
-    SearchComponent
+    SearchComponent,
+    LikePostComponent
   ],
   exports: [
     NavbarComponent,

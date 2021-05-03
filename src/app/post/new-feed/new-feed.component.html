@@ -14,8 +14,10 @@
       <div class="col-md-3 static">
         <div class="profile-card">
           <img [src]="currentUser.avatar" alt="user" class="profile-photo"/>
-          <h5><a [routerLink]="'/timeline'" class="text-white">{{currentUser.firstName+' '+currentUser.lastName}}</a></h5>
-          <a [routerLink]="'/timeline'" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
+          <h5><a [routerLink]="'/timeline'"
+                 class="text-white">{{currentUser.firstName + ' ' + currentUser.lastName}}</a></h5>
+          <a [routerLink]="'/timeline'" class="text-white"><i class="ion ion-android-person-add"></i> 1,299
+            followers</a>
         </div><!--profile card ends-->
         <ul class="nav-news-feed static">
           <li><i class="icon ion-ios-paper"></i>
@@ -93,18 +95,12 @@
                   <i class="icon ion-alert"></i> {{post.status.name}}</p>
               </div>
               <div class="reaction">
-<!--                <a (click)="likeAPost()" *ngIf="!liked">-->
-<!--                  <span class="btn text-green" data-toggle="tooltip"><i class="icon ion-thumbsup"></i><ins>{{post.postLike}}</ins></span></a>-->
-<!--                <a data-toggle="tooltip" title="Peoples like this post">-->
-<!--                  <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>-->
-<!--                </a>-->
-<!--                <a (click)="unLikeAPost()" *ngIf="liked">-->
-<!--                  <span class="btn text-red" data-toggle="tooltip" ><i class="fa fa-thumbs-down" ></i><ins>{{post.postLike}}</ins></span>-->
-<!--                </a>-->
+                <app-like-post [post]="post"></app-like-post>
+                <a data-toggle="tooltip" title="Peoples like this post">
+                  <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
+                </a>
                 <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
                 <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
-
-
               </div>
               <div class="line-divider"></div>
               <div class="post-text">
