@@ -16,12 +16,12 @@ import * as SockJS from 'sockjs-client';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  private serverUrl = environment.URL + 'socket';
+  private serverUrl = 'http://localhost:8080/socket';
   isLoaded: boolean = false;
   isCustomSocketOpened = false;
   private stompClient;
-  private form: FormGroup;
-  private userForm: FormGroup;
+  form: FormGroup;
+  userForm: FormGroup;
   messages: Chat[] = [];
   users:IAppUser[];
   userLogin: IAppUser;
@@ -106,7 +106,7 @@ export class ChatComponent implements OnInit {
       let messageResult: Chat = JSON.parse(message.body);
       console.log(messageResult);
       this.messages.push(messageResult);
-      this.toastr.success("new message recieved", null, {
+      this.toastr.success("new message received", null, {
         'timeOut': 3000
       });
     }

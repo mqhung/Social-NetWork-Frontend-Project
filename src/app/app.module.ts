@@ -19,6 +19,7 @@ import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
+import {PostModule} from './post/post.module';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    PostModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
