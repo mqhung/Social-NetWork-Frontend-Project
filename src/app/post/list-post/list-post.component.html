@@ -6,7 +6,7 @@
       <!--Post Date-->
       <div class="post-date hidden-xs hidden-sm">
         <h5>{{post.appUser.firstName}}</h5>
-        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+        <p class="text-grey">{{(post.createdTime)| date : 'dd/MM/yyyy'}} </p>
       </div><!--Post Date End-->
 
       <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
@@ -19,7 +19,7 @@
           <div class="user-info">
             <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
               class="following">following</span></h5>
-            <p class="text-muted">Published at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+            <p class="text-muted">Published at {{post.createdTime| date : 'dd/MM/yyyy | hh:mm'}}
               &nbsp;
 
 
@@ -32,7 +32,7 @@
                class="btn text-green">Delete</a>
           </div>
           <div class="line-divider"></div>
-          <div class="post-text">
+          <div class="post-text" style="font-weight: bold">
             <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
             <p>{{post.content}}</p>
           </div>
@@ -56,7 +56,7 @@
     <!--Post Date-->
     <div class="post-date hidden-xs hidden-sm">
       <h5>{{post.appUser.firstName}}</h5>
-      <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+      <p class="text-grey">{{(post.createdTime)| date : 'dd/MM/yyyy'}} </p>
     </div><!--Post Date End-->
 
     <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
@@ -68,23 +68,30 @@
           <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
             class="following">following</span></h5>
           <p class="text-muted">Published a photo
-            at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+            at {{post.createdTime| date : 'dd/MM/yyyy | hh:mm'}}
             &nbsp;
 
 
             <i class="icon ion-alert"></i> {{post.status.name}}</p>
         </div>
-        <div class="reaction">
-          <app-like-post [post]="post"></app-like-post>
-          <a data-toggle="tooltip" title="Peoples like this post">
+        <div class="table" style="margin-bottom: 4px">
+          <td>
+            <app-like-post [post]="post"></app-like-post>
+          </td>
+          <td style="padding: 10px"><a data-toggle="tooltip" title="Peoples like this post">
             <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
-          </a>          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
-             class="btn text-green">Edit</a>
-          <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
-             class="btn text-green">Delete</a>
+          </a></td>
+          <td style="padding: 10px"><a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id"
+                                       [routerLink]="'/edit/'+post.id"
+                                       class="glyphicon glyphicon-edit"></a></td>
+          <td style="padding: 10px">
+            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+               class="glyphicon glyphicon-trash"></a>
+          </td>
+
         </div>
         <div class="line-divider"></div>
-        <div class="post-text">
+        <div class="post-text" style="font-weight: bold">
           <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
           <p>{{post.content}}</p>
         </div>
@@ -110,7 +117,7 @@
       <!--Post Date-->
       <div class="post-date hidden-xs hidden-sm">
         <h5>{{post.appUser.firstName}}</h5>
-        <p class="text-grey">{{(post.createdTime)| date : 'dd MM, yyyy'}} </p>
+        <p class="text-grey">{{(post.createdTime)| date : 'dd/MM/yyyy'}} </p>
       </div><!--Post Date End-->
 
       <img *ngIf="post.image!=null" [src]="post.image" alt="post-image" class="img-responsive post-image">
@@ -122,23 +129,30 @@
             <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
               class="following">following</span></h5>
             <p class="text-muted">Published a photo
-              at {{post.createdTime| date : 'dd/ MM/ yyyy | hh: mm'}}
+              at {{post.createdTime| date : 'dd/MM/yyyy | hh:mm'}}
               &nbsp;
 
 
               <i class="icon ion-alert"></i> {{post.status.name}}</p>
           </div>
-          <div class="reaction">
-            <app-like-post [post]="post"></app-like-post>
-            <a data-toggle="tooltip" title="Peoples like this post">
+          <div class="table" style="margin-bottom: 4px">
+            <td>
+              <app-like-post [post]="post"></app-like-post>
+            </td>
+            <td style="padding: 10px"><a data-toggle="tooltip" title="Peoples like this post">
               <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
-            </a>            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id"
-               class="btn text-green">Edit</a>
-            <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
-               class="btn text-green">Delete</a>
+            </a></td>
+            <td style="padding: 10px"><a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id"
+                                         [routerLink]="'/edit/'+post.id"
+                                         class="glyphicon glyphicon-edit"></a></td>
+            <td style="padding: 10px">
+              <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+                 class="glyphicon glyphicon-trash"></a>
+            </td>
+
           </div>
           <div class="line-divider"></div>
-          <div class="post-text">
+          <div class="post-text" style="font-weight: bold">
             <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
             <p>{{post.content}}</p>
           </div>

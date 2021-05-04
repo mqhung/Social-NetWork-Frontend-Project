@@ -94,13 +94,21 @@
                   &nbsp;
                   <i class="icon ion-alert"></i> {{post.status.name}}</p>
               </div>
-              <div class="reaction">
-                <app-like-post [post]="post"></app-like-post>
-                <a data-toggle="tooltip" title="Peoples like this post">
+              <div class="table" style="margin-bottom: 4px">
+                <td>
+                  <app-like-post [post]="post"></app-like-post>
+                </td>
+                <td style="padding: 10px"><a data-toggle="tooltip" title="Peoples like this post">
                   <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
-                </a>
-                <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
-                <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
+                </a></td>
+                <td style="padding: 10px"><a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id"
+                                             [routerLink]="'/edit/'+post.id"
+                                             class="glyphicon glyphicon-edit"></a></td>
+                <td style="padding: 10px">
+                  <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+                     class="glyphicon glyphicon-trash"></a>
+                </td>
+
               </div>
               <div class="line-divider"></div>
               <div class="post-text">
