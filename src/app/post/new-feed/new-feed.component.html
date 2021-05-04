@@ -40,36 +40,7 @@
           </li>
         </ul><!--news-feed links ends-->
         <div id="chat-block">
-          <div class="title">Chat online</div>
-          <ul class="online-users list-inline">
-            <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="./assets/images/users/user-2.jpg" alt="user"
-                                                                          class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="./assets/images/users/user-3.jpg" alt="user"
-                                                                         class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="John Doe"><img src="./assets/images/users/user-4.jpg" alt="user"
-                                                                       class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="./assets/images/users/user-5.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="James Carter"><img src="./assets/images/users/user-6.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="./assets/images/users/user-7.jpg" alt="user"
-                                                                          class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="./assets/images/users/user-8.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Anna Young"><img src="./assets/images/users/user-9.jpg" alt="user"
-                                                                         class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="./assets/images/users/user-10.jpg" alt="user"
-                                                                        class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-          </ul>
+          <app-friendlist [idUser]="currentUser.id" ></app-friendlist>
         </div><!--chat block ends-->
       </div>
       <div class="col-md-7">
@@ -94,18 +65,26 @@
                   &nbsp;
                   <i class="icon ion-alert"></i> {{post.status.name}}</p>
               </div>
-              <div class="reaction">
-                <app-like-post [post]="post"></app-like-post>
-                <a data-toggle="tooltip" title="Peoples like this post">
+              <div class="table" style="margin-bottom: 4px">
+                <td>
+                  <app-like-post [post]="post"></app-like-post>
+                </td>
+                <td style="padding: 10px"><a data-toggle="tooltip" title="Peoples like this post">
                   <span data-toggle="modal" [attr.data-target]="'#showLikerList' + post.id"><i class="fa fa-male"></i></span>
-                </a>
-                <a *ngIf="post.appUser.id== currentUser.id" [routerLink]="'/edit/'+post.id" class="btn text-green">Edit</a>
-                <a *ngIf="post.appUser.id== currentUser.id" (click)="deletePost(post.id)" class="btn text-green">Delete</a>
+                </a></td>
+                <td style="padding: 10px"><a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id"
+                                             [routerLink]="'/edit/'+post.id"
+                                             class="glyphicon glyphicon-edit"></a></td>
+                <td style="padding: 10px">
+                  <a *ngIf="currentUser!=null&&post.appUser.id== currentUser.id" (click)="deletePost(post.id)"
+                     class="glyphicon glyphicon-trash"></a>
+                </td>
+
               </div>
               <div class="line-divider"></div>
-              <div class="post-text">
+              <div class="post-text" style="font-weight: bold">
+                <!--                  <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i>-->
                 <p>{{post.content}}</p>
-              </div>
               <div class="line-divider"></div>
               <app-list-comment [postId]="post.id"></app-list-comment>
               <app-create-comment [postId]="post.id"></app-create-comment>
@@ -141,3 +120,4 @@
 
 <!-- Scripts
 ================================================= -->
+</div>

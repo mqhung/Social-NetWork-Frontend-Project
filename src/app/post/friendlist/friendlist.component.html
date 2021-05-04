@@ -1,0 +1,26 @@
+<!--<div class="widget friend-list stick-widget">-->
+<!--  <h4 class="widget-title">Friends</h4>-->
+<!--  <div id="searchDir"></div>-->
+<!--  <ul id="people-list" class="friendz-list">-->
+<!--    <li *ngFor="let friend of friendList">-->
+<!--      <figure>-->
+<!--        <img src="{{friend.avatar}}" alt="" style="width: 2.4vw; height: 2.4vw; object-fit: cover">-->
+<!--      </figure>-->
+<!--      <div class="friendz-meta">-->
+<!--        <a>{{friend.username}}</a>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
+<div class="title">Chat online</div>
+<ul class="online-users list-inline">
+  <li *ngFor="let friend of friendList">
+    <span class="online-dot"></span>
+    <a [routerLink]="'/post/chat'">
+      <img src="{{friend.avatar}}" alt="user" class="img-responsive profile-photo"/>
+    </a>
+    <div>
+      <a>{{friend.firstName}} {{friend.lastName}}</a>
+    </div>
+  </li>
+</ul>
