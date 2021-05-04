@@ -21,26 +21,28 @@ import {SearchComponent} from './search/search.component';
 import { ChatComponent } from './chat/chat.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FriendlistComponent } from './friendlist/friendlist.component';
+import {LikePostComponent} from "./like-post/like-post.component";
 
 @NgModule({
-  declarations: [
-    NewFeedComponent,
-    PersonnalPageComponent,
-    CoverComponent,
-    NavbarComponent,
-    AddPostComponent,
-    ListPostComponent,
-    GuestPageComponent,
-    FooterComponent,
-    ListCommentComponent,
-    UserComponent,
-    EditPostComponent,
-    ListLikerPostComponent,
-    LikeCommentComponent,
-    SearchComponent,
-    ChatComponent,
-    FriendlistComponent,
-  ],
+    declarations: [
+        NewFeedComponent,
+        PersonnalPageComponent,
+        CoverComponent,
+        NavbarComponent,
+        AddPostComponent,
+        ListPostComponent,
+        GuestPageComponent,
+        FooterComponent,
+        ListCommentComponent,
+        UserComponent,
+        EditPostComponent,
+        ListLikerPostComponent,
+        LikeCommentComponent,
+        SearchComponent,
+        ChatComponent,
+        FriendlistComponent,
+        LikePostComponent,
+    ],
   exports: [
     NavbarComponent,
     CoverComponent,

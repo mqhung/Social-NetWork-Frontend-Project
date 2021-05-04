@@ -1,9 +1,9 @@
 <div>
   <form>
-    <div class="form-group">
+    <div class="form-group" style="margin-top: 4px">
       <i class="icon ion-android-search"></i>
       <input [(ngModel)]="nameSearch" type="text" class="form-control" name="nameSearch" placeholder="Search friends, photos, videos">
-      <button (click)="searchUser()" class="nav-item dropdown" type="submit" >Search</button>
+      <button hidden (click)="searchUser()" class="nav-item dropdown" type="submit" ></button>
     </div>
   </form>
 </div>
