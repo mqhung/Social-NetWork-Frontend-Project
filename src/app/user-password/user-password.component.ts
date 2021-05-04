@@ -4,11 +4,12 @@ import {ConfirmedValidator} from './password-validators';
 import {JwtService} from '../service/auth/jwt.service';
 import {IUserRegister} from '../model/IUserRegister';
 import {IUserToken} from '../model/IUserToken';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Subscription} from 'rxjs';
 import {IAppUser} from '../model/IAppUser';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 class AuthenticationService {
 }
@@ -19,44 +20,45 @@ class AuthenticationService {
   styleUrls: ['./user-password.component.css']
 })
 export class UserPasswordComponent implements OnInit {
-  user: IUserRegister
-  // currentUser: IUserRegister;
+  user: IUserRegister;
+  currentUser: IUserRegister;
   sub: Subscription;
+  currentUserToken: IUserToken;
   newPasswordForm: FormGroup = new FormGroup({
-    password: new FormControl('' )
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   constructor(private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-              private jwtService: JwtService) {
+              private authService: JwtService) {
 
   }
 
   ngOnInit() {
-    this.getUser()
+    this.getUser();
   }
 
   getUser() {
-    this.userService.getCurrentUser().subscribe(
-      response => {
-        this.user = <IUserRegister> response;
-        console.log(this.user);
-      },
-      error => console.error(error)
-    );
-  }
+        this.userService.getCurrentUser().subscribe(
+          response => {
+            this.user = <IUserRegister> response;
+            console.log(this.user);
+          },
+          error => console.error(error)
+        );
+      }
 
   changePassword() {
     const user = this.setNewUser();
-    this.jwtService.currentUser.subscribe(
+    this.authService.currentUser.subscribe(
       currentUser => {
         console.log(currentUser);
         this.userService.updatePassword(currentUser.username, user).subscribe(() => {
           alert('Đổi mật khẩu thành công');
           this.newPasswordForm.reset();
-          this.router.navigate(['/post/timeline']);
+          this.router.navigate(['/users/home']);
         }, err => {
           console.log(err);
         });
@@ -74,7 +76,6 @@ export class UserPasswordComponent implements OnInit {
       address: '',
       birthday: '',
       gender: ''
-
     };
     return user;
   }
@@ -199,5 +200,97 @@ export class UserPasswordComponent implements OnInit {
   //         alert('Error')
   //         console.log(error);
   //       })
+  // }
+
+  // user: IUserRegister;
+  // currentUser: IUserRegister;
+  // sub: Subscription;
+  // currentUserToken: IUserToken;
+  // userFirstName = '';
+  // userLastName = '';
+  // userGender = '';
+  // userPhone = '';
+  // userEmail = '1';
+  // userBirthday = '';
+  // userAddress = '';
+  // arrayPicture = '';
+  // newPasswordForm: FormGroup = new FormGroup({
+  //   password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  // });
+  //
+  // constructor(private userService: UserService,
+  //             private router: Router,
+  //             private fb: FormBuilder,
+  //             private db: AngularFireDatabase,
+  //             private activatedRoute: ActivatedRoute,
+  //             private authService: JwtService) {
+  //   this.authService.currentUser.subscribe(
+  //     currentUser => {
+  //       this.currentUserToken = currentUser;
+  //     }
+  //   );
+  // }
+  //
+  // ngOnInit() {
+  //   this.getUserProfile();
+  //   this.getUser();
+  // }
+  //
+  // getUser() {
+  //   this.userService.getCurrentUser().subscribe(
+  //     response => {
+  //       this.user = <IUserRegister> response;
+  //       console.log(this.user);
+  //     },
+  //     error => console.error(error)
+  //   );
+  // }
+  //
+  // getUserProfile() {
+  //   this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+  //     const id = paramMap.get('id');
+  //     this.getUserProfileById(id);
+  //   });
+  // }
+  //
+  // private getUserProfileById(id: string) {
+  //   this.userService.getUserProfile(id).subscribe(value => {
+  //     this.currentUser = value;
+  //     this.userFirstName = value.firstName;
+  //     this.userLastName = value.lastName;
+  //     this.userEmail = value.email;
+  //     this.userBirthday = value.birthday;
+  //     this.userAddress = value.address;
+  //     this.userGender = value.gender;
+  //     this.userPhone = value.phone;
+  //   }, () => {
+  //     console.log('Lỗi!');
+  //   });
+  // }
+  //
+  // changePassword() {
+  //   const user = this.setNewUser();
+  //   this.userService.updatePassword(user, this.currentUser.id).subscribe(() => {
+  //     alert('Đổi mật khẩu thành công');
+  //     this.newPasswordForm.reset();
+  //     this.router.navigate(['/']);
+  //   }, err => {
+  //     console.log(err);
+  //   });
+  // }
+  //
+  // private setNewUser() {
+  //   const user: IUserRegister = {
+  //     username: this.currentUserToken.username,
+  //     password: this.newPasswordForm.value.password,
+  //     firstName: this.userFirstName,
+  //     lastName: this.userLastName,
+  //     email: this.userEmail,
+  //     birthday: this.userBirthday,
+  //     address: this.userAddress,
+  //     phone: this.userPhone,
+  //     gender: this.userGender
+  //   };
+  //   return user;
   // }
 }

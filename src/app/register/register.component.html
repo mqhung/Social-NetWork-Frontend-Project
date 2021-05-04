@@ -8,37 +8,37 @@
         <div class="col-lg-7">
           <div class="p-5">
             <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Tạo mới tài khoản</h1>
+              <h1 class="h4 text-gray-900 mb-4">Create new account</h1>
             </div>
             <form class="user" [formGroup]="registerForm" (ngSubmit)="register()">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                         placeholder="Tên đăng nhập" formControlName="username">
+                         placeholder="Username" formControlName="username">
                   <div
                     *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('username').errors.whitespace">
-                      Tên đăng nhập không có dấu cách
+                      Username has no spaces
                     </div>
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('username').errors.required">
-                      Nhập vào tên đăng nhập
+                      Username is not blank
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user" id="examplePhone"
-                         placeholder="Phone" formControlName="phone">
+                         placeholder="Phone Number" formControlName="phone">
                   <div
                     *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('phone').errors.pattern">
-                      Số điện thoại chưa đúng định dạng
+                      Phone number is not formatted
                     </div>
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('phone').errors.required">
-                      Nhập vào số điện thoại
+                      Phone number is not blank
                     </div>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                     *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('firstName').errors.required">
-                      Nhập vào tên
+                      First name is not blank
                     </div>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                     *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('lastName').errors.required">
-                      Nhập vào họ
+                      Last name is not blank
                     </div>
                   </div>
                 </div>
@@ -77,46 +77,36 @@
                     *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('email').errors.email">
-                      Nhập đúng đinh dạng email
+                      Email is not formatted
                     </div>
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('email').errors.required">
-                      Nhập vào mật khẩu
+                      Email is not blank
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
-                         id="examplePassword" placeholder="Nhập mật khẩu" formControlName="password">
+                         id="examplePassword" placeholder="Password" formControlName="password">
                   <div
                     *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('password').errors.minlength">
-                      Mật khẩu tối thiểu 6 ký tự
+                      Password at least 6 characters
                     </div>
                     <div class="alert alert-danger mt-1" role="alert"
                          *ngIf="registerForm.get('password').errors.required">
-                      Nhập vào mật khẩu
+                      Password is not blank
                     </div>
                   </div>
                 </div>
               </div>
 
-              <input type="submit" class="btn btn-primary btn-user btn-block" value="Đăng ký">
-              <hr>
-              <a href="../../../../../index.html" class="btn btn-google btn-user btn-block disabled">
-                <i class="fab fa-google fa-fw"></i> Đăng ký với Google
-              </a>
-              <a href="../../../../../index.html" class="btn btn-facebook btn-user btn-block disabled">
-                <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với Facebook
-              </a>
+              <input type="submit" class="btn btn-primary btn-user btn-block" value="Register">
             </form>
             <hr>
-            <div class="text-center">
-              <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
-            </div>
             <div class="text-center" >
-              <a class="small" href="login">Đăng nhập!</a>
+              <a href="login"><h5>Login!</h5></a>
             </div>
           </div>
         </div>
