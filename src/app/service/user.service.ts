@@ -55,7 +55,7 @@ export class UserService {
     return this.http.put(`${this.userUrl}/update/${id}`, user);
   }
 
-  updatePassword(id: number, user: IUserRegister): Observable<any> {
-    return this.http.patch(`${this.userUrl}/update/${id}/password`, user);
+  updatePassword(usernmae:string, user: IUserRegister): Observable<any> {
+    return this.http.put<IUserRegister>(`${this.userUrl}/update/${usernmae}/password`, user);
   }
 }
