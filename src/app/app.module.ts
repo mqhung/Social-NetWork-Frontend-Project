@@ -20,6 +20,7 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 import { UserPasswordComponent } from './user-password/user-password.component';
+import { AdminComponent } from './admin/admin.component';
 import {PostModule} from './post/post.module';
 import { TestchatComponent } from './testchat/testchat.component';
 
@@ -36,6 +37,7 @@ import { TestchatComponent } from './testchat/testchat.component';
     UserEditComponent,
     MutualFriendComponent,
     UserPasswordComponent,
+    AdminComponent,
     TestchatComponent,
   ],
   imports: [

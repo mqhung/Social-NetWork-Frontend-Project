@@ -9,6 +9,7 @@ import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {UserPasswordComponent} from './user-password/user-password.component';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'user/:id/password',
     component: UserPasswordComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   }
 ];
 
