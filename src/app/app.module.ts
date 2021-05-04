@@ -20,7 +20,7 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
-
+import { UserPasswordComponent } from './user-password/user-password.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
     HandlefriendComponent,
     UserEditComponent,
     MutualFriendComponent,
+    UserPasswordComponent,
   ],
   imports: [
     BrowserModule,

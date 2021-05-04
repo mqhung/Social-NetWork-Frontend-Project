@@ -8,6 +8,7 @@ import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {UserInfoComponent} from './user-info/user-info.component';
+import {UserPasswordComponent} from './user-password/user-password.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
     component: HandlefriendComponent
   },
   {
-    path: 'user-edit/:id',
+    path: 'user/:id/edit',
     component: UserEditComponent
   },
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'user/:id/about',
     component: UserInfoComponent
+  },
+  {
+    path: 'user/:id/password',
+    component: UserPasswordComponent
   }
 ];
 

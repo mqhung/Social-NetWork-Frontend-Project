@@ -26,7 +26,7 @@
           <div class="col-md-9">
             <ul class="list-inline profile-menu">
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
-              <li><a href="timeline-about.html">About</a></li>
+              <li><a [routerLink]="'/user/'+user.id+'/about'">About</a></li>
               <li><a href="timeline-album.html">Album</a></li>
               <li><a [routerLink]="'/listFriend'">Friends</a></li>
               <!--              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>-->
@@ -61,14 +61,14 @@
                   <br>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <label>Last Name</label>
-                      <input type="text" class="form-control form-control-user" id="firstName"
-                             formControlName="firstName">
+                      <label>First Name</label>
+                      <input type="text" class="form-control " id="firstName"
+                             formControlName="firstName" required="">
                     </div>
                     <div class="col-sm-6">
                       <label>Last Name</label>
                       <input type="text" class="form-control form-control-user" id="lastName"
-                             formControlName="lastName">
+                             formControlName="lastName" required="">
                     </div>
                   </div>
 
@@ -93,8 +93,24 @@
                     </div>
                     <div class="col-sm-6">
                       <label>Gender</label>
-                      <input type="text" class="form-control form-control-user"
-                             id="gender"  formControlName="gender">
+                      <br>
+                      <input type="radio" class="form-check-input"
+                             id="male"  formControlName="gender" value="Male">
+                      <label class="form-check-label" for="male">Male</label>
+                      <input type="radio" class="form-check-input"
+                             id="female"  formControlName="gender" value="Female">
+                      <label class="form-check-label " for="male">Female</label>
+                      <input type="radio" class="form-check-input"
+                             id="lgbt"  formControlName="gender" value="LGBT">
+                      <label class="form-check-label" for="lgbt">LGBT</label>
+
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="birthday">Birthday </label>
+                    <input type="date" id="birthday" name="birthday" formControlName="birthday">
                     </div>
                   </div>
 
