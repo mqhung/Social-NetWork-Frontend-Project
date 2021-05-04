@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {JwtService} from '../service/auth/jwt.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-user-edit',
@@ -25,7 +26,8 @@ export class UserEditComponent implements OnInit {
     private router: Router,
     private jwtService: JwtService,
     private userService: UserService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private formBuilder: FormBuilder
   ) {
     this.checkLogin();
   }
@@ -39,11 +41,14 @@ export class UserEditComponent implements OnInit {
   }
 
   prepareForm() {
-    this.updateForm = new FormGroup({
-      firstName: new FormControl(''),
+    this.updateForm = this.formBuilder.group({
+      firstName: new FormControl('',[Validators.required]),
       lastName: new FormControl(''),
-      email: new FormControl(''),
+      email: new FormControl('',[Validators.email]),
       phone: new FormControl(''),
+      address: new FormControl(''),
+      birthday: new FormControl(''),
+      gender: new FormControl(''),
     })
   }
 
@@ -99,7 +104,7 @@ export class UserEditComponent implements OnInit {
     let userNewInfo = this.setInfo();
     this.userService.updateUser(this.user.id, userNewInfo).subscribe(() => {
       alert("Update success!");
-      this.router.navigate(['/post/timeline']);
+      this.router.navigate(['/user/:id/about']);
     }, error => {
       alert('Error')
       console.log(error);
@@ -132,6 +137,7 @@ export class UserEditComponent implements OnInit {
         }
       });
   }
+
 
 
 }
