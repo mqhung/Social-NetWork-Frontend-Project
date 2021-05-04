@@ -6,11 +6,14 @@ import {Observable, of} from 'rxjs';
 import {JwtService} from './auth/jwt.service';
 import {IAppUser} from '../model/IAppUser';
 import {IUserRegister} from '../model/IUserRegister';
+import {IPost} from '../model/IPost';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+
 
   constructor(private http: HttpClient, private jwtService: JwtService) {
 
@@ -57,5 +60,13 @@ export class UserService {
 
   updatePassword(usernmae:string, user: IUserRegister): Observable<any> {
     return this.http.put<IUserRegister>(`${this.userUrl}/update/${usernmae}/password`, user);
+  }
+
+  searchUser(name: string) : Observable<IAppUser[]>{
+    return this.http.get<IAppUser[]>(this.userUrl + '/search?name=' + name).pipe(
+      tap(users => JSON.stringify(users),
+        catchError(err => of([]))
+      )
+    )
   }
 }

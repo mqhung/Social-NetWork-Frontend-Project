@@ -11,9 +11,18 @@ import {IPostStatus} from '../../model/i-post-status';
 })
 export class PostService {
 
+  postListTimeline: IPost[] = [];
+  postListNewFeed: IPost[] = [];
+  currentUser: IAppUser;
+
+
   constructor(private http: HttpClient) {
+    this.getCurrentUser().subscribe(next => {
+      this.currentUser = next;
+    });
 
   }
+
 
   private postURL = environment.URL + 'post/';
 
@@ -56,5 +65,9 @@ export class PostService {
 
   getAllFriendPost(): Observable<IPost[]> {
     return this.http.get<IPost[]>(this.postURL+'get-all-friend-post').pipe();
+  }
+
+  searchPostByContent(content: string, userId: number): Observable<IPost[]>{
+    return this.http.get<IPost[]>(this.postURL+'find-post-by-content/'+`${userId}/${content}`).pipe();
   }
 }

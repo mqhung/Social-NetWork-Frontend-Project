@@ -15,6 +15,9 @@ import { FooterComponent } from './footer/footer.component';
 import {ListCommentComponent} from './list-comment/list-comment.component';
 import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ListLikerPostComponent } from './list-liker-post/list-liker-post.component';
+import {LikeCommentComponent} from './like-comment/like-comment.component';
+import { LikePostComponent } from './like-post/like-post.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     FooterComponent,
     ListCommentComponent,
     UserComponent,
-    EditPostComponent
+    EditPostComponent,
+    ListLikerPostComponent,
+    LikePostComponent,
+    LikeCommentComponent
   ],
   exports: [
     NavbarComponent,
