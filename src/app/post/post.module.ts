@@ -21,6 +21,7 @@ import {SearchComponent} from './search/search.component';
 import { ChatComponent } from './chat/chat.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FriendlistComponent } from './friendlist/friendlist.component';
+import {LikePostComponent} from './like-post/like-post.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FriendlistComponent } from './friendlist/friendlist.component';
     SearchComponent,
     ChatComponent,
     FriendlistComponent,
+    LikePostComponent,
   ],
   exports: [
     NavbarComponent,
