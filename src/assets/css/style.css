@@ -20,7 +20,7 @@
       - Image Divider
       - Site Facts
       - Live Feed
-    - Newsfeed 
+    - Newsfeed
       - Left Sidebar
       - Right Sidebar
       - Create Post Box
@@ -28,7 +28,7 @@
       - Nearby People
       - Friend List
       - Chat Room
-      - Media: image and video 
+      - Media: image and video
     - Timeline
       - Timeline Sidebar
       - Post Date
@@ -277,7 +277,7 @@ textarea{
 }
 
 .menu{
-  background: #231F20;
+  background: #375798;
   border: none;
   border-radius: 0;
   margin-bottom: 0;
@@ -1656,7 +1656,7 @@ ul.contact li i{
 @media only screen and (max-width : 992px) {
 
   section h1.section-title{font-size: 175px; margin-bottom: -40px;}
-  
+
   #features .feature-item{margin-bottom: 20px;}
 
   #features .item{margin-bottom: 20px;}
@@ -1676,7 +1676,7 @@ ul.contact li i{
   .sign-up-form{left: 0; right: 0; margin: auto;}
 
   section h1.section-title{font-size: 90px !important; margin-bottom: 0 !important;}
-  
+
   #features .feature-item{margin-bottom: 20px;}
 
   #site-facts .circle{width: 100%; border-radius: 1000px;}
