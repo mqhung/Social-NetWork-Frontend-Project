@@ -21,6 +21,7 @@ import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 import { UserPasswordComponent } from './user-password/user-password.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserPasswordComponent } from './user-password/user-password.component';
     UserEditComponent,
     MutualFriendComponent,
     UserPasswordComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
