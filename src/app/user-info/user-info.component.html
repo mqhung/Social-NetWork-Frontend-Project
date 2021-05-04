@@ -27,7 +27,7 @@
             <ul class="list-inline profile-menu">
               <li><a [routerLink]="'/post/timeline'">Timeline</a></li>
               <li><a [routerLink]="'/user/'+user.id+'/about'">About</a></li>
-              <li><a href="timeline-album.html">Album</a></li>
+              <li><a >Album</a></li>
               <li><a [routerLink]="'/listFriend/'+user.id">Friends</a></li>
 <!--              <li><a [routerLink] class="active">Friends Request ({{sumListPending}})</a></li>-->
             </ul>
@@ -107,7 +107,7 @@
                     <h4 class="grey"><i class="ion-ios-cog icon-in-title"></i>Account</h4>
                     <ul>
                       <li><a [routerLink]="'/user/'+user.id+'/edit'"><h5>Edit Profile</h5></a></li>
-                      <li><a [routerLink]="'/user/'+user.username+'/password'"><h5>Change Password</h5></a></li>
+                      <li><a [routerLink]="'/user/'+user.id+'/password'"><h5>Change Password</h5></a></li>
                     </ul>
                   </div>
                 </div>

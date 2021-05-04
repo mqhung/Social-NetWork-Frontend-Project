@@ -13,35 +13,31 @@
             <div class="col-lg-4">
               <div class="p-5">
                 <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Xin chào!!!</h1>
+                  <h1 class="h4 text-gray-900 mb-4">Welcome to Fakebook !!!</h1>
                 </div>
                 <form class="user" [formGroup]="loginForm" (ngSubmit)="login()">
                   <div class="form-group">
                     <input type="tel" class="form-control form-control-user"
                            id="username" aria-describedby="emailHelp"
-                           placeholder="Nhập vào tên đăng nhập" formControlName="username">
+                           placeholder="Username" formControlName="username">
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user"
-                           id="password" placeholder="Nhập vào mật khẩu" formControlName="password">
+                           id="password" placeholder="Password" formControlName="password">
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
                       <input type="checkbox" class="custom-control-input" id="customCheck">
-                      <label class="custom-control-label" for="customCheck">Ghi nhớ đăng nhập</label>
+                      <label class="custom-control-label" for="customCheck"> Remember me</label>
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
-                  <hr>
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
-                </div>
-                <div class="text-center">
-                  <a class="small" href="register">Tạo mới tài khoản?</a>
+                  <a href="register"><h5>Register</h5></a>
                 </div>
               </div>
             </div>

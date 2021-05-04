@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {RegisterService} from '../service/register.service';
 import {noWhitespaceValidator} from './noWhitespaceValidator';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -36,8 +37,13 @@ export class RegisterComponent implements OnInit {
       this.registerForm.reset();
       this.router.navigate(['/login']);
     }, err => {
-      alert('Account already exists')
-      console.log(err);
+      if (err instanceof HttpErrorResponse) {
+        if (err.status === 400) {
+          alert('Account already exists');
+        } else if (err.status === 500) {
+          alert('Register error!');
+        }
+      }
     });
     console.log(user);
   }

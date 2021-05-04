@@ -58,8 +58,13 @@ export class UserService {
     return this.http.put(`${this.userUrl}/update/${id}`, user);
   }
 
-  updatePassword(usernmae:string, user: IUserRegister): Observable<any> {
-    return this.http.put<IUserRegister>(`${this.userUrl}/update/${usernmae}/password`, user);
+  getUserProfile(id: string): Observable<IUserRegister> {
+    return this.http.get<IUserRegister>(this.userUrl + `/update/${id}`);
+  }
+
+
+  updatePassword(username: string, user: IUserRegister): Observable<IUserRegister> {
+    return this.http.put<IUserRegister>(this.userUrl + `/update/${username}/password`, user);
   }
 
   searchUser(name: string) : Observable<IAppUser[]>{
