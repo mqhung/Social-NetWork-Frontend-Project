@@ -65,7 +65,7 @@
            class="profile-photo-md pull-left">
       <div class="post-detail">
         <div class="user-info">
-          <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+          <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName + ' ' + post.appUser.lastName}}</a> <span
             class="following">following</span></h5>
           <p class="text-muted">Published a photo
             at {{post.createdTime| date : 'dd/MM/yyyy | hh:mm'}}
@@ -126,7 +126,7 @@
              class="profile-photo-md pull-left">
         <div class="post-detail">
           <div class="user-info">
-            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName}}</a> <span
+            <h5><a [routerLink]="'/user/'+post.appUser.id" class="profile-link">{{post.appUser.firstName + ' ' + post.appUser.lastName}}</a> <span
               class="following">following</span></h5>
             <p class="text-muted">Published a photo
               at {{post.createdTime| date : 'dd/MM/yyyy | hh:mm'}}
