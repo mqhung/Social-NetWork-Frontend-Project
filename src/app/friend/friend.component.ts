@@ -40,7 +40,7 @@ export class FriendComponent implements OnInit {
 
     this.friendService.getFriendList(id).subscribe(
       response => {
-        this.friendList = <IAppUser[]>response,
+        this.friendList = <IAppUser[]>response;
           this.sumListFriend = this.friendList.length;
       });
 
