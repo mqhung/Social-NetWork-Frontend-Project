@@ -24,7 +24,6 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     // this.showAllUser();
     this.showFriendSuggestion();
-    this.searchUser();
     // this.showAllUserNoFriend();
   }
 
@@ -111,12 +110,6 @@ export class UserComponent implements OnInit {
     this.friendService.getSuggestionFriend().subscribe(next => {
       this.userListNoFriend = next;
       console.log('DS: '+this.userListNoFriend.length)
-    })
-  }
-
-  searchUser(): any{
-    this.userService.searchUser(this.nameSearch).subscribe(next => {
-      this.userList = next;
     })
   }
 }

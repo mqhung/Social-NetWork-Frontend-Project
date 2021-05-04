@@ -17,10 +17,12 @@ import {JwtInterceptorService} from './service/auth/jwt-interceptor.service';
 import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
 import {UserInfoComponent} from './user-info/user-info.component';
-import {PostModule} from './post/post.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 import { UserPasswordComponent } from './user-password/user-password.component';
+import {PostModule} from './post/post.module';
+import { TestchatComponent } from './testchat/testchat.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { UserPasswordComponent } from './user-password/user-password.component';
     UserEditComponent,
     MutualFriendComponent,
     UserPasswordComponent,
+    TestchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,10 @@ import { UserPasswordComponent } from './user-password/user-password.component';
     PostModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+  ],
+  exports: [
+    FriendComponent
   ],
   bootstrap: [AppComponent]
 })

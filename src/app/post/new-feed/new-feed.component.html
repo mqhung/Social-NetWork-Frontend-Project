@@ -40,36 +40,7 @@
           </li>
         </ul><!--news-feed links ends-->
         <div id="chat-block">
-          <div class="title">Chat online</div>
-          <ul class="online-users list-inline">
-            <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="./assets/images/users/user-2.jpg" alt="user"
-                                                                          class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="./assets/images/users/user-3.jpg" alt="user"
-                                                                         class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="John Doe"><img src="./assets/images/users/user-4.jpg" alt="user"
-                                                                       class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="./assets/images/users/user-5.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="James Carter"><img src="./assets/images/users/user-6.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="./assets/images/users/user-7.jpg" alt="user"
-                                                                          class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="./assets/images/users/user-8.jpg" alt="user"
-                                                                           class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Anna Young"><img src="./assets/images/users/user-9.jpg" alt="user"
-                                                                         class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-            <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="./assets/images/users/user-10.jpg" alt="user"
-                                                                        class="img-responsive profile-photo"/><span
-              class="online-dot"></span></a></li>
-          </ul>
+          <app-friendlist [idUser]="currentUser.id" ></app-friendlist>
         </div><!--chat block ends-->
       </div>
       <div class="col-md-7">

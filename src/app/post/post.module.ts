@@ -6,7 +6,7 @@ import { NewFeedComponent } from './new-feed/new-feed.component';
 import { PersonnalPageComponent } from './personal-page/personnal-page.component';
 import {CoverComponent} from './cover/cover.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navibar.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ListPostComponent } from './list-post/list-post.component';
@@ -17,8 +17,10 @@ import {UserComponent} from './user/user.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListLikerPostComponent } from './list-liker-post/list-liker-post.component';
 import {LikeCommentComponent} from './like-comment/like-comment.component';
-import { LikePostComponent } from './like-post/like-post.component';
-
+import {SearchComponent} from './search/search.component';
+import { ChatComponent } from './chat/chat.component';
+import { ToastrModule } from 'ngx-toastr';
+import { FriendlistComponent } from './friendlist/friendlist.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,10 @@ import { LikePostComponent } from './like-post/like-post.component';
     UserComponent,
     EditPostComponent,
     ListLikerPostComponent,
-    LikePostComponent,
-    LikeCommentComponent
+    LikeCommentComponent,
+    SearchComponent,
+    ChatComponent,
+    FriendlistComponent,
   ],
   exports: [
     NavbarComponent,
@@ -49,7 +53,9 @@ import { LikePostComponent } from './like-post/like-post.component';
     CommonModule,
     PostRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({timeOut: 3000}),
   ]
 })
 export class PostModule { }
