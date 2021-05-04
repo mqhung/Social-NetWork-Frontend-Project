@@ -33,24 +33,24 @@
                           <span>{{userTarget.username}}</span>
                         </div>
                         <ul class="chatting-area">
-                          <div *ngFor="let message of messages">
-                            <div *ngIf="userLogin.id==message.fromId">
+                          <div *ngFor="let mess of messages">
+                            <div *ngIf="userLogin.id==mess.fromId">
                               <li class="you" >
                                 <figure><img style="width: 1.8vw;height: 1.8vw;object-fit: cover" src="{{userLogin.avatar}}" alt=""></figure>
-                                <p>{{message.message}}</p>
+                                <p>{{mess.message}}</p>
                               </li>
                             </div>
-                            <div *ngIf="userLogin.id!=message.fromId">
+                            <div *ngIf="userLogin.id!=mess.fromId">
                               <li class="me" >
                                 <figure><img style="width: 1.8vw;height: 1.8vw;object-fit: cover" src="{{userTarget.avatar}}" alt=""></figure>
-                                <p>{{message.message}}</p>
+                                <p>{{mess.message}}</p>
                               </li>
                             </div>
                           </div>
                         </ul>
                         <div class="message-text-container">
                           <form method="post" [formGroup]="form" (submit)="sendMessageUsingSocket()">
-                            <textarea formControlName="message" name="message" placeholder="Message"></textarea>
+                            <input formControlName="message" name="message" placeholder="Message">
                             <button title="send" type="submit"><i class="fa fa-paper-plane"></i></button>
                           </form>
                         </div>

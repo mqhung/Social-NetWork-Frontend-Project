@@ -20,6 +20,7 @@ import {UserInfoComponent} from './user-info/user-info.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 import {PostModule} from './post/post.module';
+import { TestchatComponent } from './testchat/testchat.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {PostModule} from './post/post.module';
     HandlefriendComponent,
     UserEditComponent,
     MutualFriendComponent,
+    TestchatComponent,
   ],
   imports: [
     BrowserModule,

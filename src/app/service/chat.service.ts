@@ -11,7 +11,7 @@ import 'rxjs-compat/add/operator/catch';
   providedIn: 'root'
 })
 export class ChatService {
-  private chat_URL = environment.URL + "socket/"
+  private chat_URL = environment.URL + "api/socket"
 
   constructor(private httpClient: HttpClient) {
   }
