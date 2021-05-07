@@ -1,0 +1,187 @@
+<body>
+<!-- Header
+================================================= -->
+<header id="header">
+  <app-navbar></app-navbar>
+</header>
+<!--Header End-->
+
+<div id="page-contents">
+  <div class="container">
+    <div class="row">
+
+      <!-- Newsfeed Common Side Bar Left
+      ================================================= -->
+      <div class="col-md-3 static">
+        <div class="profile-card">
+          <img [src]="currentUser.avatar" alt="user" class="profile-photo"/>
+          <h5><a [routerLink]="'/timeline'"
+                 class="text-white">{{currentUser.firstName + ' ' + currentUser.lastName}}</a></h5>
+          <a [routerLink]="'/timeline'" class="text-white"><i class="ion ion-android-person-add"></i> 1,299
+            followers</a>
+        </div><!--profile card ends-->
+        <ul class="nav-news-feed static">
+          <li><i class="icon ion-ios-paper"></i>
+            <div><a [routerLink]="'/timeline'">My Newsfeed</a></div>
+          </li>
+          <li><i class="icon ion-ios-people"></i>
+            <div><a>People Nearby</a></div>
+          </li>
+          <li><i class="icon ion-ios-people-outline"></i>
+            <div><a [routerLink]="'/friend'">Friends</a></div>
+          </li>
+          <li><i class="icon ion-chatboxes"></i>
+            <div><a [routerLink]="'/message'">Messages</a></div>
+          </li>
+          <li><i class="icon ion-images"></i>
+            <div><a [routerLink]="'/image'">Images</a></div>
+          </li>
+          <li><i class="icon ion-ios-videocam"></i>
+            <div><a>Videos</a></div>
+          </li>
+        </ul><!--news-feed links ends-->
+        <div id="chat-block">
+          <div class="title">Chat online</div>
+          <ul class="online-users list-inline">
+            <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="./assets/images/users/user-2.jpg"
+                                                                          alt="user"
+                                                                          class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="./assets/images/users/user-3.jpg"
+                                                                         alt="user"
+                                                                         class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="John Doe"><img src="./assets/images/users/user-4.jpg" alt="user"
+                                                                       class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="./assets/images/users/user-5.jpg"
+                                                                           alt="user"
+                                                                           class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="James Carter"><img src="./assets/images/users/user-6.jpg"
+                                                                           alt="user"
+                                                                           class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="./assets/images/users/user-7.jpg"
+                                                                          alt="user"
+                                                                          class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="./assets/images/users/user-8.jpg"
+                                                                           alt="user"
+                                                                           class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Anna Young"><img src="./assets/images/users/user-9.jpg"
+                                                                         alt="user"
+                                                                         class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+            <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="./assets/images/users/user-10.jpg"
+                                                                        alt="user"
+                                                                        class="img-responsive profile-photo"/><span
+              class="online-dot"></span></a></li>
+          </ul>
+        </div><!--chat block ends-->
+      </div>
+      <div class="col-md-7">
+
+        <!-- Post Create Box
+        ================================================= -->
+        <app-add-post></app-add-post>
+        <!-- Post Create Box End -->
+
+        <!-- Chat Room
+        ================================================= -->
+        <div class="chat-room">
+          <div class="row">
+            <div class="col-md-5">
+
+              <!-- Contact List in Left-->
+              <ul class="nav nav-tabs contact-list scrollbar-wrapper scrollbar-outer">
+                <li *ngFor="let c of messageService.conversations">
+                  <a data-toggle="tab" (click)="getChatMessageByConversationId(c.id)">
+                    <div class="contact">
+                      <img *ngIf="currentUserId==c.firstUser.id" [src]="c.secondUser.avatar" alt=""
+                           class="profile-photo-sm pull-left"/>
+                      <img *ngIf="currentUserId!=c.firstUser.id" [src]="c.firstUser.avatar" alt=""
+                           class="profile-photo-sm pull-left"/>
+                      <div class="msg-preview">
+                        <h6 *ngIf="currentUserId==c.firstUser.id">{{c.secondUser.firstName}}</h6>
+                        <h6 *ngIf="currentUserId!=c.firstUser.id">{{c.firstUser.firstName}}</h6>
+                        <p class="text-muted">you have new message</p>
+                        <small class="text-muted">a min ago</small>
+                        <div class="chat-alert">1</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <!--Contact List in Left End-->
+
+            </div>
+            <div class="col-md-7">
+
+              <!--Chat Messages in Right-->
+              <div class="tab-content scrollbar-wrapper wrapper scrollbar-outer">
+                <!--                <app-message-detail *ngFor="let c of messageService.conversations" [conversationId]="c.id"></app-message-detail>-->
+                <div class="tab-pane active">
+                  <div class="chat-body" id="chat-content">
+                    <ul class="chat-message">
+                      <div *ngFor="let message of messageList">
+                        <li class="left" *ngIf="message.sender.id!=currentUserId">
+                          <img [src]="message.sender.avatar" alt="" class="profile-photo-sm pull-left"/>
+                          <div class="chat-item">
+                            <div class="chat-item-header">
+                              <h5>{{message.sender.firstName}}</h5>
+                              <small class="text-muted">{{message.createdAt}}</small>
+                            </div>
+                            <p>{{message.content}}</p>
+                          </div>
+                        </li>
+                        <li class="right" *ngIf="message.sender.id==currentUserId">
+                          <img [src]="message.sender.avatar" alt="" class="profile-photo-sm pull-right"/>
+                          <div class="chat-item">
+                            <div class="chat-item-header">
+                              <h5>{{message.sender.firstName}}</h5>
+                              <small class="text-muted">{{message.receiver.createdDate}}</small>
+                            </div>
+                            <p>{{message.content}}</p>
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--Chat Messages in Right End-->
+              <form (ngSubmit)="sendMessage()">
+
+                <div class="send-message">
+                  <div class="input-group">
+
+                    <input (submit)="sendMessage()" name="message-content" type="text" id="message-content"
+                           class="form-control" [(ngModel)]="message.content" placeholder="Type your message">
+                    <span class="input-group-btn"><button class="btn btn-default" type="button" (click)="sendMessage()">Send</button></span>
+
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsfeed Common Side Bar Right
+      ================================================= -->
+      <app-user></app-user>
+      <!--      =======================================-->
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+<!-- Footer
+================================================= -->
+
+
+</body>

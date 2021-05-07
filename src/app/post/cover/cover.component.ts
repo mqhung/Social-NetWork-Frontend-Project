@@ -4,6 +4,8 @@ import {IAppUser} from '../../model/IAppUser';
 import {UserService} from '../../service/user.service';
 import {FriendService} from '../../service/friend.service';
 import {JwtService} from '../../service/auth/jwt.service';
+import {MessageService} from '../../service/message/message.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cover',
@@ -21,7 +23,9 @@ export class CoverComponent implements OnInit {
 
   currentUser: IAppUser;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService,
+              private messageService: MessageService,
+              private router: Router) {
     this.currentUser = this.postService.currentUser;
   }
 
@@ -39,4 +43,10 @@ export class CoverComponent implements OnInit {
     });
   }
 
+  getConversation() {
+    this.messageService.getConversationByReceiverId(this.guestUserId).subscribe(data =>{
+      console.log(data);
+      this.router.navigateByUrl('/message');
+    });
+  }
 }

@@ -17,10 +17,6 @@ const routes: Routes = [
   {path: 'user/:id',
   component: GuestPageComponent},
   {
-    path: 'user/:id',
-    component: GuestPageComponent
-  },
-  {
     path: 'edit/:id',
     component: EditPostComponent
   }

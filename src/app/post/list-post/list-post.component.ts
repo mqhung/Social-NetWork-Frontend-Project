@@ -60,7 +60,7 @@ export class ListPostComponent {
     //   }
     // });
     this.postService.getAllPostByUserId(this.guestUserId).subscribe(next => {
-      this.postService.postListTimeline = next;
+      this.postService.postListTimeline = next.reverse();
 
     });
 

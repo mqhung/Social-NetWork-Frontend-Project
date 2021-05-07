@@ -1,0 +1,81 @@
+<!--<div class="tab-pane active" id="contact-{{conversationId}}">-->
+<!--  <div class="chat-body">-->
+<!--    <ul class="chat-message">-->
+<!--      <div *ngFor="let message of messageList">-->
+<!--        <li class="left" *ngIf="message.sender.id!=currentUserId">-->
+<!--          <img [src]="message.sender.avatar" alt="" class="profile-photo-sm pull-left"/>-->
+<!--          <div class="chat-item">-->
+<!--            <div class="chat-item-header">-->
+<!--              <h5>{{message.sender.firstName}}</h5>-->
+<!--              <small class="text-muted">{{message.createdAt}}</small>-->
+<!--            </div>-->
+<!--            <p>{{message.content}}</p>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="right" *ngIf="message.sender.id==currentUserId">-->
+<!--          <img [src]="message.sender.avatar" alt="" class="profile-photo-sm pull-right"/>-->
+<!--          <div class="chat-item">-->
+<!--            <div class="chat-item-header">-->
+<!--              <h5>{{message.sender.firstName}}</h5>-->
+<!--              <small class="text-muted">{{message.receiver.createdDate}}</small>-->
+<!--            </div>-->
+<!--            <p>{{message.content}}</p>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      </div>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;  <div class="tab-pane" id="contact-2">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="chat-body">&ndash;&gt;-->
+<!--&lt;!&ndash;      <ul class="chat-message">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="left">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img src="./assets/images/users/user-10.jpg" alt="" class="profile-photo-sm pull-left"/>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="chat-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="chat-item-header">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>Julia Cox</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <small class="text-muted">a day ago</small>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Hi</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="right">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img src="./assets/images/users/user-1.jpg" alt="" class="profile-photo-sm pull-right"/>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="chat-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="chat-item-header">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>Sarah Cruiz</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <small class="text-muted">a day ago</small>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>hellow</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="left">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img src="./assets/images/users/user-10.jpg" alt="" class="profile-photo-sm pull-left"/>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="chat-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="chat-item-header">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>Julia Cox</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <small class="text-muted">an hour ago</small>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>good</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="right">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img src="./assets/images/users/user-1.jpg" alt="" class="profile-photo-sm pull-right"/>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="chat-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="chat-item-header">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>Sarah Cruiz</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <small class="text-muted">an hour ago</small>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>see you soon</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--<div class="send-message">-->
+<!--  <div class="input-group" >-->
+<!--    <input (submit)="sendMessage()"  name="message-content"  type="text" id="message-content" class="form-control" [(ngModel)]="message.content" placeholder="Type your message">-->
+<!--    <span class="input-group-btn"><button class="btn btn-default" type="button" (click)="sendMessage()">Send</button></span>-->
+<!--  </div>-->
+<!--</div>-->

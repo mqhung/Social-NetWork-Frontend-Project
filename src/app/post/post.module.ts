@@ -43,7 +43,10 @@ import { LikePostComponent } from './like-post/like-post.component';
     FooterComponent,
     UserComponent,
     ListPostComponent,
-    ListCommentComponent
+    ListCommentComponent,
+    AddPostComponent,
+    LikePostComponent,
+    ListLikerPostComponent
   ],
   imports: [
     CommonModule,

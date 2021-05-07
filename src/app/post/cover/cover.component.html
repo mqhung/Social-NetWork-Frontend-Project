@@ -14,14 +14,17 @@
         <ul class="list-inline profile-menu">
           <li><a [routerLink]="'/user/'+guestUserId" class="active">Timeline</a></li>
           <li><a [routerLink]="'/user/'+guestUserId+'/about'">About</a></li>
-          <li><a>Album</a></li>
-          <li *ngIf="currentUser!=null" ><a [routerLink]="'/listFriend/'+guestUserId" >Friends</a></li>
-          <li *ngIf="currentUser==null" ><a >Friends</a></li>
+          <li><a [routerLink]="'/image'">Album</a></li>
+          <li><a (click)="getConversation()">Send message</a></li>
+
+          <li *ngIf="currentUser!=null"><a [routerLink]="'/listFriend/'+guestUserId">Friends</a></li>
+          <li *ngIf="currentUser==null"><a>Friends</a></li>
           <div class="menu">
             <form class="navbar-form navbar-right hidden-sm " (ngSubmit)="searchPostByContent()">
               <div class="form-group">
                 <i class="icon ion-android-search"></i>
-                <input name="search" [(ngModel)]="contentToSearch" style="float: right" type="text" class="form-control" placeholder="Search for Post content">
+                <input name="search" [(ngModel)]="contentToSearch" style="float: right" type="text" class="form-control"
+                       placeholder="Search for Post content">
               </div>
             </form>
 
@@ -29,7 +32,7 @@
 
         </ul>
         <ul class="follow-me list-inline">
-<!--          <li>{{friendList.length}} people following her</li>-->
+          <!--          <li>{{friendList.length}} people following her</li>-->
         </ul>
       </div>
     </div>
