@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {JwtService} from '../service/auth/jwt.service';
 import {first} from 'rxjs/operators';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -50,9 +51,14 @@ export class LoginComponent implements OnInit {
           }
 
         },
-        error => {
-          alert("Sai tài khoản hoặc mật khẩu!");
-          this.loading = false;
+        err=> {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+             alert('Wrong username or password!');
+            } else if (err.status === 406) {
+              alert('Your account has been blocked!');
+            }
+          }
         });
   }
 

@@ -1,0 +1,16 @@
+<div>
+  <form>
+    <div class="form-group" style="margin-top: 4px">
+      <i class="icon ion-android-search"></i>
+      <input [(ngModel)]="nameSearch" type="text" class="form-control" name="nameSearch" placeholder="Search friends, photos, videos">
+      <button hidden (click)="searchUser()" class="nav-item dropdown" type="submit" ></button>
+    </div>
+  </form>
+</div>
+<div class="follow-user" *ngFor="let user of userList">
+  <img src="{{user.avatar}}" alt="" class="profile-photo-sm pull-left" />
+  <div>
+    <h5><a [routerLink]="'/post/user/'+ user.id">{{user.firstName}} {{user.lastName}}</a></h5>
+    <button (click)="addFriend(user.id)" class="btn btn-primary"><span id="{{user.id}}">Add Friend</span></button>
+  </div>
+</div>

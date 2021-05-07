@@ -6,13 +6,13 @@
        [routerLink]="'/post/user/'+ c.appUser.id">{{c.appUser.firstName + ' ' + c.appUser.lastName}}</a>
     <p>{{c.content}}</p>
     <app-like-comment *ngIf="currentUser!=null" [comment]="c"></app-like-comment>
-    <p class="text-muted"> {{c.createdTime| date : 'hh: mm | dd/ MM/ yyyy'}}</p>
+<!--    <p class="text-muted"> {{c.createdTime| date : 'hh:mm | dd/MM/yyyy'}}</p>-->
        <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id "
-          (click)="getCommentById(c.id)"><button class="btn-link">Edit</button></a>
+          (click)="getCommentById(c.id)" class="glyphicon glyphicon-edit"></a>
 
     <a *ngIf="currentUser!=null && currentUser.id==c.appUser.id || currentUser!=null && currentUser.id==userPosted.id"
        [routerLink]="'/post/delete/' + c.id" style="margin-left: 10px"
-       (click)="deleteComment(c.id)"><button class="btn-link">Delete</button></a>
+       (click)="deleteComment(c.id)" class="glyphicon glyphicon-trash"></a>
   </span>
 </div>
 <div class="post-container">

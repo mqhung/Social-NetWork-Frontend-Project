@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {RegisterService} from '../service/register.service';
 import {noWhitespaceValidator} from './noWhitespaceValidator';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -15,8 +16,7 @@ import {noWhitespaceValidator} from './noWhitespaceValidator';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required,noWhitespaceValidator]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -37,8 +37,13 @@ export class RegisterComponent implements OnInit {
       this.registerForm.reset();
       this.router.navigate(['/login']);
     }, err => {
-      alert('Account already exists')
-      console.log(err);
+      if (err instanceof HttpErrorResponse) {
+        if (err.status === 400) {
+          alert('Account already exists');
+        } else if (err.status === 500) {
+          alert('Register error!');
+        }
+      }
     });
     console.log(user);
   }

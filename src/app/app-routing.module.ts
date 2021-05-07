@@ -5,11 +5,13 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {HandlefriendComponent} from './handlefriend/handlefriend.component';
-import {MutualFriendComponent} from './mutual-friend/mutual-friend.component';
+import {MutualFriendComponent} from "./mutual-friend/mutual-friend.component";
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {UserInfoComponent} from './user-info/user-info.component';
 import {ViewImageComponent} from './view-image/view-image.component';
 import {MessageComponent} from './message/message.component';
+import {UserPasswordComponent} from './user-password/user-password.component';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -60,6 +62,14 @@ const routes: Routes = [
   {
     path: 'message',
     component: MessageComponent
+  },
+  {
+    path: 'user/:id/password',
+    component: UserPasswordComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   }
 ];
 

@@ -23,6 +23,9 @@ import { MutualFriendComponent } from './mutual-friend/mutual-friend.component';
 import { ViewImageComponent } from './view-image/view-image.component';
 import { MessageComponent } from './message/message.component';
 import { MessageDetailComponent } from './message/message-detail/message-detail.component';
+import { UserPasswordComponent } from './user-password/user-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { TestchatComponent } from './testchat/testchat.component';
 
 
 @NgModule({
@@ -39,6 +42,9 @@ import { MessageDetailComponent } from './message/message-detail/message-detail.
     ViewImageComponent,
     MessageComponent,
     MessageDetailComponent,
+    UserPasswordComponent,
+    AdminComponent,
+    TestchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,10 @@ import { MessageDetailComponent } from './message/message-detail/message-detail.
     PostModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+  ],
+  exports: [
+    FriendComponent
   ],
   bootstrap: [AppComponent]
 })

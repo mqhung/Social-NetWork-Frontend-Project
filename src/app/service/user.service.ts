@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from "../../environments/environment";
 import {catchError, tap} from "rxjs/operators";
 import {Observable, of} from 'rxjs';
@@ -56,6 +56,25 @@ export class UserService {
 
   updateUser(id: number, user: IUserRegister): Observable<any> {
     return this.http.put(`${this.userUrl}/update/${id}`, user);
+  }
+
+  getUserProfile(id: string): Observable<IUserRegister> {
+    return this.http.get<IUserRegister>(this.userUrl + `/update/${id}`);
+  }
+
+
+  updatePassword(username: string, user: IUserRegister): Observable<IUserRegister> {
+    return this.http.put<IUserRegister>(this.userUrl + `/update/${username}/password`, user);
+  }
+
+  resetPassword(user: IUserRegister): Observable<IUserRegister> {
+    const token = localStorage.getItem('ACCESS_TOKEN');
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.put<IUserRegister>(this.userUrl + '/resetPassword', user, {headers});
   }
 
   searchUser(name: string) : Observable<IAppUser[]>{

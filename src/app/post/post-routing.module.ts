@@ -4,6 +4,7 @@ import {PersonnalPageComponent} from './personal-page/personnal-page.component';
 import {NewFeedComponent} from './new-feed/new-feed.component';
 import {GuestPageComponent} from './guest-page/guest-page.component';
 import {EditPostComponent} from './edit-post/edit-post.component';
+import {ChatComponent} from './chat/chat.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
   }
 ];
 

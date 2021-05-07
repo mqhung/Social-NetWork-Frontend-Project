@@ -10,8 +10,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" [routerLink]="'/post/new-feed'">
-        <img src="./assets/images/logo.png" alt="logo"></a>
+      <a [routerLink]="'/post/new-feed'">
+        <img style="width: 135px; height: 50px" src="../../../assets/images/phakebook.png" alt="logo">
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,11 +28,9 @@
       <div class= "collapse navbar-collapse">
         <form class="navbar-form navbar-right hidden-sm">
           <div class="form-group">
-            <i class="icon ion-android-search"></i>
-            <input type="text" class="form-control" placeholder="Search friends, photos, videos">
+            <app-search></app-search>
           </div>
         </form>
-
       </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->

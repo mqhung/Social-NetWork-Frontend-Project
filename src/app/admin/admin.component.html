@@ -1,0 +1,42 @@
+<div class="row mt-5 mb-5">
+  <div class="container">
+    <div class="row text-center mt-5 mb-5">
+      <div class="col-12"><h1>List of Users </h1></div>
+    </div>
+    <div align="center"><a href="/logout"><h4>Log out</h4></a></div>
+    <br>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of listUser">
+        <th scope="row"><a [routerLink]="['/admin/users', user.id]">{{user.username}}</a></th>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td *ngIf="!user.blocked" style="color: green">Active</td>
+        <td *ngIf="user.blocked" style="color: red">Locked</td>
+        <td *ngIf="!user.blocked">
+          <button *ngIf="user.username != currentUsername" class="btn btn-warning mr-1"
+                  (click)="blockUser(user.id, user)">Block
+          </button>
+        </td>
+        <td *ngIf="user.blocked">
+          <button *ngIf="user.username != currentUsername" class="btn btn-info mr-1"
+                  (click)="unblockUser(user.id, user)">Unblock
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
